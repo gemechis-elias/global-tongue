@@ -11,6 +11,22 @@ use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
+/**
+ * @OA\Info(
+ *     description="",
+ *     version="1.0.0",
+ *     title="Global Tongue API Documentation",
+ *     @OA\Contact(
+ *         email="gemeelijah@gmail.com"
+ *     ),
+ *     @OA\License(
+ *         name="Gemechis Elias",
+ *         url="https://gemechis.me"
+ *     )
+ * )
+ *
+ */
+
 
 class ProductsController extends Controller
 {
