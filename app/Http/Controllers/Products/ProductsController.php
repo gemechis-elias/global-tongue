@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 /**
+ * @OA\OpenApi(
  * @OA\Info(
  *     description="",
  *     version="1.0.0",
@@ -24,7 +25,7 @@ use Illuminate\Http\Response;
  *         url="https://gemechis.me"
  *     )
  * )
- *
+ * )
  */
 
 
