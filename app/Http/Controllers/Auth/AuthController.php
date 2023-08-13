@@ -15,7 +15,7 @@ use Illuminate\Http\Response;
 class AuthController extends Controller
 {
     /**
-     * Response trait to handle return responses.
+     * Response trait to handle return responses .
      */
     use ResponseTrait;
 
