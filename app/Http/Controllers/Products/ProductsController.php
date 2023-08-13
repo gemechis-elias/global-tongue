@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use OpenApi\Annotations as OA;
 use App\Repositories\ProductRepository;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
