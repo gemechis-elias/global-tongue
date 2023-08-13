@@ -20,7 +20,7 @@ class AuthController extends Controller
     use ResponseTrait;
 
     /**
-     * Auth related functionalities.
+     * Auth  related functionalities.
      *
      * @var AuthRepository
      */
