@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-
 /**
  * @OA\Info(
  *     description="",
@@ -20,10 +19,9 @@ use Illuminate\Routing\Controller as BaseController;
  *         name="Gemechis Elias",
  *         url="https://gemechis.me"
  *     )
- * 
  * )
+ *
  */
-
 
 class Controller extends BaseController
 {
