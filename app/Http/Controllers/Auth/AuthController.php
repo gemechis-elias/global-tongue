@@ -10,7 +10,83 @@ use App\Repositories\AuthRepository;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+    /**
+     * @OA\POST(
+     *     path="/api/auth/register",
+     *     tags={"Authentication"},
+     *     summary="Register User",
+     *     description="Register New User",
+     *     @OA\RequestBody(
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="name", type="string", example="Gemechis Elias"),
+     *              @OA\Property(property="email", type="string", example="gemechis@gmail.com"),
+     *              @OA\Property(property="password", type="string", example="123456"),
+     *              @OA\Property(property="password_confirmation", type="string", example="123456")
+     *          ),
+     *      ),
+     *      @OA\Response(response=200, description="Register New User Data" ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found")
+     * )
+     */
+    
+    /**
+     * @OA\POST(
+     *     path="/api/auth/login",
+     *     tags={"Authentication"},
+     *     summary="Login",
+     *     description="Login",
+     *     @OA\RequestBody(
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="email", type="string", example="gemechis@gmail.com"),
+     *              @OA\Property(property="password", type="string", example="123456")
+     *          ),
+     *      ),
+     *      @OA\Response(response=200, description="Login"),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found")
+     * )
+     */
 
+    /**
+     * @OA\GET(
+     *     path="/api/auth/me",
+     *     tags={"Authentication"},
+     *     summary="Authenticated User Profile",
+     *     description="Authenticated User Profile",
+     *     security={{"bearer":{}}},
+     *     @OA\Response(response=200, description="Authenticated User Profile" ),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+         /**
+     * @OA\POST(
+     *     path="/api/auth/logout",
+     *     tags={"Authentication"},
+     *     summary="Logout",
+     *     description="Logout",
+     *     @OA\Response(response=200, description="Logout" ),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+    /**
+     * @OA\POST(
+     *     path="/api/auth/refresh",
+     *     tags={"Authentication"},
+     *     summary="Refresh",
+     *     description="Refresh",
+     *     security={{"bearer":{}}},
+     *     @OA\Response(response=200, description="Refresh" ),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
 class AuthController extends Controller
 {
     /**
@@ -36,24 +112,7 @@ class AuthController extends Controller
         $this->authRepository = $ar;
     }
 
-    /**
-     * @OA\POST(
-     *     path="/api/auth/login",
-     *     tags={"Authentication"},
-     *     summary="Login",
-     *     description="Login",
-     *     @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(property="email", type="string", example="gemechis@gmail.com"),
-     *              @OA\Property(property="password", type="string", example="123456")
-     *          ),
-     *      ),
-     *      @OA\Response(response=200, description="Login"),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found")
-     * )
-     */
+
     public function login(LoginRequest $request): JsonResponse
     {
         try {
@@ -71,26 +130,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\POST(
-     *     path="/api/auth/register",
-     *     tags={"Authentication"},
-     *     summary="Register User",
-     *     description="Register New User",
-     *     @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(property="name", type="string", example="Gemechis Elias"),
-     *              @OA\Property(property="email", type="string", example="gemechis@gmail.com"),
-     *              @OA\Property(property="password", type="string", example="123456"),
-     *              @OA\Property(property="password_confirmation", type="string", example="123456")
-     *          ),
-     *      ),
-     *      @OA\Response(response=200, description="Register New User Data" ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found")
-     * )
-     */
+
     public function register(RegisterRequest $request): JsonResponse
     {
         try {
@@ -107,18 +147,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\GET(
-     *     path="/api/auth/me",
-     *     tags={"Authentication"},
-     *     summary="Authenticated User Profile",
-     *     description="Authenticated User Profile",
-     *     security={{"bearer":{}}},
-     *     @OA\Response(response=200, description="Authenticated User Profile" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
+
     public function me(): JsonResponse
     {
         try {
@@ -129,17 +158,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\POST(
-     *     path="/api/auth/logout",
-     *     tags={"Authentication"},
-     *     summary="Logout",
-     *     description="Logout",
-     *     @OA\Response(response=200, description="Logout" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
+
     public function logout(): JsonResponse
     {
         try {
@@ -150,18 +169,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\POST(
-     *     path="/api/auth/refresh",
-     *     tags={"Authentication"},
-     *     summary="Refresh",
-     *     description="Refresh",
-     *     security={{"bearer":{}}},
-     *     @OA\Response(response=200, description="Refresh" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
+
     public function refresh(): JsonResponse
     {
         try {
