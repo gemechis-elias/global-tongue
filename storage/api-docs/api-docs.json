@@ -20,7 +20,6 @@
                 ],
                 "summary": "Login",
                 "description": "Login",
-                "operationId": "535ffeda4b78916efd658b2844ea897a",
                 "requestBody": {
                     "content": {
                         "application/json": {

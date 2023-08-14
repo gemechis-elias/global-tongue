@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
     /**
-     * @OA\POST(
+     * @OA\Post(
      *     path="/api/auth/login",
      *     tags={"Authentication"},
      *     summary="Login",
@@ -75,7 +75,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @OA\POST(
+     * @OA\Post(
      *     path="/api/auth/register",
      *     tags={"Authentication"},
      *     summary="Register User",
@@ -111,7 +111,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @OA\GET(
+     * @OA\Get(
      *     path="/api/auth/me",
      *     tags={"Authentication"},
      *     summary="Authenticated User Profile",
@@ -133,7 +133,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @OA\POST(
+     * @OA\Post(
      *     path="/api/auth/logout",
      *     tags={"Authentication"},
      *     summary="Logout",
@@ -154,7 +154,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @OA\POST(
+     * @OA\Post(
      *     path="/api/auth/refresh",
      *     tags={"Authentication"},
      *     summary="Refresh",

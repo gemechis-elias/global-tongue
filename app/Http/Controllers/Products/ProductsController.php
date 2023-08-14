@@ -24,23 +24,10 @@ use Illuminate\Http\Response;
  *         url="https://gemechis.me"
  *     )
  * )
- *
  */
-
-
 class ProductsController extends Controller
 {
-    /**
-     * Response trait to handle return responses.
-     */
     use ResponseTrait;
-
-    /**
-     * Product Repository class.
-     *
-     * @var ProductRepository
-     */
-    public $productRepository;
 
     public function __construct(ProductRepository $productRepository)
     {
@@ -49,7 +36,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\GET(
+     * @OA\Get(
      *     path="/api/products",
      *     tags={"Products"},
      *     summary="Get Product List",
@@ -72,7 +59,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\GET(
+     * @OA\Get(
      *     path="/api/products/view/all",
      *     tags={"Products"},
      *     summary="All Products - Publicly Accessible",
@@ -95,7 +82,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\GET(
+     * @OA\Get(
      *     path="/api/products/view/search",
      *     tags={"Products"},
      *     summary="All Products - Publicly Accessible",
@@ -119,7 +106,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\POST(
+     * @OA\Post(
      *     path="/api/products",
      *     tags={"Products"},
      *     summary="Create New Product",
@@ -151,7 +138,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\GET(
+     * @OA\Get(
      *     path="/api/products/{id}",
      *     tags={"Products"},
      *     summary="Show Product Details",
@@ -179,7 +166,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\PUT(
+     * @OA\Put(
      *     path="/api/products/{id}",
      *     tags={"Products"},
      *     summary="Update Product",
@@ -215,7 +202,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @OA\DELETE(
+     * @OA\Delete(
      *     path="/api/products/{id}",
      *     tags={"Products"},
      *     summary="Delete Product",
