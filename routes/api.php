@@ -31,13 +31,7 @@ Route::group([
         Route::get('me', [AuthController::class, 'me']);
     });
     
-
-    /**
-     * Products Module
-     */
-    Route::resource('products', ProductsController::class);
-    Route::get('products/view/all', [ProductsController::class, 'indexAll']);
-    Route::get('products/view/search', [ProductsController::class, 'search']);
+ 
 
     /**
      * Courses Module

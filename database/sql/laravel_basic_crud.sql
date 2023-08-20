@@ -91,30 +91,6 @@ INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`, `user_id`, `
 (1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 (2, 'Course 2', 'Course 2 Description', 'tag2', 'intermediate', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
--- Table structure for table `products`
---
-
-CREATE TABLE `products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `price` double(8,2) NOT NULL DEFAULT 0.00,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'Created By User',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Product 1', 'Product 1 Description', 2000.00, NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(2, 'Product 2', 'Product 2 Description', 5000.00, NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(3, 'Product 3', 'Product 3 Description', 77000.00, NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(4, 'libero', 'Ullam dolorem numquam recusandae accusamus. Natus atque id magnam incidunt. Ipsa magni aperiam aperiam deleniti dolor nisi reiciendis.', 3.00, NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(5, 'atque', 'Et qui vel expedita laudantium. Ut voluptatem et quo autem quia est nam.', 0.00, NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 -- --------------------------------------------------------
 
@@ -170,10 +146,7 @@ ALTER TABLE `password_resets`
 
 --
 -- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `products_user_id_foreign` (`user_id`);
+-- 
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `courses_user_id_foreign` (`user_id`);
@@ -204,9 +177,6 @@ ALTER TABLE `migrations`
 --
 -- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
-
 ALTER TABLE `courses`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
@@ -223,8 +193,6 @@ ALTER TABLE `users`
 --
 -- Constraints for table `products`
 --
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
   ALTER TABLE `courses`
   ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;

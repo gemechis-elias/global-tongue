@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="fav.png" rel="icon">
     <!-- Theme CSS -->   
-    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+     <!-- Plugins CSS -->
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark.min.css"> -->
+ 
 </head>
 
 <body>
@@ -117,7 +120,8 @@
                 }
             }
         }
-    </script>
+    </script>      
+
 </body>
 
 </html>

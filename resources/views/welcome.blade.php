@@ -75,7 +75,7 @@
 							        <span class="card-title-text">Introduction</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+								Welcome to the Global Tongue Education API Documentation! This API project is designed to empower both clients and administrators with a seamless educational experience.
 							    </div>
                                 <!-- Route to /intro -->
 							    <a class="card-link-mask" href="{{ route('intro') }}"></a>
@@ -93,7 +93,7 @@
 							        <span class="card-title-text">APIs</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								The Global Tongue Education API provides a comprehensive set of endpoints to facilitate educational activities. For detailed information on available endpoints, request formats, and responses.    
 								</div>
 							    <a class="card-link-mask" href="{{ route('l5-swagger.default.api') }}"></a>
 						    </div><!--//card-body-->
@@ -110,7 +110,7 @@
 							        <span class="card-title-text">Database</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Section about database goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
 								</div>
 							    <a class="card-link-mask" href="{{ route('l5-swagger.default.api') }}"></a>
 						    </div><!--//card-body-->
