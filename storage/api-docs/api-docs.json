@@ -173,6 +173,290 @@
                 ]
             }
         },
+        "/api/courses": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Get Course List",
+                "description": "Get Course List as Array",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Get Course List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Create New Course",
+                "description": "Create New Course",
+                "operationId": "store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Spanish Level 1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
+                                    },
+                                    "tag": {
+                                        "type": "string",
+                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
+                                    },
+                                    "level": {
+                                        "type": "string",
+                                        "example": "Level 1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Course"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/courses/view/all": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "All Courses - Publicly Accessible",
+                "description": "All Courses - Publicly Accessible",
+                "operationId": "indexAll",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Courses - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/courses/view/search": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "All Courses - Publicly Accessible",
+                "description": "All Courses - Publicly Accessible",
+                "operationId": "search",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "search, eg; Test",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Test"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Courses - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/courses/{id}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Show Course Details",
+                "description": "Show Course Details",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Course Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Update Course",
+                "description": "Update Course",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Spanish Level 1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
+                                    },
+                                    "tag": {
+                                        "type": "string",
+                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
+                                    },
+                                    "level": {
+                                        "type": "string",
+                                        "example": "Level 1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update Course"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Delete Course",
+                "description": "Delete Course",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Course"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/api/products": {
             "get": {
                 "tags": [
@@ -180,7 +464,7 @@
                 ],
                 "summary": "Get Product List",
                 "description": "Get Product List as Array",
-                "operationId": "index",
+                "operationId": "getindex",
                 "responses": {
                     "200": {
                         "description": "Get Product List as Array"
@@ -204,7 +488,7 @@
                 ],
                 "summary": "Create New Product",
                 "description": "Create New Product",
-                "operationId": "store",
+                "operationId": "getstore",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -257,7 +541,7 @@
                 ],
                 "summary": "All Products - Publicly Accessible",
                 "description": "All Products - Publicly Accessible",
-                "operationId": "indexAll",
+                "operationId": "getindexAll",
                 "parameters": [
                     {
                         "name": "perPage",
@@ -289,7 +573,7 @@
                 ],
                 "summary": "All Products - Publicly Accessible",
                 "description": "All Products - Publicly Accessible",
-                "operationId": "search",
+                "operationId": "getsearch",
                 "parameters": [
                     {
                         "name": "perPage",
@@ -330,7 +614,7 @@
                 ],
                 "summary": "Show Product Details",
                 "description": "Show Product Details",
-                "operationId": "show",
+                "operationId": "getshow",
                 "parameters": [
                     {
                         "name": "id",
@@ -365,7 +649,7 @@
                 ],
                 "summary": "Update Product",
                 "description": "Update Product",
-                "operationId": "update",
+                "operationId": "getupdate",
                 "parameters": [
                     {
                         "name": "id",
@@ -427,7 +711,7 @@
                 ],
                 "summary": "Delete Product",
                 "description": "Delete Product",
-                "operationId": "destroy",
+                "operationId": "getdestroy",
                 "parameters": [
                     {
                         "name": "id",

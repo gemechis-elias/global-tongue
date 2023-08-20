@@ -7,6 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    use HasFactory;
+
+    /**
+     * Override fillable property data.
+     *
+     * @var array
+     */
     protected $fillable = ['name', 'description', 'difficulty_level'];
-    
+       /**
+     * User
+     *
+     * Get User Uploaded By Product
+     *
+     * @return object
+     */
+    public function user(): object
+    {
+        return $this->belongsTo(User::class)->select('id', 'name', 'email');
+    }
+
 }

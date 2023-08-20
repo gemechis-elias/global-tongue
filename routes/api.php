@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Courses\CoursesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,13 @@ Route::group([
     Route::resource('products', ProductsController::class);
     Route::get('products/view/all', [ProductsController::class, 'indexAll']);
     Route::get('products/view/search', [ProductsController::class, 'search']);
+
+    /**
+     * Courses Module
+     */
+    Route::resource('courses', CoursesController::class);
+    Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
+    Route::get('courses/view/search', [CoursesController::class, 'search']);
 
 });
 

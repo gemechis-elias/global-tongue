@@ -49,6 +49,6 @@ class ProductSeeder extends Seeder
         Product::insert($data);
 
         // Testing Dummy Products
-        Product::factory(100)->create();
+        Product::factory(10)->create();
     }
 }
