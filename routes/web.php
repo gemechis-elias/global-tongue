@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Welcome\WelcomeController;
+use App\Http\Controllers\Intro\IntroController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +17,5 @@ use App\Http\Controllers\Welcome\WelcomeController;
 */
 
 Route::get('/', [WelcomeController::class, 'welcome']);
+Route::get('/intro', [IntroController::class, 'intro'])->name('intro');
+

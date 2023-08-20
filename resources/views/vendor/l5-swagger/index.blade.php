@@ -9,183 +9,46 @@
         sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ l5_swagger_asset($documentation, 'favicon-16x16.png') }}"
         sizes="16x16" />
-    <style>
-        /* Modify primary color to red */
-        .scheme-container .topbar-wrapper, .scheme-container .scheme-container-header {
-            background-color: red;
-        }
-
-
-        /* Add custom navigation bar styles */
-        .navigation {
-	 height: 70px;
-	 background: #333;
-}
- .brand {
-	 position: absolute;
-	 padding-left: 20px;
-	 float: left;
-	 line-height: 70px;
-	 text-transform: uppercase;
-	 font-size: 1.4em;
-}
- .brand a, .brand a:visited {
-	 color: #fff;
-	 text-decoration: none;
-}
- .nav-container {
-	 max-width: 1000px;
-	 margin: 0 auto;
-}
- nav {
-	 float: right;
-}
- nav ul {
-	 list-style: none;
-	 margin: 0;
-	 padding: 0;
-}
- nav ul li {
-	 float: left;
-	 position: relative;
-}
- nav ul li a, nav ul li a:visited {
-	 display: block;
-	 padding: 0 20px;
-	 line-height: 70px;
-	 background: #333;
-	 color: #fff;
-	 text-decoration: none;
-}
- nav ul li a:hover, nav ul li a:visited:hover {
-	 background: #2581dc;
-	 color: #fff;
-}
- nav ul li a:not(:only-child):after, nav ul li a:visited:not(:only-child):after {
-	 padding-left: 4px;
-	 content: ' ▾';
-}
- nav ul li ul li {
-	 min-width: 190px;
-}
- nav ul li ul li a {
-	 padding: 15px;
-	 line-height: 20px;
-}
- .nav-dropdown {
-	 position: absolute;
-	 display: none;
-	 z-index: 1;
-	 box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-/* Mobile navigation */
- .nav-mobile {
-	 display: none;
-	 position: absolute;
-	 top: 0;
-	 right: 0;
-	 background: #262626;
-	 height: 70px;
-	 width: 70px;
-}
- @media only screen and (max-width: 798px) {
-	 .nav-mobile {
-		 display: block;
-	}
-	 nav {
-		 width: 100%;
-		 padding: 70px 0 15px;
-	}
-	 nav ul {
-		 display: none;
-	}
-	 nav ul li {
-		 float: none;
-	}
-	 nav ul li a {
-		 padding: 15px;
-		 line-height: 20px;
-	}
-	 nav ul li ul li a {
-		 padding-left: 30px;
-	}
-	 .nav-dropdown {
-		 position: static;
-	}
-}
- @media screen and (min-width: 799px) {
-	 .nav-list {
-		 display: block !important;
-	}
-}
- #nav-toggle {
-	 position: absolute;
-	 left: 18px;
-	 top: 22px;
-	 cursor: pointer;
-	 padding: 10px 35px 16px 0px;
-}
- #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-	 cursor: pointer;
-	 border-radius: 1px;
-	 height: 5px;
-	 width: 35px;
-	 background: #fff;
-	 position: absolute;
-	 display: block;
-	 content: '';
-	 transition: all 300ms ease-in-out;
-}
- #nav-toggle span:before {
-	 top: -10px;
-}
- #nav-toggle span:after {
-	 bottom: -10px;
-}
- #nav-toggle.active span {
-	 background-color: transparent;
-}
- #nav-toggle.active span:before, #nav-toggle.active span:after {
-	 top: 0;
-}
- #nav-toggle.active span:before {
-	 transform: rotate(45deg);
-}
- #nav-toggle.active span:after {
-	 transform: rotate(-45deg);
-}
- article {
-	 max-width: 1000px;
-	 margin: 0 auto;
-	 padding: 10px;
-}
- 
-    </style>
+    <!-- FontAwesome JS-->
+    <script defer src="{{ asset('js/all.min.js') }}"></script>
+    <script src="https://kit.fontawesome.com/80af3c4fac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="fav.png" rel="icon">
+    <!-- Theme CSS -->   
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 </head>
 
 <body>
-<section class="navigation">
-  <div class="nav-container">
-    <div class="brand">
-      <a href="#!">Backend - Global Tongue</a>
-    </div>
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul class="nav-list">
-        <li>
-          <a href="../../">Home</a>
-        </li>
-        <li>
-          <a href="https://github.com/gemechis-elias/global-tongue/commit/">Change Log</a>
-        </li>
-    
-        <li>
-          <a href="https://github.com/gemechis-elias/global-tongue/tree/main">Github</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>
+<header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo"><a class="navbar-brand" href="../"><span class="logo-text">Global<span class="text-alt">Tongue Edu.</span></span></a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+						<li class="list-inline-item"><a href="#"><i class="fab fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+		                <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
+		                <li class="list-inline-item"><a href="#"><i class="fab fa-product-hunt fa-fw"></i></a></li>
+		            </ul><!--//social-list-->
+		            <a href="#" class="btn btn-primary d-none d-lg-flex">Logout</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
 
     <div id="swagger-ui"></div>
 
