@@ -14,7 +14,7 @@ use Illuminate\Http\Response;
 
     /**
      * @OA\Post(
-     *     path="/api/auth/login",
+     *     path="/v1/public/api/auth/login",
      *     tags={"Authentication"},
      *     summary="Login",
      *     description="Login",
@@ -76,7 +76,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/auth/register",
+     *     path="/v1/public/api/auth/register",
      *     tags={"Authentication"},
      *     summary="Register User",
      *     description="Register New User",
@@ -112,7 +112,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/auth/me",
+     *     path="/v1/public/api/auth/me",
      *     tags={"Authentication"},
      *     summary="Authenticated User Profile",
      *     description="Authenticated User Profile",
@@ -134,7 +134,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/auth/logout",
+     *     path="/v1/public/api/auth/logout",
      *     tags={"Authentication"},
      *     summary="Logout",
      *     description="Logout",
@@ -155,7 +155,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/auth/refresh",
+     *     path="/v1/public/api/auth/refresh",
      *     tags={"Authentication"},
      *     summary="Refresh",
      *     description="Refresh",

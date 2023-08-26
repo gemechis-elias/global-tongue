@@ -25,7 +25,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/courses",
+     *     path="/v1/public/api/courses",
      *     tags={"Courses"},
      *     summary="Get Course List",
      *     description="Get Course List as Array",
@@ -48,7 +48,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/courses/view/all",
+     *     path="/v1/public/api/courses/view/all",
      *     tags={"Courses"},
      *     summary="All Courses - Publicly Accessible",
      *     description="All Courses - Publicly Accessible",
@@ -71,7 +71,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/courses/view/search",
+     *     path="/v1/public/api/courses/view/search",
      *     tags={"Courses"},
      *     summary="All Courses - Publicly Accessible",
      *     description="All Courses - Publicly Accessible",
@@ -95,7 +95,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/courses",
+     *     path="/v1/public/api/courses",
      *     tags={"Courses"},
      *     summary="Create New Course",
      *     description="Create New Course",
@@ -127,7 +127,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/courses/{id}",
+     *     path="/v1/public/api/courses/{id}",
      *     tags={"Courses"},
      *     summary="Show Course Details",
      *     description="Show Course Details",
@@ -155,7 +155,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/courses/{id}",
+     *     path="/v1/public/api/courses/{id}",
      *     tags={"Courses"},
      *     summary="Update Course",
      *     description="Update Course",
@@ -191,7 +191,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/courses/{id}",
+     *     path="/v1/public/api/courses/{id}",
      *     tags={"Courses"},
      *     summary="Delete Course",
      *     description="Delete Course",
