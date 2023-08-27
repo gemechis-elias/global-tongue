@@ -17,8 +17,8 @@ use Illuminate\Routing\Controller as BaseController;
  *         email="gemeelijah@gmail.com"
  *     ),
  *     @OA\License(
- *         name="API End Point: https://api.globaltongueedu.com/v1/public/api/xxx",
- *         url=""
+ *         name="www.globaltongueedu.com",
+ *         url="https://globaltongueedu.com"
  *     )
  * )
  */

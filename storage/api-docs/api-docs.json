@@ -7,13 +7,13 @@
             "email": "gemeelijah@gmail.com"
         },
         "license": {
-            "name": "API End Point: https://api.globaltongueedu.com/v1/public/api/xxx",
-            "url": ""
+            "name": "www.globaltongueedu.com",
+            "url": "https://globaltongueedu.com"
         },
         "version": "1.0.0"
     },
     "paths": {
-        "/api/auth/login": {
+        "/v1/public/api/auth/login": {
             "post": {
                 "tags": [
                     "Authentication"
@@ -52,14 +52,14 @@
                 }
             }
         },
-        "/api/auth/register": {
+        "/v1/public/api/auth/register": {
             "post": {
                 "tags": [
                     "Authentication"
                 ],
                 "summary": "Register User",
                 "description": "Register New User",
-                "operationId": "da8643013c2941f5ed7f8a9c9b4a7f7a",
+                "operationId": "78162d7a336f7b61f039db6bda188c54",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -100,14 +100,14 @@
                 }
             }
         },
-        "/api/auth/me": {
+        "/v1/public/api/auth/me": {
             "get": {
                 "tags": [
                     "Authentication"
                 ],
                 "summary": "Authenticated User Profile",
                 "description": "Authenticated User Profile",
-                "operationId": "1537d2a532022d0974e4cd2d83c6a38f",
+                "operationId": "3a9ca842ced028df85824b08ecd93be0",
                 "responses": {
                     "200": {
                         "description": "Authenticated User Profile"
@@ -126,14 +126,14 @@
                 ]
             }
         },
-        "/api/auth/logout": {
+        "/v1/public/api/auth/logout": {
             "post": {
                 "tags": [
                     "Authentication"
                 ],
                 "summary": "Logout",
                 "description": "Logout",
-                "operationId": "46f8a14c8083abb69eed72768aa08629",
+                "operationId": "81799374f6edbc7597415f7b4a3f56ed",
                 "responses": {
                     "200": {
                         "description": "Logout"
@@ -147,14 +147,14 @@
                 }
             }
         },
-        "/api/auth/refresh": {
+        "/v1/public/api/auth/refresh": {
             "post": {
                 "tags": [
                     "Authentication"
                 ],
                 "summary": "Refresh",
                 "description": "Refresh",
-                "operationId": "f3538b6e9c46bcf601a9d194288b03d4",
+                "operationId": "8f582da4a27a9d66f4493650662f5608",
                 "responses": {
                     "200": {
                         "description": "Refresh"
@@ -173,7 +173,7 @@
                 ]
             }
         },
-        "/api/courses": {
+        "/v1/public/api/courses": {
             "get": {
                 "tags": [
                     "Courses"
@@ -250,7 +250,7 @@
                 ]
             }
         },
-        "/api/courses/view/all": {
+        "/v1/public/api/courses/view/all": {
             "get": {
                 "tags": [
                     "Courses"
@@ -282,7 +282,7 @@
                 }
             }
         },
-        "/api/courses/view/search": {
+        "/v1/public/api/courses/view/search": {
             "get": {
                 "tags": [
                     "Courses"
@@ -323,7 +323,7 @@
                 }
             }
         },
-        "/api/courses/{id}": {
+        "/v1/public/api/courses/{id}": {
             "get": {
                 "tags": [
                     "Courses"
@@ -448,6 +448,109 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/units": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Get Unit List",
+                "description": "Get Unit List as Array",
+                "operationId": "Unitindex",
+                "responses": {
+                    "200": {
+                        "description": "Get Unit List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/units/{id}": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Show Unit Details",
+                "description": "Show Unit Details",
+                "operationId": "showUnit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Unit Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/units/by-course/{course_id}": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Get Units by Course ID",
+                "description": "Get list of units associated with a specific course",
+                "operationId": "getUnitsByCourseID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Units for the specified Course ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No units found for the specified Course ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
                     }
                 },
                 "security": [
