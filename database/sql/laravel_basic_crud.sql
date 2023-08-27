@@ -56,9 +56,9 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2014_10_12_000000_create_users_table', 1),
 (6, '2014_10_12_100000_create_password_resets_table', 1),
-(7, '2019_08_19_000000_create_failed_jobs_table', 1),
-(8, '2020_12_13_191618_create_products_table', 1);
+(7, '2019_08_19_000000_create_failed_jobs_table', 1), 
 (9, '2023_08_13_192658_create_courses_table', 1);
+(10, '2023_08_27_120623_create_units_table', 1)
 
 
 -- --------------------------------------------------------
@@ -76,8 +76,8 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
-CREATE TABLE `courses` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+ CREATE TABLE IF NOT EXISTS `courses` (
+  `course_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -87,10 +87,42 @@ CREATE TABLE `courses` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `courses` (`course_id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 (2, 'Course 2', 'Course 2 Description', 'tag2', 'intermediate', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
+--  Schema::create('units', function (Blueprint $table) {
+--             $table->id('unit_id');
+--             $table->foreignId('course_id')->constrained('courses'); // Assuming "courses" table
+--             $table->string('unit_name');
+--             $table->string('unit_title');
+--             $table->text('unit_description');
+--             $table->string('unit_image')->nullable();
+--             $table->integer('no_of_lessons');
+--             $table->timestamps();
+--         });
+
+CREATE TABLE  IF NOT EXISTS `units` (
+  `unit_id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `unit_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_of_lessons` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `units` (`unit_id`, `course_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(2, 1, 'Unit 2', 'Unit 2 Title', 'Unit 2 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(3, 1, 'Unit 3', 'Unit 3 Title', 'Unit 3 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(4, 1, 'Unit 4', 'Unit 4 Title', 'Unit 4 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(5, 1, 'Unit 5', 'Unit 5 Title', 'Unit 5 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(6, 2, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(7, 2, 'Unit 2', 'Unit 2 Title', 'Unit 2 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(8, 2, 'Unit 3', 'Unit 3 Title', 'Unit 3 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03') 
 
 -- --------------------------------------------------------
 
@@ -99,7 +131,7 @@ INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`, `user_id`, `
 --
 
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS  `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -145,11 +177,15 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `products`
+ 
 -- 
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`course_id`),
   ADD KEY `courses_user_id_foreign` (`user_id`);
+
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`unit_id`),
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indexes for table `users`
@@ -175,10 +211,13 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `products`
+ 
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `course_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
+ALTER TABLE `units`
+  MODIFY `unit_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -191,10 +230,14 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `products`
+ 
 --
   ALTER TABLE `courses`
   ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+   ALTER TABLE `units`
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

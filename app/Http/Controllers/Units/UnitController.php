@@ -28,14 +28,14 @@ class UnitController extends Controller
      *     tags={"Units"},
      *     summary="Get Unit List",
      *     description="Get Unit List as Array",
-     *     operationId="Unitindex",
+     *     operationId="UnitIndex",
      *     security={{"bearer":{}}},
      *     @OA\Response(response=200,description="Get Unit List as Array"),
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function index(): JsonResponse
+    public function UnitIndex(): JsonResponse
     {
         try {
             $data = $this->unitRepository->getAll();
@@ -104,6 +104,28 @@ class UnitController extends Controller
             }
         }
 
+ /**
+     * @OA\Get(
+     *     path="/v1/public/api/units/view/all",
+     *     tags={"Units"},
+     *     summary="All Units - Publicly Accessible",
+     *     description="All Units - Publicly Accessible",
+     *     operationId="indexAll",
+     *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="All Units - Publicly Accessible" ),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function indexAll(Request $request): JsonResponse
+    {
+        try {
+            $data = $this->unitRepository->getPaginatedData($request->perPage);
+            return $this->responseSuccess($data, 'Course List Fetched Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
     
 }

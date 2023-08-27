@@ -323,7 +323,7 @@
                 }
             }
         },
-        "/v1/public/api/courses/{id}": {
+        "/v1/public/api/courses/{course_id}": {
             "get": {
                 "tags": [
                     "Courses"
@@ -358,7 +358,9 @@
                         "bearer": []
                     }
                 ]
-            },
+            }
+        },
+        "/v1/public/api/courses/{id}": {
             "put": {
                 "tags": [
                     "Courses"
@@ -464,7 +466,7 @@
                 ],
                 "summary": "Get Unit List",
                 "description": "Get Unit List as Array",
-                "operationId": "Unitindex",
+                "operationId": "UnitIndex",
                 "responses": {
                     "200": {
                         "description": "Get Unit List as Array"

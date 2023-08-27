@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Units\UnitController;
 use App\Http\Controllers\Courses\CoursesController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; 
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +39,15 @@ Route::group([
     Route::resource('courses', CoursesController::class);
     Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
+
+    /**
+     * Units Module
+     */
+
+    Route::resource('units', UnitController::class);
+    Route::get('units/view/all', [UnitController::class, 'indexAll']);
+    Route::get('units/view/search', [UnitController::class, 'search']);
+
 
 });
 

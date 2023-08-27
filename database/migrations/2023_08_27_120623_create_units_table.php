@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('units', function (Blueprint $table) {
-            $table->id('unit_id');
-            $table->foreignId('course_id')->constrained('courses'); // Assuming "courses" table
+            $table->id('unit_id');  
+            $table->unsignedBigInteger('course_id')->comment('Course ID');// Assuming "courses" table
             $table->string('unit_name');
             $table->string('unit_title');
             $table->text('unit_description');

@@ -127,7 +127,7 @@ class CoursesController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/courses/{id}",
+     *     path="/v1/public/api/courses/{course_id}",
      *     tags={"Courses"},
      *     summary="Show Course Details",
      *     description="Show Course Details",

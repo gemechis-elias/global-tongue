@@ -35,7 +35,7 @@ class UnitRepository implements CrudInterface
     public function getAll(): Paginator
     {
         return $this->user->courses()
-            ->orderBy('id', 'desc')
+            ->orderBy('unit_id', 'desc')
             ->with('user')
             ->paginate(10);
     }
@@ -49,7 +49,7 @@ class UnitRepository implements CrudInterface
     public function getPaginatedData($perPage): Paginator
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
-        return Unit::orderBy('id', 'desc')
+        return Unit::orderBy('unit_id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
@@ -66,7 +66,7 @@ class UnitRepository implements CrudInterface
 
         return Unit::where('name', 'like', '%' . $keyword . '%')
             ->orWhere('description', 'like', '%' . $keyword . '%')
-            ->orderBy('id', 'desc')
+            ->orderBy('unit_id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
