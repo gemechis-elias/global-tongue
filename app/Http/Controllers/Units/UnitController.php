@@ -35,7 +35,7 @@ class UnitController extends Controller
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function UnitIndex(): JsonResponse
+    public function index(): JsonResponse
     {
         try {
             $data = $this->unitRepository->getAll();
