@@ -17,7 +17,7 @@ class UnitController extends Controller
 
     public function __construct(UnitRepository $unitRepository)
     {
-        $this->middleware('auth:api', ['except' => ['indexAll']]);
+        $this->middleware('auth:api', ['except' => ['indexUnitAll']]);
         $this->unitRepository = $unitRepository;
     }
 
