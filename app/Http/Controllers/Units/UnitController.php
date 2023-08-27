@@ -110,14 +110,14 @@ class UnitController extends Controller
      *     tags={"Units"},
      *     summary="All Units - Publicly Accessible",
      *     description="All Units - Publicly Accessible",
-     *     operationId="indexAll",
+     *     operationId="indexUnitAll",
      *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="All Units - Publicly Accessible" ),
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function indexAll(Request $request): JsonResponse
+    public function indexUnitAll(Request $request): JsonResponse
     {
         try {
             $data = $this->unitRepository->getPaginatedData($request->perPage);

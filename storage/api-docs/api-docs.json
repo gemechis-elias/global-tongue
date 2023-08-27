@@ -561,6 +561,38 @@
                     }
                 ]
             }
+        },
+        "/v1/public/api/units/view/all": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "All Units - Publicly Accessible",
+                "description": "All Units - Publicly Accessible",
+                "operationId": "indexUnitAll",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Units - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
