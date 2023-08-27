@@ -1,5 +1,4 @@
-## Laravel CRUD API with Auth
-Basic Laravel CRUD API application included with Authentication Module & Product Module. It's included with JWT authentication and Swagger API format.
+## Global Tongue Edu. API Documentation 
 
 ----
 
