@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthController; 
 use App\Http\Controllers\Units\UnitController;
 use App\Http\Controllers\Courses\CoursesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
+use App\Http\Controllers\Admin\AdminController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,17 @@ Route::group([
         Route::get('me', [AuthController::class, 'me']);
     });
     
+      /**
+     * Admin Module
+     */
+    Route::group(['prefix' => 'admin'], function() {
+        Route::post('register', [AdminController::class, 'register']);
+        Route::post('login', [AdminController::class, 'login']);
+        Route::post('logout', [AdminController::class, 'logout']);
+        Route::post('refresh', [AdminController::class, 'refresh']);
+        Route::get('me', [AdminController::class, 'me']);
+        
+        });
  
 
     /**

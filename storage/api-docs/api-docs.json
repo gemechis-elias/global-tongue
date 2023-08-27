@@ -16,7 +16,7 @@
         "/v1/public/api/auth/login": {
             "post": {
                 "tags": [
-                    "Authentication"
+                    "User Authentication"
                 ],
                 "summary": "Login",
                 "description": "Login",
@@ -55,7 +55,7 @@
         "/v1/public/api/auth/register": {
             "post": {
                 "tags": [
-                    "Authentication"
+                    "User Authentication"
                 ],
                 "summary": "Register User",
                 "description": "Register New User",
@@ -103,7 +103,7 @@
         "/v1/public/api/auth/me": {
             "get": {
                 "tags": [
-                    "Authentication"
+                    "User Authentication"
                 ],
                 "summary": "Authenticated User Profile",
                 "description": "Authenticated User Profile",
@@ -129,7 +129,7 @@
         "/v1/public/api/auth/logout": {
             "post": {
                 "tags": [
-                    "Authentication"
+                    "User Authentication"
                 ],
                 "summary": "Logout",
                 "description": "Logout",
@@ -150,7 +150,7 @@
         "/v1/public/api/auth/refresh": {
             "post": {
                 "tags": [
-                    "Authentication"
+                    "User Authentication"
                 ],
                 "summary": "Refresh",
                 "description": "Refresh",

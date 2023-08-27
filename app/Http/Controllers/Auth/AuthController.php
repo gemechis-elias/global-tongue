@@ -15,7 +15,7 @@ use Illuminate\Http\Response;
     /**
      * @OA\Post(
      *     path="/v1/public/api/auth/login",
-     *     tags={"Authentication"},
+     *     tags={"User Authentication"},
      *     summary="Login",
      *     description="Login",
      *     @OA\RequestBody(
@@ -77,7 +77,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/v1/public/api/auth/register",
-     *     tags={"Authentication"},
+     *     tags={"User Authentication"},
      *     summary="Register User",
      *     description="Register New User",
      *     @OA\RequestBody(
@@ -113,7 +113,7 @@ class AuthController extends Controller
     /**
      * @OA\Get(
      *     path="/v1/public/api/auth/me",
-     *     tags={"Authentication"},
+     *     tags={"User Authentication"},
      *     summary="Authenticated User Profile",
      *     description="Authenticated User Profile",
      *     security={{"bearer":{}}},
@@ -135,7 +135,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/v1/public/api/auth/logout",
-     *     tags={"Authentication"},
+     *     tags={"User Authentication"},
      *     summary="Logout",
      *     description="Logout",
      *     @OA\Response(response=200, description="Logout" ),
@@ -156,7 +156,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/v1/public/api/auth/refresh",
-     *     tags={"Authentication"},
+     *     tags={"User Authentication"},
      *     summary="Refresh",
      *     description="Refresh",
      *     security={{"bearer":{}}},

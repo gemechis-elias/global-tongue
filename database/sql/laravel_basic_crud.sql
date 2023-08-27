@@ -58,7 +58,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2014_10_12_100000_create_password_resets_table', 1),
 (7, '2019_08_19_000000_create_failed_jobs_table', 1), 
 (9, '2023_08_13_192658_create_courses_table', 1);
-(10, '2023_08_27_120623_create_units_table', 1)
+(10, '2023_08_27_120623_create_units_table', 1) 
 
 
 -- --------------------------------------------------------
@@ -91,16 +91,7 @@ INSERT INTO `courses` (`course_id`, `name`, `description`, `tag`, `level`, `user
 (1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 (2, 'Course 2', 'Course 2 Description', 'tag2', 'intermediate', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
---  Schema::create('units', function (Blueprint $table) {
---             $table->id('unit_id');
---             $table->foreignId('course_id')->constrained('courses'); // Assuming "courses" table
---             $table->string('unit_name');
---             $table->string('unit_title');
---             $table->text('unit_description');
---             $table->string('unit_image')->nullable();
---             $table->integer('no_of_lessons');
---             $table->timestamps();
---         });
+
 
 CREATE TABLE  IF NOT EXISTS `units` (
   `unit_id` bigint(20) UNSIGNED NOT NULL,
@@ -145,10 +136,10 @@ CREATE TABLE IF NOT EXISTS  `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+ 
 --
--- Dumping data for table `users`
---
-
+-- Dumping data for table `admins`
+-- 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `birthdate`,`level`,`subscription_type`, `password`, `remember_token`, `date_registered`, `updated_at`) VALUES
 (1, 'Gemechis Elias', 'gemechis@gmail.com', NULL,'2020-12-15','beginner','free', '$2y$10$jdG3GU42lMN5ZI2OiExOiOW16D9E9IWLEyfVRonczCtGv9uwgiAEK', NULL, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 (2, 'Amanuel Abebe', 'aman@gmail.com', '2020-12-15 11:29:03','2020-12-15','beginner','free', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'LkbWggOXQM', '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
@@ -193,7 +184,7 @@ ALTER TABLE `units`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
-
+ 
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -224,6 +215,7 @@ ALTER TABLE `units`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ 
 
 --
 -- Constraints for dumped tables
