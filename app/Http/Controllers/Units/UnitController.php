@@ -17,7 +17,7 @@ class UnitController extends Controller
 
     public function __construct(UnitRepository $unitRepository)
     {
-        $this->middleware('auth:api', ['except' => ['indexUnitAll']]);
+        $this->middleware('auth:api', ['except' => ['indexAll']]);
         $this->unitRepository = $unitRepository;
     }
 
@@ -117,11 +117,11 @@ class UnitController extends Controller
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function indexUnitAll(Request $request): JsonResponse
+    public function indexAll(Request $request): JsonResponse
     {
         try {
             $data = $this->unitRepository->getPaginatedData($request->perPage);
-            return $this->responseSuccess($data, 'Course List Fetched Successfully !');
+            return $this->responseSuccess($data, 'Units List Fetched Successfully !');
         } catch (\Exception $e) {
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
