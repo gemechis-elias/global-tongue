@@ -72,8 +72,13 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return object Eloquent product object
      */
-    public function products()
+    public function courses()
     {
-        return $this->hasMany(Product::class)->orderBy('id', 'desc');
+        return $this->hasMany(Course::class)->orderBy('course_id', 'desc');
+    }
+
+    public function units()
+    {
+        return $this->hasMany(Unit::class)->orderBy('unit_id', 'desc');
     }
 }
