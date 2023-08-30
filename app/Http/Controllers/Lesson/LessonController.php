@@ -38,7 +38,7 @@ class LessonController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $data = $this->unitRepository->getAll();
+            $data = $this->lessonRepository->getAll();
             return $this->responseSuccess($data, 'Lesson List Fetch Successfully !');
         } catch (\Exception $e) {
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -62,7 +62,7 @@ class LessonController extends Controller
     public function show($id): JsonResponse
     {
         try {
-            $data = $this->unitRepository->getByID($id);
+            $data = $this->lessonRepository->getByID($id);
             if (is_null($data)) {
                 return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
             }
@@ -92,7 +92,7 @@ class LessonController extends Controller
     public function getLessonByCourseID($course_id): JsonResponse
         {
             try {
-                $lessons = $this->unitRepository->getLessonsByCourseID($course_id);
+                $lessons = $this->lessonRepository->getLessonsByCourseID($course_id);
                 
                 if ($lessons->isEmpty()) {
                     return $this->responseError(null, 'No lessons Found for the given Course ID', Response::HTTP_NOT_FOUND);
@@ -120,7 +120,7 @@ class LessonController extends Controller
     public function indexAll(Request $request): JsonResponse
     {
         try {
-            $data = $this->unitRepository->getPaginatedData($request->perPage);
+            $data = $this->lessonRepository->getPaginatedData($request->perPage);
             return $this->responseSuccess($data, 'Lessons List Fetched Successfully !');
         } catch (\Exception $e) {
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
