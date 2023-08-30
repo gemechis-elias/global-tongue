@@ -57,9 +57,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2014_10_12_000000_create_users_table', 1),
 (6, '2014_10_12_100000_create_password_resets_table', 1),
 (7, '2019_08_19_000000_create_failed_jobs_table', 1), 
-(9, '2023_08_13_192658_create_courses_table', 1);
-(10, '2023_08_27_120623_create_units_table', 1) 
-
+(9, '2023_08_13_192658_create_courses_table', 1),
+(10, '2023_08_27_120623_create_units_table', 1) ,
+(11, '2023_08_30_214119_create_lessons_table' 1);
 
 -- --------------------------------------------------------
 
@@ -104,6 +104,20 @@ CREATE TABLE  IF NOT EXISTS `units` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ 
+
+CREATE TABLE  IF NOT EXISTS `lessons`(
+  `lessons_id` bigint(20) UNSIGNED NOT NULL,
+  `unit_id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `lesson_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lesson_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lesson_cover` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'Created By Admin',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 INSERT INTO `units` (`unit_id`, `course_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
@@ -116,6 +130,20 @@ INSERT INTO `units` (`unit_id`, `course_id`, `unit_name`, `unit_title`, `unit_de
 (8, 2, 'Unit 3', 'Unit 3 Title', 'Unit 3 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03') 
 
 -- --------------------------------------------------------
+
+INSERT INTO `lessons`(
+  `lesson_id`, `unit_id`, `course_id`, `lesson_title`, `lesson_type`, `lesson_cover`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(2, 1, 1, 'Lesson 2', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(3, 1, 1, 'Lesson 3', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(4, 1, 1, 'Lesson 4', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(5, 1, 1, 'Lesson 5', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(6, 2, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(7, 2, 1, 'Lesson 2', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(8, 2, 1, 'Lesson 3', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(9, 2, 1, 'Lesson 4', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+(10, 2, 1, 'Lesson 5', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'
+)
 
 --
 -- Table structure for table `users`
@@ -178,6 +206,10 @@ ALTER TABLE `units`
   ADD PRIMARY KEY (`unit_id`),
   ADD KEY `course_id` (`course_id`);
 
+ALTER TABLE `lessons`
+  ADD PRIMARY KEY (`lesson_id`),
+  ADD KEY `unit_id` (`unit_id`),
+  ADD KEY `course_id` (`course_id`);
 --
 -- Indexes for table `users`
 --
@@ -209,7 +241,8 @@ ALTER TABLE `courses`
 
 ALTER TABLE `units`
   MODIFY `unit_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
-
+ALTER TABLE `lessons`
+  MODIFY `lesson_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -229,6 +262,9 @@ ALTER TABLE `users`
 
    ALTER TABLE `units`
   ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
+   ALTER TABLE `lessons`
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`),
+  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`);
 
 COMMIT;
 

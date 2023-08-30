@@ -6,7 +6,7 @@ use App\Http\Controllers\Courses\CoursesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\AdminController; 
-
+use App\Http\Controllers\Lesson\LessonController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -59,6 +59,14 @@ Route::group([
     Route::resource('units', UnitController::class);
     Route::get('units/view/all', [UnitController::class, 'indexAll']);
     Route::get('units/view/search', [UnitController::class, 'search']);
+
+     /**
+     * Lesson Module
+     */
+
+     Route::resource('lessons', LessonController::class);
+     Route::get('lessons/view/all', [LessonController::class, 'indexAll']);
+     Route::get('lessons/view/search', [LessonController::class, 'search']);
 
 
 });

@@ -459,6 +459,141 @@
                 ]
             }
         },
+        "/v1/public/api/lessons": {
+            "get": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Get Lesson List",
+                "description": "Get Lesson List as Array",
+                "operationId": "LessonIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Lesson List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/lessons/{id}": {
+            "get": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Show Lesson Details",
+                "description": "Show Lesson Details",
+                "operationId": "showLesson",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Lesson Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/lessons/by-course/{course_id}": {
+            "get": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Get Lessons by Course ID",
+                "description": "Get list of lessons associated with a specific course",
+                "operationId": "getLessonsByCourseID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lessons for the specified Course ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Lessons found for the specified Course ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/lessons/view/all": {
+            "get": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "All Lessons - Publicly Accessible",
+                "description": "All Lessons - Publicly Accessible",
+                "operationId": "indexLessonAll",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Lessons - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/v1/public/api/units": {
             "get": {
                 "tags": [
