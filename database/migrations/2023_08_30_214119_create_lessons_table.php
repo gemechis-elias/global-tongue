@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('lesson_cover')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By Admin');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->nullable()->references('id')->on('users');
             $table->foreign('unit_id')->references('id')->on('units');
             $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
