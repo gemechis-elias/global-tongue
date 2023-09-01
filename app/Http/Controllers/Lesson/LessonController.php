@@ -14,7 +14,12 @@ use Illuminate\Http\Response;
 class LessonController extends Controller
 {
     use ResponseTrait;
-
+ /**
+     * Lesson Repository class.
+     *
+     * @var LessonRepository
+     */
+    public $lessonRepository;
     public function __construct(LessonRepository $lessonRepository)
     {
         $this->middleware('auth:api', ['except' => ['indexAll']]);

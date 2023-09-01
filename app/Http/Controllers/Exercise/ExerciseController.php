@@ -15,9 +15,16 @@ class ExerciseController extends Controller
 {
     
         use ResponseTrait;
-    
+    /**
+     * Exercise Repository class.
+     *
+     * @var ExerciseRepository
+     */
+    public $exerciseRepository;
+
         public function __construct(ExerciseRepository $exerciseRepository)
         {
+            
             $this->middleware('auth:api', ['except' => ['indexAll']]);
             $this->exerciseRepository = $exerciseRepository;
         }
