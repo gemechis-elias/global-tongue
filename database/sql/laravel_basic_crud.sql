@@ -215,15 +215,15 @@ ALTER TABLE `units`
 
 ALTER TABLE `lessons`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `unit_id` (`unit_id`),
-  ADD KEY `course_id` (`course_id`),
+  ADD KEY `unit_id_foreign` (`unit_id`),
+  ADD KEY `course_id_foreign` (`course_id`),
   ADD KEY `lessons_user_id_foreign` (`user_id`);
 
 ALTER TABLE `exercises`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `unit_id` (`unit_id`),
-  ADD KEY `course_id` (`course_id`),
-  ADD KEY `lesson_id` (`lesson_id`),
+  ADD KEY `unit_id_foreign` (`unit_id`),
+  ADD KEY `course_id_foreign` (`course_id`),
+  ADD KEY `lesson_id_foreign` (`lesson_id`),
   ADD KEY `exercises_user_id_foreign` (`user_id`);
 --
 -- Indexes for table `users`
@@ -278,15 +278,15 @@ ALTER TABLE `users`
   ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
    ALTER TABLE `units`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`);
+  ADD CONSTRAINT `course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`);
    ALTER TABLE `lessons`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
-  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`);
+  ADD CONSTRAINT `course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `unit_id_foreign` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`);
 
   ALTER TABLE `exercises`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
-  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`),
-  ADD CONSTRAINT `lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`);
+  ADD CONSTRAINT `course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `unit_id_foreign` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`),
+  ADD CONSTRAINT `lesson_id_foreign` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`);
   
 
 COMMIT;

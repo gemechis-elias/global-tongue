@@ -9,7 +9,7 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'lesson_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'unit_id',
@@ -21,12 +21,12 @@ class Lesson extends Model
 
     public function unit()
     {
-        return $this->belongsTo(Unit::class, 'unit_id');
+        return $this->belongsTo(Unit::class, 'id');
     }
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->belongsTo(Course::class, 'id');
     }
     public function user(): object
     {
