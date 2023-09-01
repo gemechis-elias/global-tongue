@@ -76,7 +76,7 @@ class ExerciseController extends Controller
     
         /**
          * @OA\Get(
-         *     path="/v1/public/api/exercises/by-lesson/{lesson_id}",
+         *     path="/v1/public/api/exercises/by-lesson/{course_id, unit_id, lesson_id}",
          *     tags={"Exercises"},
          *     summary="Get Exercises by Lesson ID",
          *     description="Get list of exercises associated with a specific lesson",
@@ -90,10 +90,10 @@ class ExerciseController extends Controller
          * )
          */
     
-        public function getExerciseByLessonID($lesson_id): JsonResponse
+        public function getExerciseByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
             {
                 try {
-                    $exercises = $this->exerciseRepository->getExercisesByLessonID($lesson_id);
+                    $exercises = $this->exerciseRepository->getExercisesByLessonID($course_id, $unit_id, $lesson_id);
                     
                     if ($exercises->isEmpty()) {
                         return $this->responseError(null, 'No exercises Found for the given Lesson ID', Response::HTTP_NOT_FOUND);

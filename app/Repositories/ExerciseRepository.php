@@ -100,7 +100,7 @@ class ExerciseRepository implements CrudInterface
             return false;
         }
 
-      //  UploadHelper::deleteFile('images/exercise/' . $exercise->image);
+     // UploadHelper::deleteFile('images/exercise/' . $exercise->image);
         $exercise->delete($exercise);
         return true;
     }
@@ -123,9 +123,12 @@ class ExerciseRepository implements CrudInterface
      * @param array $data
      * @return object Updated Exercise Object
      */
-    public function getExerciseByLessonID($lesson_id)
+    public function getExercisesByLessonID($course_id, $unit_id, $lesson_id)
     {
-        return Exercise::where('lesson_id', $lesson_id)->get();
+        return Exercise::where('lesson_id', $lesson_id)
+        ->where('course_id', $course_id)
+        ->where('unit_id', $unit_id)
+        ->get();
     }
 
 
