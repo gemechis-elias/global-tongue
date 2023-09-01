@@ -80,11 +80,12 @@ class ExerciseRepository implements CrudInterface
     public function create(array $data): Exercise
     {
         $titleShort      = Str::slug(substr($data['question'], 0, 20));
-        $data['user_id'] = 1;
 
         if (!empty($data['image'])) {
             $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/exercises');
         }
+        
+        $data['user_id'] = $this->user->id;
 
         return Exercise::create($data);
     }
