@@ -64,16 +64,16 @@ Route::group([
 
      /**
      * Lesson Module
-     */
-
+     */ 
      Route::resource('lessons', LessonController::class);
      Route::get('lessons/view/all', [LessonController::class, 'indexLessonAll']); 
 
 
-        /**
+    /**
      * Exercise Module
-     */
-    Route::get('exercises', [ExerciseController::class]);
+     */ 
+    
+    Route::resource('exercises', ExerciseController::class);
     Route::get('exercises/view/all', [ExerciseController::class, 'indexExerciseAll']); 
 
 
