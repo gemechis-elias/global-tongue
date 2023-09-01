@@ -21,7 +21,7 @@ use Illuminate\Http\Response;
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
-     *              @OA\Property(property="email", type="string", example="gemechis@gmail.com"),
+     *              @OA\Property(property="email", type="string", example="aman@gmail.com"),
      *              @OA\Property(property="password", type="string", example="123456")
      *          ),
      *      ),

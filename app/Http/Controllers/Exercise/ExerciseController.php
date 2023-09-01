@@ -143,8 +143,8 @@ class ExerciseController extends Controller
  *         @OA\JsonContent(
  *             type="object",
  *             @OA\Property(property="unit_id", type="integer", example=1),
- *             @OA\Property(property="course_id", type="integer", example=2),
- *             @OA\Property(property="lesson_id", type="integer", example=3),
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_id", type="integer", example=1),
  *             @OA\Property(property="exercise_type", type="string", example="Type A"),
  *             @OA\Property(property="instruction", type="string", example="Instructions here"),
  *             @OA\Property(property="question", type="string", example="Question here"),
