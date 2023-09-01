@@ -13,14 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
-           
-            $table->id('lesson_id');
+        Schema::create('exercises', function (Blueprint $table) {
+            $table->id('exercise_id');
             $table->unsignedBigInteger('unit_id')->comment('Unit ID');
             $table->unsignedBigInteger('course_id')->comment('Course ID');
-            $table->longText('lesson_title');
-            $table->string('lesson_type');
-            $table->string('lesson_cover')->nullable();
+            $table->unsignedBigInteger('lesson_id')->comment('Lesson ID');
+            $table->string('exercise_type');
+            $table->longText('instruction');
+            $table->longText('question');
+            $table->string('image')->nullable();
+            $table->string('voice')->nullable();
+            $table->string('choices')->nullable();
+            $table->longText('incorrect_hint')->nullable();
+            $table->string('correct_answer')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By Admin');
             $table->timestamps();
         });
@@ -33,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('exercises');
     }
 };

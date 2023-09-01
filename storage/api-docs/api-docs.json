@@ -459,6 +459,141 @@
                 ]
             }
         },
+        "/v1/public/api/exercises": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Get Exercise List",
+                "description": "Get Exercise List as Array",
+                "operationId": "ExerciseIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Exercise List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/exercises/{id}": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Show Exercise Details",
+                "description": "Show Exercise Details",
+                "operationId": "showExercise",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Exercise Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/exercises/by-lesson/{lesson_id}": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Get Exercises by Lesson ID",
+                "description": "Get list of exercises associated with a specific lesson",
+                "operationId": "getExercisesByLessonID",
+                "parameters": [
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "ID of the lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Exercises for the specified Lesson ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Exercises found for the specified Lesson ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/exercises/view/all": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "All Exercises - Publicly Accessible",
+                "description": "All Exercises - Publicly Accessible",
+                "operationId": "indexExerciseAll",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Exercises - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/v1/public/api/lessons": {
             "get": {
                 "tags": [

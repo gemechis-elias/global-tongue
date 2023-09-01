@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('unit_id');  
             $table->unsignedBigInteger('course_id')->comment('Course ID');// Assuming "courses" table
             $table->string('unit_name');
-            $table->string('unit_title');
-            $table->text('unit_description');
+            $table->longText('unit_title');
+            $table->longText('unit_description');
             $table->string('unit_image')->nullable();
             $table->integer('no_of_lessons');
             $table->timestamps();

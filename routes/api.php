@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\AdminController; 
 use App\Http\Controllers\Lesson\LessonController;
+use App\Http\Controllers\Lesson\ExerciseController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -48,26 +50,40 @@ Route::group([
     /**
      * Courses Module
      */
-    Route::resource('courses', CoursesController::class);
+    Route::group(['prefix' => 'courses'], function() { 
+    Route::get('courses', [CoursesController::class, 'index']);
     Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
-
+    Route::post('courses', [CoursesController::class, 'store']);
+    Route::get('courses/{course_id}', [CoursesController::class, 'show']);
+    Route::put('courses/{course_id}', [CoursesController::class, 'update']);
+    Route::delete('courses/{id}', [CoursesController::class,'destroy']);
+      });
     /**
      * Units Module
      */
-
+    Route::group(['prefix' => 'units'], function() {
     Route::resource('units', UnitController::class);
     Route::get('units/view/all', [UnitController::class, 'indexAll']);
     Route::get('units/view/search', [UnitController::class, 'search']);
-
+    });
      /**
      * Lesson Module
      */
+    Route::group(['prefix' => 'lessons'], function() {
 
      Route::resource('lessons', LessonController::class);
-     Route::get('lessons/view/all', [LessonController::class, 'indexAll']);
-     Route::get('lessons/view/search', [LessonController::class, 'search']);
+     Route::get('lessons/view/all', [LessonController::class, 'indexLessonAll']); 
+    });
 
+    /**
+     * Exercise Module
+     */
+    Route::group(['prefix' => 'exercises'], function() { 
 
+    Route::get('exercises', [ExerciseController::class]);
+    Route::get('exercises/view/all', [ExerciseController::class, 'indexExerciseAll']); 
+
+    });
 });
 
