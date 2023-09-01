@@ -141,7 +141,7 @@ INSERT INTO `units` (`id`, `course_id`, `unit_name`, `unit_title`, `unit_descrip
 
 -- --------------------------------------------------------
 INSERT INTO `exercises`(
-  `exercise_id`, `id`, `course_id`, `lesson_id`, `exercise_type`, `instruction`, `question`, `image`, `voice`, `choices`, `incorrect_hint`, `correct_answer`, `user_id`, `created_at`, `updated_at`) VALUES(
+  `id`, `unit_id`, `course_id`, `lesson_id`, `exercise_type`, `instruction`, `question`, `image`, `voice`, `choices`, `incorrect_hint`, `correct_answer`, `user_id`, `created_at`, `updated_at`) VALUES(
   1, 1, 1, 1, 'multiple_choice', 'Instruction', 'Question', NULL, NULL, 'Choice 1, Choice 2, Choice 3, Choice 4', 'Incorrect Hint', 'Correct Answer', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'
   )
 

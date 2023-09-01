@@ -15,7 +15,7 @@ class ExerciseRequest extends FormRequest
     {
   
         return [
-           // 'exercise_id' => 'nullable|numeric',
+            
             'unit_id'       => 'required|numeric',
             'course_id'=> 'required|numeric',
             'lesson_id'=> 'required|numeric',
