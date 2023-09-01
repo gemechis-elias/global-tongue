@@ -210,18 +210,22 @@ ALTER TABLE `courses`
 
 ALTER TABLE `units`
   ADD PRIMARY KEY (`unit_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `units_user_id_foreign` (`user_id`);
+
 
 ALTER TABLE `lessons`
   ADD PRIMARY KEY (`lesson_id`),
   ADD KEY `unit_id` (`unit_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `lessons_user_id_foreign` (`user_id`);
 
 ALTER TABLE `exercises`
   ADD PRIMARY KEY (`exercise_id`),
   ADD KEY `unit_id` (`unit_id`),
   ADD KEY `course_id` (`course_id`),
-  ADD KEY `lesson_id` (`lesson_id`);
+  ADD KEY `lesson_id` (`lesson_id`),
+  ADD KEY `exercises_user_id_foreign` (`user_id`);
 --
 -- Indexes for table `users`
 --

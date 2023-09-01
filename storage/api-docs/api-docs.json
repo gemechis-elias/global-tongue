@@ -27,7 +27,7 @@
                                 "properties": {
                                     "email": {
                                         "type": "string",
-                                        "example": "gemechis@gmail.com"
+                                        "example": "aman@gmail.com"
                                     },
                                     "password": {
                                         "type": "string",
@@ -522,7 +522,7 @@
                 ]
             }
         },
-        "/v1/public/api/exercises/by-lesson/{lesson_id}": {
+        "/v1/public/api/exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
                     "Exercises"
@@ -531,6 +531,24 @@
                 "description": "Get list of exercises associated with a specific lesson",
                 "operationId": "getExercisesByLessonID",
                 "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "path",
+                        "description": "ID of the unit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
                     {
                         "name": "lesson_id",
                         "in": "path",
@@ -592,6 +610,88 @@
                         "description": "Resource Not Found"
                     }
                 }
+            }
+        },
+        "/v1/public/api/exercises/create": {
+            "post": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Create New Exercise",
+                "description": "Create New Exercise",
+                "operationId": "storeExercise",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "exercise_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "exercise_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "exercise_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Exercise"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/v1/public/api/lessons": {
