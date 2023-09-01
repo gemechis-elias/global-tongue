@@ -74,14 +74,16 @@ class ExerciseController extends Controller
             }
         }
     
-        /**
+       /**
          * @OA\Get(
-         *     path="/v1/public/api/exercises/by-lesson/{course_id, unit_id, lesson_id}",
+         *     path="/v1/public/api/exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}",
          *     tags={"Exercises"},
          *     summary="Get Exercises by Lesson ID",
          *     description="Get list of exercises associated with a specific lesson",
          *     operationId="getExercisesByLessonID",
          *     security={{"bearer":{}}},
+         *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+         *     @OA\Parameter(name="unit_id", description="ID of the unit", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="lesson_id", description="ID of the lesson", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Response(response=200, description="Exercises for the specified Lesson ID"),
          *     @OA\Response(response=400, description="Bad request"),
@@ -89,6 +91,7 @@ class ExerciseController extends Controller
          *     @OA\Response(response=500, description="Internal Server Error")
          * )
          */
+
     
         public function getExerciseByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
             {
