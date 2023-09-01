@@ -35,7 +35,7 @@ class ExerciseRepository implements CrudInterface
     public function getAll(): Paginator
     {
         return $this->user->exercises()
-           // ->orderBy('exercise_id', 'desc')
+          ->orderBy('id', 'desc')
             ->with('user')
             ->paginate(10);
     }
@@ -49,7 +49,7 @@ class ExerciseRepository implements CrudInterface
     public function getPaginatedData($perPage): Paginator
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
-        return Exercise::orderBy('exercise_id', 'desc')
+        return Exercise::orderBy('id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
@@ -66,7 +66,7 @@ class ExerciseRepository implements CrudInterface
 
         return Exercise::where('question', 'like', '%' . $keyword . '%')
             ->orWhere('instruction', 'like', '%' . $keyword . '%') 
-            ->orderBy('exercise_id', 'desc')
+            ->orderBy('id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
@@ -84,7 +84,7 @@ class ExerciseRepository implements CrudInterface
         if (!empty($data['image'])) {
             $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/exercises');
         }
-        
+
         $data['user_id'] = $this->user->id;
 
         return Exercise::create($data);

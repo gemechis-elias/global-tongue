@@ -35,7 +35,7 @@ class LessonRepository implements CrudInterface
     public function getAll(): Paginator
     {
         return $this->user->courses()
-           // ->orderBy('lesson_id', 'desc')
+           ->orderBy('id', 'desc')
             ->with('user')
             ->paginate(10);
     }
@@ -49,7 +49,7 @@ class LessonRepository implements CrudInterface
     public function getPaginatedData($perPage): Paginator
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
-        return Lesson::orderBy('lesson_id', 'desc')
+        return Lesson::orderBy('id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
@@ -66,7 +66,7 @@ class LessonRepository implements CrudInterface
 
         return Lesson::where('title', 'like', '%' . $keyword . '%')
             ->orWhere('description', 'like', '%' . $keyword . '%') 
-            ->orderBy('lesson_id', 'desc')
+            ->orderBy('id', 'desc')
             ->with('user')
             ->paginate($perPage);
     }
