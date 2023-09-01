@@ -16,17 +16,7 @@ class ExerciseFactory extends Factory
      */
     public function definition()
     { 
-        // $table->unsignedBigInteger('unit_id')->comment('Unit ID');
-        // $table->unsignedBigInteger('course_id')->comment('Course ID');
-        // $table->unsignedBigInteger('lesson_id')->comment('Lesson ID');
-        // $table->string('exercise_type');
-        // $table->string('instruction');
-        // $table->string('question');
-        // $table->string('image');
-        // $table->string('voice');
-        // $table->string('choices');
-        // $table->string('incorrect_hint');
-        // $table->string('correct_answer'); 
+      
         return [
             'unit_id' => random_int(1, 2),  
             'course_id' => random_int(1, 2),  

@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id('course_id');
+            $table->id();
             $table->string('name', 255);
             $table->text('description')->nullable();
             $table->string('tag')->nullable();
             $table->string('level')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By Admin');
+
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }

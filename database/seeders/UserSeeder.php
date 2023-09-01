@@ -24,11 +24,12 @@ class UserSeeder extends Seeder
             'birthdate' => '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'free',
+            
         ];
         
         User::create($data);
 
         // Testing Dummy User
-        User::factory(2)->create();
+    //    User::factory(2)->create(); 
     }
 }

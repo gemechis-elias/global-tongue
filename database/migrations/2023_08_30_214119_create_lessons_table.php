@@ -15,13 +15,17 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
            
-            $table->id('lesson_id');
+            $table->id();
             $table->unsignedBigInteger('unit_id')->comment('Unit ID');
             $table->unsignedBigInteger('course_id')->comment('Course ID');
             $table->longText('lesson_title');
             $table->string('lesson_type');
             $table->string('lesson_cover')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By Admin');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('unit_id')->references('id')->on('units');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }

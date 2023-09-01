@@ -27,7 +27,7 @@ class LessonSeeder extends Seeder
         DB::table('lessons')->delete();
         $data = [
             [
-                'lesson_id' => 1,
+               
                 'unit_id' => 1,
                 'course_id' => 1,
                 'user_id' => 1,
@@ -38,7 +38,7 @@ class LessonSeeder extends Seeder
 
             ],
             [
-                'lesson_id' => 2,
+               
                 'unit_id' => 1,
                 'course_id' => 1,
                 'user_id' => 1,
@@ -48,7 +48,7 @@ class LessonSeeder extends Seeder
                 'lesson_cover' => null,
             ],
             [
-                'lesson_id' => 3,
+              
                 'unit_id' => 1,
                 'course_id' => 1,
                 'user_id' => 1,

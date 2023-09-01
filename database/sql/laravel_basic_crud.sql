@@ -78,7 +78,7 @@ CREATE TABLE `password_resets` (
 
 --
  CREATE TABLE IF NOT EXISTS `courses` (
-  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -88,13 +88,13 @@ CREATE TABLE `password_resets` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `courses` (`course_id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 
 
 CREATE TABLE  IF NOT EXISTS `units` (
-  `unit_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
   `unit_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_title` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE  IF NOT EXISTS `units` (
  
 
 CREATE TABLE IF NOT EXISTS `exercises`(
-  `exercise_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `unit_id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
   `lesson_id` bigint(20) UNSIGNED NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `exercises`(
   `updated_at` timestamp NULL DEFAULT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE  IF NOT EXISTS `lessons`(
-  `lessons_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `unit_id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
   `lesson_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,19 +136,18 @@ CREATE TABLE  IF NOT EXISTS `lessons`(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-INSERT INTO `units` (`unit_id`, `course_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
+INSERT INTO `units` (`id`, `course_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 -- --------------------------------------------------------
 INSERT INTO `exercises`(
-  -- insert one dummy data
-  `exercise_id`, `unit_id`, `course_id`, `lesson_id`, `exercise_type`, `instruction`, `question`, `image`, `voice`, `choices`, `incorrect_hint`, `correct_answer`, `user_id`, `created_at`, `updated_at`) VALUES(
+  `exercise_id`, `id`, `course_id`, `lesson_id`, `exercise_type`, `instruction`, `question`, `image`, `voice`, `choices`, `incorrect_hint`, `correct_answer`, `user_id`, `created_at`, `updated_at`) VALUES(
   1, 1, 1, 1, 'multiple_choice', 'Instruction', 'Question', NULL, NULL, 'Choice 1, Choice 2, Choice 3, Choice 4', 'Incorrect Hint', 'Correct Answer', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'
   )
 
 
 INSERT INTO `lessons`(
-  `lesson_id`, `unit_id`, `course_id`, `lesson_title`, `lesson_type`, `lesson_cover`, `user_id`, `created_at`, `updated_at`) VALUES
+  `id`, `unit_id`, `course_id`, `lesson_title`, `lesson_type`, `lesson_cover`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03')
 
 --
@@ -205,23 +204,23 @@ ALTER TABLE `password_resets`
  
 -- 
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`course_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `courses_user_id_foreign` (`user_id`);
 
 ALTER TABLE `units`
-  ADD PRIMARY KEY (`unit_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `units_user_id_foreign` (`user_id`);
 
 
 ALTER TABLE `lessons`
-  ADD PRIMARY KEY (`lesson_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `unit_id` (`unit_id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `lessons_user_id_foreign` (`user_id`);
 
 ALTER TABLE `exercises`
-  ADD PRIMARY KEY (`exercise_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `unit_id` (`unit_id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `lesson_id` (`lesson_id`),
@@ -253,14 +252,14 @@ ALTER TABLE `migrations`
  
 --
 ALTER TABLE `courses`
-  MODIFY `course_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 ALTER TABLE `units`
-  MODIFY `unit_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 ALTER TABLE `lessons`
-  MODIFY `lesson_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 ALTER TABLE `exercises`
-  MODIFY `exercise_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -279,15 +278,15 @@ ALTER TABLE `users`
   ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
    ALTER TABLE `units`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`);
    ALTER TABLE `lessons`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`),
-  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`);
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`);
 
   ALTER TABLE `exercises`
-  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`),
-  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`unit_id`),
-  ADD CONSTRAINT `lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`);
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `unit_id` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`),
+  ADD CONSTRAINT `lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`);
   
 
 COMMIT;

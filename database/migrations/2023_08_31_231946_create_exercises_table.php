@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exercises', function (Blueprint $table) {
-            $table->id('exercise_id');
+            $table->id();
             $table->unsignedBigInteger('unit_id')->comment('Unit ID');
             $table->unsignedBigInteger('course_id')->comment('Course ID');
             $table->unsignedBigInteger('lesson_id')->comment('Lesson ID');
@@ -27,6 +27,13 @@ return new class extends Migration
             $table->longText('incorrect_hint')->nullable();
             $table->string('correct_answer')->nullable();
             $table->unsignedBigInteger('user_id')->comment('Created By Admin');
+ 
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('unit_id')->references('id')->on('units');
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('lesson_id')->references('id')->on('lessons');
+    
             $table->timestamps();
         });
     }

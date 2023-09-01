@@ -21,7 +21,7 @@ class ExerciseSeeder extends Seeder
         //  Sample data from https://app.fluencia.com/
         $data = [
             [
-                'exercise_id' => 1,
+             
                 'unit_id' => 1,
                 'course_id'=> 1,
                 'lesson_id'=> 1,
@@ -39,7 +39,7 @@ class ExerciseSeeder extends Seeder
                 
             ],
             [
-                'exercise_id' => 2,
+               
                 'unit_id' => 1,
                 'course_id'=> 1,
                 'lesson_id'=> 1,
