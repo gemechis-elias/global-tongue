@@ -131,37 +131,45 @@ class ExerciseController extends Controller
             }
         }
 
-         /**
-     * @OA\Post(
-     *     path="/v1/public/api/exercises/",
-     *     tags={"Exercise"},
-     *     summary="Create New Exercise",
-     *     description="Create New Exercise",
-     *     operationId="storeExercise",
-     *     @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(property="title", type="string", example="Exercise 1"),
-     *              @OA\Property(property="description", type="string", example="Description"),
-     *              @OA\Property(property="price", type="integer", example=10120),
-     *              @OA\Property(property="image", type="string", example=""),
-     *          ),
-     *      ),
-     *      security={{"bearer":{}}},
-     *      @OA\Response(response=200, description="Create New Exercise" ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function store(ExerciseRequest $request): JsonResponse
-    {
-        try {
-            $exercise = $this->exerciseRepository->create($request->all());
-            return $this->responseSuccess($exercise, 'New Exercise Created Successfully !');
-        } catch (\Exception $exception) {
-            return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+       /**
+ * @OA\Post(
+ *     path="/v1/public/api/exercises/",
+ *     tags={"Exercise"},
+ *     summary="Create New Exercise",
+ *     description="Create New Exercise",
+ *     operationId="storeExercise",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="course_id", type="integer", example=2),
+ *             @OA\Property(property="lesson_id", type="integer", example=3),
+ *             @OA\Property(property="exercise_type", type="string", example="Type A"),
+ *             @OA\Property(property="instruction", type="string", example="Instructions here"),
+ *             @OA\Property(property="question", type="string", example="Question here"),
+ *             @OA\Property(property="image", type="string", example="exercise_image.jpg"),
+ *             @OA\Property(property="voice", type="string", example="exercise_voice.mp3"),
+ *             @OA\Property(property="choices", type="array", example={"Choice 1", "Choice 2"}),
+ *             @OA\Property(property="incorrect_hint", type="string", example="Incorrect hint here"),
+ *             @OA\Property(property="correct_answer", type="integer", example=1),
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Create New Exercise"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+public function store(ExerciseRequest $request): JsonResponse
+{
+    try {
+        $exercise = $this->exerciseRepository->create($request->all());
+        return $this->responseSuccess($exercise, 'New Exercise Created Successfully !');
+    } catch (\Exception $exception) {
+        return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+}
 
     
     }

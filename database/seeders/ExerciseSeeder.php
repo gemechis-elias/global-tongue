@@ -46,7 +46,7 @@ class ExerciseSeeder extends Seeder
                 'user_id' => 1,
 
                 'exercise_type' => 'multiple_choice_no_audio',
-                'instruction'=> 'Give it your best shot, even if you’re not sure of the answer!',
+                'instruction'=> 'Give it your best shot, even if you\'re not sure of the answer!',
                 'question'=> 'How do you say “goodbye” in Spanish?',
                 'image'=> 'https://d21gvxjpvoxtck.cloudfront.net/images/resized/465_310/bye%20nametag%20on%20someone\'s%20shirt.jpg',
                 'voice'=> null,
