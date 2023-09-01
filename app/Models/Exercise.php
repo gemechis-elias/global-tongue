@@ -9,8 +9,7 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'exercise_id';
-
+  
     
 
     protected $fillable = [
@@ -26,6 +25,20 @@ class Exercise extends Model
         'incorrect_hint',
         'correct_answer',
     ];
+
+        /**
+     * User
+     *
+     * Get User Uploaded By Product
+     *
+     * @return object
+     */
+    public function user(): object
+ 
+    {
+        return $this->belongsTo(User::class)->select('id', 'name', 'email');
+    }
+
     public function unit()
     {
         return $this->belongsTo(Unit::class, 'unit_id');
@@ -40,10 +53,7 @@ class Exercise extends Model
     {
         return $this->belongsTo(Lesson::class, 'lesson_id');
     }
-    public function user(): object
-    {
-        return $this->belongsTo(User::class)->select('id', 'name', 'email');
-    }
+   
       // Add New Attribute to get image address
       protected $appends = ['image_url'];
 
