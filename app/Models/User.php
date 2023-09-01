@@ -75,19 +75,19 @@ class User extends Authenticatable implements JWTSubject
      */
     public function courses()
     {
-        return $this->hasMany(Course::class)->orderBy('course_id', 'desc');
+        return $this->hasMany(Course::class)->orderBy('id', 'desc');
     }
 
     public function units()
     {
-        return $this->hasMany(Unit::class)->orderBy('unit_id', 'desc');
+        return $this->hasMany(Unit::class)->orderBy('id', 'desc');
     }
     public function lessons()
     {
-        return $this->hasMany(Lesson::class)->orderBy('lesson_id', 'desc');
+        return $this->hasMany(Lesson::class)->orderBy('id', 'desc');
     }
     public function exercises()
     {
-        return $this->hasMany(Exercise::class)->orderBy('exercise_id', 'desc');
+        return $this->hasMany(Exercise::class)->orderBy('id', 'desc');
     }
 }
