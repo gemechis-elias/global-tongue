@@ -26,10 +26,10 @@ return new class extends Migration
             $table->string('choices')->nullable();
             $table->longText('incorrect_hint')->nullable();
             $table->string('correct_answer')->nullable();
-            $table->unsignedBigInteger('user_id')->comment('Created By Admin');
+            $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
  
 
-            $table->foreign('user_id')->nullable()->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('courses');
             $table->foreign('lesson_id')->references('id')->on('lessons');
     
