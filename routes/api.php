@@ -68,7 +68,7 @@ Route::group([
     Route::resource('lessons', LessonController::class);
     Route::get('lessons/view/all', [LessonController::class, 'indexAll']); 
     Route::get('lessons/view/search', [LessonController::class, 'search']);
-    Route::get('lessons/by-unit/{unit_id}', [LessonController::class,'getLessonByUnitID']);
+    Route::get('lessons/by-course/{course_id}', [LessonController::class,'getLessonByUnitID']);
 
 
     /**
