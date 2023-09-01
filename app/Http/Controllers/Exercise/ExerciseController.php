@@ -93,7 +93,7 @@ class ExerciseController extends Controller
          */
 
     
-        public function getExerciseByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
+        public function getExercisesByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
             {
                 try {
                     $exercises = $this->exerciseRepository->getExercisesByLessonID($course_id, $unit_id, $lesson_id);
