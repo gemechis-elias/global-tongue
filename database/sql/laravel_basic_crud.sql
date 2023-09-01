@@ -90,7 +90,6 @@ CREATE TABLE `password_resets` (
 
 INSERT INTO `courses` (`course_id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(2, 'Course 2', 'Course 2 Description', 'tag2', 'intermediate', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 
 
@@ -106,21 +105,6 @@ CREATE TABLE  IF NOT EXISTS `units` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
  
-
-    -- $table->id('exercise_id');
-    --         $table->unsignedBigInteger('unit_id')->comment('Unit ID');
-    --         $table->unsignedBigInteger('course_id')->comment('Course ID');
-    --         $table->unsignedBigInteger('lesson_id')->comment('Lesson ID');
-    --         $table->string('exercise_type');
-    --         $table->string('instruction');
-    --         $table->string('question');
-    --         $table->string('image');
-    --         $table->string('voice');
-    --         $table->string('choices');
-    --         $table->string('incorrect_hint');
-    --         $table->string('correct_answer');
-    --         $table->unsignedBigInteger('user_id')->comment('Created By Admin');
-    --         $table->timestamps();
 
 CREATE TABLE IF NOT EXISTS `exercises`(
   `exercise_id` bigint(20) UNSIGNED NOT NULL,
@@ -154,13 +138,6 @@ CREATE TABLE  IF NOT EXISTS `lessons`(
 
 INSERT INTO `units` (`unit_id`, `course_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(2, 1, 'Unit 2', 'Unit 2 Title', 'Unit 2 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(3, 1, 'Unit 3', 'Unit 3 Title', 'Unit 3 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(4, 1, 'Unit 4', 'Unit 4 Title', 'Unit 4 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(5, 1, 'Unit 5', 'Unit 5 Title', 'Unit 5 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(6, 2, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(7, 2, 'Unit 2', 'Unit 2 Title', 'Unit 2 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(8, 2, 'Unit 3', 'Unit 3 Title', 'Unit 3 Description', NULL, 5, '2020-12-15 11:29:03', '2020-12-15 11:29:03') 
 
 -- --------------------------------------------------------
 INSERT INTO `exercises`(
@@ -172,17 +149,7 @@ INSERT INTO `exercises`(
 
 INSERT INTO `lessons`(
   `lesson_id`, `unit_id`, `course_id`, `lesson_title`, `lesson_type`, `lesson_cover`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(2, 1, 1, 'Lesson 2', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(3, 1, 1, 'Lesson 3', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(4, 1, 1, 'Lesson 4', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(5, 1, 1, 'Lesson 5', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(6, 2, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(7, 2, 1, 'Lesson 2', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(8, 2, 1, 'Lesson 3', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(9, 2, 1, 'Lesson 4', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
-(10, 2, 1, 'Lesson 5', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'
-)
+(1, 1, 1, 'Lesson 1', 'video', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03')
 
 --
 -- Table structure for table `users`
