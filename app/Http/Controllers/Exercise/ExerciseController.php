@@ -150,7 +150,7 @@ class ExerciseController extends Controller
  *             @OA\Property(property="question", type="string", example="Question here"),
  *             @OA\Property(property="image", type="string", example="exercise_image.jpg"),
  *             @OA\Property(property="voice", type="string", example="exercise_voice.mp3"),
- *             @OA\Property(property="choices", type="array", example={"Choice 1", "Choice 2"}),
+ *             @OA\Property(property="choices", type="string", example="Choice 1, Choice 2"),
  *             @OA\Property(property="incorrect_hint", type="string", example="Incorrect hint here"),
  *             @OA\Property(property="correct_answer", type="integer", example=1),
  *         ),
