@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\AdminController; 
 use App\Http\Controllers\Lesson\LessonController;
-use App\Http\Controllers\Lesson\ExerciseController;
+use App\Http\Controllers\Exercise\ExerciseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +65,10 @@ Route::group([
      /**
      * Lesson Module
      */ 
-     Route::resource('lessons', LessonController::class);
-     Route::get('lessons/view/all', [LessonController::class, 'indexLessonAll']); 
+    Route::resource('lessons', LessonController::class);
+    Route::get('lessons/view/all', [LessonController::class, 'indexAll']); 
+    Route::get('lessons/view/search', [LessonController::class, 'search']);
+    Route::get('lessons/by-unit/{unit_id}', [LessonController::class,'getLessonByUnitID']);
 
 
     /**
@@ -74,7 +76,9 @@ Route::group([
      */ 
     
     Route::resource('exercises', ExerciseController::class);
-    Route::get('exercises/view/all', [ExerciseController::class, 'indexExerciseAll']); 
+    Route::get('exercises/view/all', [ExerciseController::class, 'indexAll']); 
+    Route::get('exercises/view/search', [ExerciseController::class, 'search']);
+    Route::get('exercises/by-lesson/{lesson_id}', [ExerciseController::class,'getExerciseByLessonID']);
 
 
 });

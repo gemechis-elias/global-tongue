@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Lesson;
+namespace App\Http\Controllers\Exercise;
 
 
 use App\Http\Controllers\Controller;
