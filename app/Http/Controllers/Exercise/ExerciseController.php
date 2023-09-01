@@ -178,5 +178,38 @@ public function store(ExerciseRequest $request): JsonResponse
     }
 }
 
+    /**
+     * @OA\Delete(
+     *     path="/v1/public/api/exercises/{id}",
+     *     tags={"Exercises"},
+     *     summary="Delete Exercises",
+     *     description="Delete Exercises",
+     *     operationId="destroy",
+     *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Delete Exercises"),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function destroy($id): JsonResponse
+    {
+        try {
+            $exercise =  $this->exerciseRepository->getByID($id);
+            if (empty($exercise)) {
+                return $this->responseError(null, 'Exercise Not Found', Response::HTTP_NOT_FOUND);
+            }
+
+            $deleted = $this->exerciseRepository->delete($id);
+            if (!$deleted) {
+                return $this->responseError(null, 'Failed to delete the exercise.', Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return $this->responseSuccess($exercise, 'Exercise Deleted Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
     
