@@ -184,7 +184,7 @@ public function store(ExerciseRequest $request): JsonResponse
      *     tags={"Exercises"},
      *     summary="Delete Exercises",
      *     description="Delete Exercises",
-     *     operationId="destroy",
+     *     operationId="destroyExercises",
      *     security={{"bearer":{}}},
      *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Delete Exercises"),
