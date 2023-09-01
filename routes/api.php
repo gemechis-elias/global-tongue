@@ -78,7 +78,7 @@ Route::group([
     Route::resource('exercises', ExerciseController::class);
     Route::get('exercises/view/all', [ExerciseController::class, 'indexAll']); 
     Route::get('exercises/view/search', [ExerciseController::class, 'search']);
-    Route::get('exercises/by-lesson/{lesson_id}', [ExerciseController::class,'getExerciseByLessonID']);
+    Route::get('exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExerciseByLessonID']);
 
 
 });

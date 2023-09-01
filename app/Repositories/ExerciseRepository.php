@@ -125,11 +125,19 @@ class ExerciseRepository implements CrudInterface
      */
     public function getExercisesByLessonID($course_id, $unit_id, $lesson_id)
     {
-        return Exercise::where('lesson_id', $lesson_id)
-        ->where('course_id', $course_id)
-        ->where('unit_id', $unit_id)
-        ->get();
+        $exercises = Exercise::where('lesson_id', $lesson_id)
+            ->where('course_id', $course_id)
+            ->where('unit_id', $unit_id)
+            ->get();
+    
+        if ($exercises->isEmpty()) {
+            // If no exercises are found, you can return an appropriate response
+            return response()->json(['message' => 'No exercises found for the specified parameters'], 404);
+        }
+    
+        return $exercises;
     }
+    
 
 
     public function update(int $id, array $data): Exercise|null
