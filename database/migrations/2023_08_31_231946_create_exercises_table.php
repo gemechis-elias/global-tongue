@@ -30,7 +30,6 @@ return new class extends Migration
  
 
             $table->foreign('user_id')->nullable()->references('id')->on('users');
-            $table->foreign('unit_id')->references('id')->on('units');
             $table->foreign('course_id')->references('id')->on('courses');
             $table->foreign('lesson_id')->references('id')->on('lessons');
     

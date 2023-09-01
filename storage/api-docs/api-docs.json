@@ -520,6 +520,41 @@
                         "bearer": []
                     }
                 ]
+            },
+            "delete": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Delete Exercises",
+                "description": "Delete Exercises",
+                "operationId": "destroyExercises",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Exercises"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/v1/public/api/exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}": {
