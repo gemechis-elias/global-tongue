@@ -28,6 +28,7 @@ class CourseFactory extends Factory
             'description' => $this->faker->text,
             'tag' => $this->faker->text,
             'level' => $this->faker->word,
+            'type' => $this->faker->word,
             'user_id' => 1,
         ];
     }

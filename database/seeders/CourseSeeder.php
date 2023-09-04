@@ -22,6 +22,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted.',
                 'tag' => 'Ser, Gender, Gustar, Estar, Plurals, "Ir" + "a"',
                 'level' => 'Level 1',
+                'type' => "free",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

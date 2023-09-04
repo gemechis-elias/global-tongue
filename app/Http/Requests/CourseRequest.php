@@ -16,6 +16,7 @@ class CourseRequest extends FormRequest
             'description' => 'nullable|max:5000',
             'tag'       => 'nullable|max:5000',
             'level'       => 'required|max:255',
+            'is_premium'=> 'required|max:255',
         ];
     }
 
@@ -40,8 +41,10 @@ class CourseRequest extends FormRequest
             'name.max'       => 'Please give course title maximum of 255 characters',
             'description.max' => 'Please give course description maximum of 5000 characters',
             'tag.max' => 'Please give course description maximum of 5000 characters',
-            'level.required'  => 'Please give course price',
-            'level.max'       => 'Please give course title maximum of 255 characters',
+            'level.required'  => 'Please give course level',
+            'level.max'       => 'Please give course level maximum of 255 characters',
+            'type.required'  => 'Please give course type',
+            'type.max'       => 'Please give course type maximum of 255 characters',
          ];
     }
 }

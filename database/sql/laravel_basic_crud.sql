@@ -83,13 +83,14 @@ CREATE TABLE `password_resets` (
   `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'Created By Admin',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`,`type`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner','free', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 
 

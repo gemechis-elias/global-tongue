@@ -16,6 +16,12 @@ use Illuminate\Http\Response;
 class CoursesController extends Controller
 {
     use ResponseTrait;
+       /**
+     * Exercise Repository class.
+     *
+     * @var CourseRepository
+     */
+    public  $courseRepository;
 
     public function __construct(CourseRepository $courseRepository)
     {
@@ -107,6 +113,7 @@ class CoursesController extends Controller
      *             @OA\Property(property="description", type="string", example="Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."),
      *             @OA\Property(property="tag", type="string", example="Ser, Gender, Gustar, Estar, Plurals,"),
      *             @OA\Property(property="level", type="string", example="Level 1"),
+     *            @OA\Property(property="type", type="string", example="free"),
      *          ),
      *      ),
      *      security={{"bearer":{}}},
@@ -167,7 +174,8 @@ class CoursesController extends Controller
      *             @OA\Property(property="description", type="string", example="Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."),
      *             @OA\Property(property="tag", type="string", example="Ser, Gender, Gustar, Estar, Plurals,"),
      *             @OA\Property(property="level", type="string", example="Level 1"),
-       *          ),
+     *             @OA\Property(property="type", type="string", example="free"),
+     *          ),
      *      ),
      *     operationId="update",
      *     security={{"bearer":{}}},
