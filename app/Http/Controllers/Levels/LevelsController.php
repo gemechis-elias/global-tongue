@@ -109,6 +109,7 @@ class LevelsController extends Controller
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
+     *            @OA\Property(property="course_id", type="integer", example="1"),
      *             @OA\Property(property="name", type="string", example="Spanish Level 1"),
      *             @OA\Property(property="description", type="string", example="Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."),
      *             @OA\Property(property="tag", type="string", example="Ser, Gender, Gustar, Estar, Plurals,"),
