@@ -80,13 +80,13 @@ class LessonController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/lessons/by-course/{course_id}",
+     *     path="/v1/public/api/lessons/by-level/{level_id}",
      *     tags={"Lessons"},
      *     summary="Get Lessons by Course ID",
-     *     description="Get list of lessons associated with a specific course",
+     *     description="Get list of lessons associated with a specific level",
      *     operationId="getLessonsByCourseID",
      *     security={{"bearer":{}}},
-     *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="level_id", description="ID of the level", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Lessons for the specified Course ID"),
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="No Lessons found for the specified Course ID"),
@@ -94,16 +94,16 @@ class LessonController extends Controller
      * )
      */
 
-    public function getLessonByCourseID($course_id): JsonResponse
+    public function getLessonByCourseID($level_id): JsonResponse
         {
             try {
-                $lessons = $this->lessonRepository->getLessonsByCourseID($course_id);
+                $lessons = $this->lessonRepository->getLessonsByCourseID($level_id);
                 
                 if ($lessons->isEmpty()) {
                     return $this->responseError(null, 'No lessons Found for the given Course ID', Response::HTTP_NOT_FOUND);
                 }
 
-                return $this->responseSuccess($lessons, 'Lessons for Course ID ' . $course_id . ' Fetched Successfully !');
+                return $this->responseSuccess($lessons, 'Lessons for Course ID ' . $level_id . ' Fetched Successfully !');
             } catch (\Exception $e) {
                 return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
