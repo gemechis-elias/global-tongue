@@ -77,27 +77,34 @@ class LevelsController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/levels/view/search",
+     *     path="/v1/public/api/levels/by-course/{course_id}",
      *     tags={"Levels"},
-     *     summary="All Levels - Publicly Accessible",
-     *     description="All Levels - Publicly Accessible",
-     *     operationId="searchLevel",
-     *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
-     *     @OA\Parameter(name="search", description="search, eg; Test", example="Test", in="query", @OA\Schema(type="string")),
-     *     @OA\Response(response=200, description="All Levels - Publicly Accessible" ),
+     *     summary="Get Levels by Course ID",
+     *     description="Get list of levels associated with a specific course",
+     *     operationId="getLevelsByCourseID",
+     *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Levels for the specified Course ID"),
      *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
+     *     @OA\Response(response=404, description="No Levels found for the specified Course ID"),
+     *     @OA\Response(response=500, description="Internal Server Error")
      * )
      */
-    public function search(Request $request): JsonResponse
-    {
-        try {
-            $data = $this->levelRepository->searchLevel($request->search, $request->perPage);
-            return $this->responseSuccess($data, 'Level List Fetched Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
+
+     public function getLevelsByCourseID($course_id): JsonResponse
+     {
+         try {
+             $levels = $this->levelRepository->getLevelsByCourseID($course_id);
+             
+             if ($levels->isEmpty()) {
+                 return $this->responseError(null, 'No levels Found for the given Course ID', Response::HTTP_NOT_FOUND);
+             }
+
+             return $this->responseSuccess($levels, 'Levels for Course ID ' . $course_id . ' Fetched Successfully !');
+         } catch (\Exception $e) {
+             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+         }
+     }
 
     /**
      * @OA\Post(
@@ -135,7 +142,7 @@ class LevelsController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/levels/{level_id}",
+     *     path="/v1/public/api/levels/{id}",
      *     tags={"Levels"},
      *     summary="Show Level Details",
      *     description="Show Level Details",
