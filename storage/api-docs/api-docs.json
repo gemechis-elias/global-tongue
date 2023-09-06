@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Global Tongue API Documentation",
-        "description": "",
+        "description": "Course -> Level -> Unit -> Lesson",
         "contact": {
             "email": "gemeelijah@gmail.com"
         },
@@ -661,11 +661,15 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
                                     "unit_id": {
                                         "type": "integer",
                                         "example": 1
                                     },
-                                    "course_id": {
+                                    "level_id": {
                                         "type": "integer",
                                         "example": 1
                                     },
@@ -862,6 +866,68 @@
                         "description": "Resource Not Found"
                     }
                 }
+            }
+        },
+        "/v1/public/api/lessons/create": {
+            "post": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Create New Lesson",
+                "description": "Create New Lesson",
+                "operationId": "storeLesson",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_title": {
+                                        "type": "string",
+                                        "example": "Essential Pronunciation: -ch, -h, -ll, -ñ"
+                                    },
+                                    "lesson_type": {
+                                        "type": "string",
+                                        "example": "voice"
+                                    },
+                                    "lesson_cover": {
+                                        "type": "string",
+                                        "example": "lesson_image.jpg"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Lesson"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/v1/public/api/levels": {
