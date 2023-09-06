@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
- *     description="Heirarchy of API | Course -> Level -> Unit -> Lesson -> Exercise",
+ *     description="Heirarchy of API | Courses -> Levels -> Units -> Lessons -> Exercises",
  *     version="1.0.0",
  *     title="Global Tongue API Documentation",
  *     @OA\Contact(
