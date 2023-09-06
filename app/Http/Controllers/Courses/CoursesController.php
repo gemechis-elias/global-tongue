@@ -109,10 +109,9 @@ class CoursesController extends Controller
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
-     *             @OA\Property(property="name", type="string", example="Spanish Level 1"),
-     *             @OA\Property(property="description", type="string", example="Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."),
-     *             @OA\Property(property="tag", type="string", example="Ser, Gender, Gustar, Estar, Plurals,"),
-     *             @OA\Property(property="level", type="string", example="Level 1"),
+     *             @OA\Property(property="name", type="string", example="English for Beginner"),
+     *             @OA\Property(property="description", type="string", example="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."),
+     *             @OA\Property(property="level", type="string", example="Beginner"),
      *            @OA\Property(property="type", type="string", example="free"),
      *          ),
      *      ),
@@ -170,10 +169,9 @@ class CoursesController extends Controller
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
-     *             @OA\Property(property="name", type="string", example="Spanish Level 1"),
-     *             @OA\Property(property="description", type="string", example="Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."),
-     *             @OA\Property(property="tag", type="string", example="Ser, Gender, Gustar, Estar, Plurals,"),
-     *             @OA\Property(property="level", type="string", example="Level 1"),
+     *             @OA\Property(property="name", type="string", example="English for Beginner"),
+     *             @OA\Property(property="description", type="string", example="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."),
+     *             @OA\Property(property="level", type="string", example="Beginner"),
      *             @OA\Property(property="type", type="string", example="free"),
      *          ),
      *      ),

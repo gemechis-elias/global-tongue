@@ -18,19 +18,36 @@ class CourseSeeder extends Seeder
         DB::table('courses')->delete();
         $data = [
             [
-                'name' => 'Spanish Level 1',
-                'description' => 'Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted.',
-                'tag' => 'Ser, Gender, Gustar, Estar, Plurals, "Ir" + "a"',
-                'level' => 'Level 1',
+                'name' => 'English For Begineer',
+                'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+                'level' => 'Beginner',
                 'type' => "free",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
+            [
+                'name' => 'English For Intermediate',
+                'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+                'level' => 'Intermediate',
+                'type' => "free",
+                'user_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'English For Advanced',
+                'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+                'level' => 'Advanced',
+                'type' => "free",
+                'user_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
          
         ];
         Course::insert($data);
 
-        Course::factory(2)->create();
+      //  Course::factory(2)->create();
     }
 }

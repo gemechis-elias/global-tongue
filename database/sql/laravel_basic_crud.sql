@@ -60,7 +60,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2023_08_13_192658_create_courses_table', 1),
 (10, '2023_08_27_120623_create_units_table', 1) ,
 (11, '2023_08_30_214119_create_lessons_table' 1),
-(12, '2023_08_31_231946_create_exercises_table' 1);
+(12, '2023_08_31_231946_create_exercises_table' 1,
+13, '2023_09_06_215103_create_level_table' 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,20 @@ CREATE TABLE `password_resets` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+   
+  `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'Created By Admin',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `courses` (`id`, `name`, `description`,  `level`,`type`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Course 1', 'Course 1 Description',   'beginner','free', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+ CREATE TABLE IF NOT EXISTS `levels` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -89,8 +104,8 @@ CREATE TABLE `password_resets` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `courses` (`id`, `name`, `description`, `tag`, `level`,`type`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Course 1', 'Course 1 Description', 'tag1', 'beginner','free', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+INSERT INTO `levels` (`id`, `name`, `description`, `tag`, `level`,`type`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'levels 1', 'levels 1 Description', 'tag1', 'beginner','free', 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 
 
@@ -208,6 +223,11 @@ ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `courses_user_id_foreign` (`user_id`);
 
+ALTER TABLE `levels`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `courses_user_id_foreign` (`user_id`);
+
+
 ALTER TABLE `units`
   ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`),
@@ -255,8 +275,13 @@ ALTER TABLE `migrations`
 ALTER TABLE `courses`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
+ALTER TABLE `levels`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
 ALTER TABLE `units`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
+
 ALTER TABLE `lessons`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 ALTER TABLE `exercises`
@@ -277,7 +302,8 @@ ALTER TABLE `users`
 --
   ALTER TABLE `courses`
   ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
+  ALTER TABLE `levels`
+  ADD CONSTRAINT `courses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
    ALTER TABLE `units`
   ADD CONSTRAINT `course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`);
    ALTER TABLE `lessons`

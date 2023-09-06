@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController; 
 use App\Http\Controllers\Units\UnitController;
 use App\Http\Controllers\Courses\CoursesController;
+use App\Http\Controllers\Levels\LevelsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\AdminController; 
@@ -53,6 +54,13 @@ Route::group([
     Route::resource('courses', CoursesController::class);
     Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
+
+    /**
+     * Levels Module
+     */
+    Route::resource('levels',LevelsController::class);
+    Route::get('levels/view/all', [LevelsController::class, 'indexAll']);
+    Route::get('levels/view/search', [LevelsController::class, 'search']);
 
     /**
      * Units Module
