@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->id();
+            $table->integer('course_id')->comment('Course ID');
             $table->string('name', 255);
             $table->text('description')->nullable();
             $table->string('tag')->nullable();
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
 
-            $table->foreign('user_id')->references('id')->on('users'); 
+            $table->foreign('user_id')->references('id')->on('users');  
             $table->timestamps();
         });
     }
@@ -34,6 +35,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('levels');
     }
 };

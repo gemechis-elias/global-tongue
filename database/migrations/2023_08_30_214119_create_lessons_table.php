@@ -16,16 +16,15 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
            
             $table->id();
-            $table->unsignedBigInteger('unit_id')->comment('Unit ID');
-            $table->unsignedBigInteger('course_id')->comment('Course ID');
+            $table->integer('course_id')->comment('Course ID');
+            $table->integer('level_id')->comment('Level ID');
+            $table->integer('unit_id')->comment('Unit ID');
             $table->longText('lesson_title');
             $table->string('lesson_type');
             $table->string('lesson_cover')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('unit_id')->references('id')->on('units');
-            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }
@@ -37,6 +36,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('lessons');
     }
 };

@@ -132,4 +132,40 @@ class LessonController extends Controller
         }
     }
 
+           /**
+ * @OA\Post(
+ *     path="/v1/public/api/lessons/create",
+ *     tags={"Lessons"},
+ *     summary="Create New Lesson",
+ *     description="Create New Lesson",
+ *     operationId="storeLesson",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="level_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_title", type="string", example="Essential Pronunciation: -ch, -h, -ll, -ñ"),
+ *             @OA\Property(property="lesson_type", type="string", example="voice"),
+ *             @OA\Property(property="lesson_cover", type="string", example="lesson_image.jpg"),
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Create New Lesson"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+public function store(LessonRequest $request): JsonResponse
+{
+    try {
+        $lesson = $this->lessonRepository->create($request->all());
+        return $this->responseSuccess($lesson, 'New Lesson Created Successfully !');
+    } catch (\Exception $exception) {
+        return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
+
 }

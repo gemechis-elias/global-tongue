@@ -14,7 +14,15 @@ class Unit extends Model
      *
      * @var array
      */
-    protected $fillable = ['unit_name', 'unit_title', 'unit_description', 'unit_image', 'no_of_lessons'];
+    protected $fillable = [
+        'course_id',
+        'level_id',
+
+        'unit_name', 
+        'unit_title', 
+        'unit_description', 
+        'unit_image', 
+        'no_of_lessons'];
 
         /**
      * Unit

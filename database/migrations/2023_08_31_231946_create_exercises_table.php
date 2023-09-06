@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('unit_id')->comment('Unit ID');
-            $table->unsignedBigInteger('course_id')->comment('Course ID');
-            $table->unsignedBigInteger('lesson_id')->comment('Lesson ID');
+            $table->integer('course_id')->comment('Course ID');
+            $table->integer('level_id')->comment('Level ID');
+            $table->integer('unit_id')->comment('Unit ID');
+            $table->integer('lesson_id')->comment('Lesson ID');
             $table->string('exercise_type');
             $table->longText('instruction');
             $table->longText('question');
@@ -30,9 +31,6 @@ return new class extends Migration
  
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('lesson_id')->references('id')->on('lessons');
-    
             $table->timestamps();
         });
     }
@@ -44,6 +42,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('exercises');
     }
 };

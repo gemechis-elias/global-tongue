@@ -13,9 +13,11 @@ class Exercise extends Model
     
 
     protected $fillable = [
-        'unit_id',
         'course_id',
+        'level_id',
+        'unit_id',
         'lesson_id',
+        
         'exercise_type',
         'instruction',
         'question',

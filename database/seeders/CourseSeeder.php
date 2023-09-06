@@ -14,10 +14,13 @@ class CourseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { 
+
         DB::table('courses')->delete();
+
         $data = [
             [
+                
                 'name' => 'English For Begineer',
                 'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
                 'level' => 'Beginner',
@@ -46,8 +49,9 @@ class CourseSeeder extends Seeder
             ]
          
         ];
+ 
         Course::insert($data);
 
-      //  Course::factory(2)->create();
+     
     }
 }

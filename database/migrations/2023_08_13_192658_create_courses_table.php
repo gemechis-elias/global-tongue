@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->text('description')->nullable();
-            $table->string('tag')->nullable();
             $table->string('level')->nullable();
             $table->string('type')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
@@ -34,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
+        // SET FOREIGN_KEY_CHECKS=0;
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('courses');
     }
 };

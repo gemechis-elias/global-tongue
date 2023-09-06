@@ -28,8 +28,9 @@ class LessonSeeder extends Seeder
         $data = [
             [
                
-                'unit_id' => 1,
                 'course_id' => 1,
+                'level_id'=> 1,
+                'unit_id' => 1,
                 'user_id' => 1,
 
                 'lesson_title' => 'Let\'s Meet Carlos and Ana!',
@@ -39,8 +40,9 @@ class LessonSeeder extends Seeder
             ],
             [
                
-                'unit_id' => 1,
                 'course_id' => 1,
+                'level_id'=> 1,
+                'unit_id' => 1,
                 'user_id' => 1,
 
                 'lesson_title' => 'Basic greetings and introductions',
@@ -49,8 +51,9 @@ class LessonSeeder extends Seeder
             ],
             [
               
-                'unit_id' => 1,
                 'course_id' => 1,
+                'level_id'=> 1,
+                'unit_id' => 1,
                 'user_id' => 1,
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',

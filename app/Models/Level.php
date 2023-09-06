@@ -14,7 +14,14 @@ class Level extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'level', 'type'];
+    protected $fillable = [
+        'course_id',
+        
+        'name', 
+        'description', 
+        'tag',
+        'level', 
+        'type'];
        /**
      * User
      *
