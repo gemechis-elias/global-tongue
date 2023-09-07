@@ -91,7 +91,7 @@ class UnitController extends Controller
      * )
      */
 
-    public function getUnitByCourseID($course_id, $level_id): JsonResponse
+    public function getUnitsByCourseID ($course_id, $level_id): JsonResponse
         {
             try {
                 $units = $this->unitRepository->getUnitsByCourseID($course_id, $level_id);
