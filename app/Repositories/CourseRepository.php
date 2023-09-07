@@ -113,7 +113,23 @@ class CourseRepository implements CrudInterface
      */
     public function getByID(int $id): Course|null
     {
-        return Course::with('user')->find($id);
+        $course = Course::with('user')->find($id);
+
+        if ($course) {
+            $user = $course->user;
+
+            // Update the user's my_courses attribute by adding the current course ID
+            $myCourses = json_decode($user->my_courses, true) ?? [];
+            if (!in_array($id, $myCourses)) {
+                $myCourses[] = $id;
+                $user->my_courses = json_encode($myCourses);
+                $user->save();
+            }
+
+            return $course;
+        }
+
+        return null;
     }
 
     /**
