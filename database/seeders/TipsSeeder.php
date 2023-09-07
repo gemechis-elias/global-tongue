@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder; 
-use App\Models\Tips;  
+use Illuminate\Database\Seeder;
+use App\Models\Tips; 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 class TipsSeeder extends Seeder
