@@ -61,7 +61,7 @@ Route::group([
      * Levels Module
      */
     Route::resource('levels',LevelsController::class);
-    Route::get('levels/by-course/{lesson_id}', [LevelsController::class,'getLevelsByCourseID']);
+    Route::get('levels/by/{course_id}', [LevelsController::class,'getLevelByCourseID']);
 
 
     /**
@@ -71,7 +71,7 @@ Route::group([
     Route::resource('units', UnitController::class);
     Route::get('units/view/all', [UnitController::class, 'indexAll']);
     Route::get('units/view/search', [UnitController::class, 'search']);
-    Route::get('units/by-course/{course_id}', [UnitController::class,'getUnitByCourseID']);
+    Route::get('units/by/{course_id}/{level_id}', [UnitController::class,'getUnitsByCourseID']);
 
 
      /**
@@ -80,7 +80,7 @@ Route::group([
     Route::resource('lessons', LessonController::class);
     Route::get('lessons/view/all', [LessonController::class, 'indexAll']); 
     Route::get('lessons/view/search', [LessonController::class, 'search']);
-    Route::get('lessons/by-lesson/{lesson_id}', [LessonController::class,'getLessonByCourseID']);
+    Route::get('lessons/by/{course_id}/{level_id}/{unit_id}', [LessonController::class,'getLessonsByUnitID']);
 
 
     /**
@@ -91,7 +91,7 @@ Route::group([
     Route::get('exercises/view/all', [ExerciseController::class, 'indexAll']);
     Route::post('exercises/create', [ExerciseController::class, 'store']) ;
     Route::get('exercises/view/search', [ExerciseController::class, 'search']);
-    Route::get('exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExercisesByLessonID']);
+    Route::get('exercises/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExercisesByLessonID']);
 
         /**
      * Tip Module

@@ -90,6 +90,7 @@ class ExerciseController extends Controller
          *     operationId="getExercisesByLessonID",
          *     security={{"bearer":{}}},
          *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+         *    @OA\Parameter(name="level_id", description="ID of the level", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="unit_id", description="ID of the unit", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="lesson_id", description="ID of the lesson", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Response(response=200, description="Exercises for the specified Parents ID"),
@@ -100,10 +101,10 @@ class ExerciseController extends Controller
          */
 
     
-        public function getExercisesByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
+        public function getExercisesByLessonID($course_id,$level_id, $unit_id, $lesson_id): JsonResponse
             {
                 try {
-                    $exercises = $this->exerciseRepository->getExercisesByLessonID($course_id, $unit_id, $lesson_id);
+                    $exercises = $this->exerciseRepository->getExercisesByLessonID($course_id,$level_id, $unit_id, $lesson_id);
                     
                     if ($exercises->isEmpty()) {
                         return $this->responseError(null, 'No exercises Found for the given Lesson ID', Response::HTTP_NOT_FOUND);

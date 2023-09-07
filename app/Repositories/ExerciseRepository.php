@@ -126,11 +126,14 @@ class ExerciseRepository implements CrudInterface
      * @param array $data
      * @return object Updated Exercise Object
      */
-    public function getExercisesByLessonID($course_id, $unit_id, $lesson_id)
+    public function getExercisesByLessonID($course_id,$level_id, $unit_id, $lesson_id)
     {
         $exercises = Exercise::where('lesson_id', $lesson_id)
             ->where('course_id', $course_id)
+            ->where('level_id', $level_id)
             ->where('unit_id', $unit_id)
+            ->where('lesson_id', $lesson_id)
+            ->orderBy('id', 'desc')
             ->get();
     
         if ($exercises->isEmpty()) {
