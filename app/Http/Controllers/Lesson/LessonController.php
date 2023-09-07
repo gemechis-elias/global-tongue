@@ -80,12 +80,14 @@ class LessonController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/lessons/by/{unit_id}",
+     *     path="/v1/public/api/lessons/by/{course_id}/{level_id}/{unit_id}",
      *     tags={"Lessons"},
      *     summary="Get Lessons by Unit ID",
      *     description="Get list of lessons associated with a specific unit",
      *     operationId="getLessonsByUnitID",
      *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="level_id", description="ID of the level", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Parameter(name="unit_id", description="ID of the unit", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Lessons for the specified Unit ID"),
      *     @OA\Response(response=400, description="Bad request"),
@@ -94,10 +96,10 @@ class LessonController extends Controller
      * )
      */
 
-    public function getLessonByUnitID($unit_id): JsonResponse
+    public function getLessonByUnitID($course_id, $unit_id, $level_id): JsonResponse
         {
             try {
-                $lessons = $this->lessonRepository->getLessonsByUnitID($unit_id);
+                $lessons = $this->lessonRepository->getLessonsByUnitID($course_id, $unit_id, $level_id);
                 
                 if ($lessons->isEmpty()) {
                     return $this->responseError(null, 'No lessons Found for the given Unit ID', Response::HTTP_NOT_FOUND);

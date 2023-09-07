@@ -123,9 +123,12 @@ class LessonRepository implements CrudInterface
      * @param array $data
      * @return object Updated Lesson Object
      */
-    public function getLessonsByUnitID($unit_id)
+    public function getLessonsByUnitID($course_id, $unit_id, $level_id )
     {
-        return Lesson::where('unit_id', $unit_id)->get();
+        return Lesson::where('course_id', $course_id)
+            ->where('unit_id', $unit_id)
+            ->where('level_id', $level_id)
+            ->get();
     }
 
 
