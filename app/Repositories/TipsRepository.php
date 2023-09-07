@@ -126,10 +126,11 @@ class TipsRepository implements CrudInterface
      * @param array $data
      * @return object Updated Tip Object
      */
-    public function getTipsByLessonID($course_id, $unit_id, $lesson_id)
+    public function getTipsByLessonID($course_id,$level_id, $unit_id, $lesson_id)
     {
         $tips = Tips::where('lesson_id', $lesson_id)
             ->where('course_id', $course_id)
+            ->where('level_id', $level_id)
             ->where('unit_id', $unit_id)
             ->get();
     

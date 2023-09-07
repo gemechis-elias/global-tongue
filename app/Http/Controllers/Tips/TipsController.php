@@ -82,13 +82,14 @@ class TipsController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/tips/by/{course_id}/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/tips/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}",
          *     tags={"Tips"},
          *     summary="Get Tips by Parents",
          *     description="Get list of tips associated with a specific Parents",
          *     operationId="getTipsByLessonID",
          *     security={{"bearer":{}}},
          *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
+         *    @OA\Parameter(name="level_id", description="ID of the level", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="unit_id", description="ID of the unit", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="lesson_id", description="ID of the lesson", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Response(response=200, description="Tips for the specified Parents ID"),
@@ -99,10 +100,10 @@ class TipsController extends Controller
          */
 
     
-        public function getTipsByLessonID($course_id, $unit_id, $lesson_id): JsonResponse
+        public function getTipsByLessonID($course_id,$level_id, $unit_id, $lesson_id): JsonResponse
             {
                 try {
-                    $tips = $this->tipRepository->getTipsByLessonID($course_id, $unit_id, $lesson_id);
+                    $tips = $this->tipRepository->getTipsByLessonID($course_id,$level_id, $unit_id, $lesson_id);
                     
                     if ($tips->isEmpty()) {
                         return $this->responseError(null, 'No tips Found for the given Lesson ID', Response::HTTP_NOT_FOUND);
