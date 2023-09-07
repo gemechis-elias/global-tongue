@@ -123,9 +123,11 @@ class UnitRepository implements CrudInterface
      * @param array $data
      * @return object Updated Unit Object
      */
-    public function getUnitsByCourseID($course_id)
+    public function getUnitsByCourseID($course_id, $level_id)
     {
-        return Unit::where('course_id', $course_id)->get();
+        return Unit::where('course_id', $course_id)
+            ->where('level_id', $level_id)
+            ->get();
     }
 
 

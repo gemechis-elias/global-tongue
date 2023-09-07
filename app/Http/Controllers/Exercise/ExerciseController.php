@@ -83,18 +83,18 @@ class ExerciseController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/exercises/by/{course_id}/{unit_id}/{lesson_id}",
          *     tags={"Exercises"},
-         *     summary="Get Exercises by Lesson ID",
-         *     description="Get list of exercises associated with a specific lesson",
+         *     summary="Get Exercises by Parents",
+         *     description="Get list of exercises associated with a specific Parents",
          *     operationId="getExercisesByLessonID",
          *     security={{"bearer":{}}},
          *     @OA\Parameter(name="course_id", description="ID of the course", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="unit_id", description="ID of the unit", required=true, in="path", @OA\Schema(type="integer")),
          *     @OA\Parameter(name="lesson_id", description="ID of the lesson", required=true, in="path", @OA\Schema(type="integer")),
-         *     @OA\Response(response=200, description="Exercises for the specified Lesson ID"),
+         *     @OA\Response(response=200, description="Exercises for the specified Parents ID"),
          *     @OA\Response(response=400, description="Bad request"),
-         *     @OA\Response(response=404, description="No Exercises found for the specified Lesson ID"),
+         *     @OA\Response(response=404, description="No Exercises found for the specified Parents ID"),
          *     @OA\Response(response=500, description="Internal Server Error")
          * )
          */
@@ -115,28 +115,7 @@ class ExerciseController extends Controller
                 }
             }
     
-     /**
-         * @OA\Get(
-         *     path="/v1/public/api/exercises/view/all",
-         *     tags={"Exercises"},
-         *     summary="All Exercises - Publicly Accessible",
-         *     description="All Exercises - Publicly Accessible",
-         *     operationId="indexExerciseAll",
-         *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
-         *     @OA\Response(response=200, description="All Exercises - Publicly Accessible" ),
-         *     @OA\Response(response=400, description="Bad request"),
-         *     @OA\Response(response=404, description="Resource Not Found"),
-         * )
-         */
-        public function indexAll(Request $request): JsonResponse
-        {
-            try {
-                $data = $this->exerciseRepository->getPaginatedData($request->perPage);
-                return $this->responseSuccess($data, 'Exercises List Fetched Successfully !');
-            } catch (\Exception $e) {
-                return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-            }
-        }
+ 
 
        /**
  * @OA\Post(

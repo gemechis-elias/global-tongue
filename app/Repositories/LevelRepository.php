@@ -143,4 +143,10 @@ class LevelRepository implements CrudInterface
         // Finally return the updated level.
         return $this->getByID($level->id);
     }
+
+    public function getLevelsByCourseID($course_id)
+    {
+        return Level::where('course_id', $course_id)
+            ->get();
+    }
 }

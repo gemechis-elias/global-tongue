@@ -77,7 +77,7 @@ class LevelsController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/levels/by-course/{course_id}",
+     *     path="/v1/public/api/levels/by/{course_id}",
      *     tags={"Levels"},
      *     summary="Get Levels by Course ID",
      *     description="Get list of levels associated with a specific course",

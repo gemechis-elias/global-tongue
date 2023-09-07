@@ -48,6 +48,76 @@ class UnitSeeder extends Seeder
                 'course_id'=> 1,
                 'level_id' => 1,
                 'user_id' => 1,
+                'unit_name' => 'Unit 3', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+                 
+
+            ],
+            [
+                'course_id'=> 1,
+                'level_id' => 2,
+                'user_id' => 1,
+                'unit_name' => 'Unit 1', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+                 
+
+            ],
+            [
+                'course_id'=> 1,
+                'level_id' => 2,
+                'user_id' => 1,
+                'unit_name' => 'Unit 2', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+                 
+
+            ],
+            [
+                'course_id'=> 2,
+                'level_id' => 1,
+                'user_id' => 1,
+                'unit_name' => 'Unit 1', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+                 
+
+            ],
+            [
+                'course_id'=> 2,
+                'level_id' => 1,
+                'user_id' => 1,
+                'unit_name' => 'Unit 2', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+            ],
+            [
+                'course_id'=> 2,
+                'level_id' => 2,
+                'user_id' => 1,
+                'unit_name' => 'Unit 1', 
+                'unit_title' => 'Let\'s Talk About You',
+                'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
+                'unit_image' => null,
+                'no_of_lessons' => 5,
+                 
+
+            ],
+            [
+                'course_id'=> 3,
+                'level_id' => 1,
+                'user_id' => 1,
                 'unit_name' => 'Unit 1', 
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',

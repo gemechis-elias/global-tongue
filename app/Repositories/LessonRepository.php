@@ -34,7 +34,7 @@ class LessonRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->courses()
+        return $this->user->units()
            ->orderBy('id', 'desc')
             ->with('user')
             ->paginate(10);
@@ -95,13 +95,13 @@ class LessonRepository implements CrudInterface
      */
     public function delete(int $id): bool
     {
-        $course = Lesson::find($id);
-        if (empty($course)) {
+        $lesson = Lesson::find($id);
+        if (empty($lesson)) {
             return false;
         }
 
-      //  UploadHelper::deleteFile('images/course/' . $course->image);
-        $course->delete($course);
+      //  UploadHelper::deleteFile('images/lesson/' . $lesson->image);
+        $lesson->delete($lesson);
         return true;
     }
 
@@ -123,15 +123,15 @@ class LessonRepository implements CrudInterface
      * @param array $data
      * @return object Updated Lesson Object
      */
-    public function getLessonsByCourseID($course_id)
+    public function getLessonsByUnitID($unit_id)
     {
-        return Lesson::where('course_id', $course_id)->get();
+        return Lesson::where('unit_id', $unit_id)->get();
     }
 
 
     public function update(int $id, array $data): Lesson|null
     {
-        $course = Lesson::find($id);
+        $unit = Lesson::find($id);
         if (!empty($data['image'])) {
             $titleShort = Str::slug(substr($data['title'], 0, 20));
            //$data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/products', $product->image);
@@ -139,14 +139,14 @@ class LessonRepository implements CrudInterface
            
         }
 
-        if (is_null($course)) {
+        if (is_null($unit)) {
             return null;
         }
 
         // If everything is OK, then update.
-        $course->update($data);
+        $unit->update($data);
 
-        // Finally return the updated course.
-        return $this->getByID($course->id);
+        // Finally return the updated unit.
+        return $this->getByID($unit->id);
     }
 }

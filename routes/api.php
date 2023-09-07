@@ -59,7 +59,6 @@ Route::group([
      * Levels Module
      */
     Route::resource('levels',LevelsController::class);
-    Route::get('levels/view/all', [LevelsController::class, 'indexAll']);
     Route::get('levels/by-course/{lesson_id}', [LevelsController::class,'getLevelsByCourseID']);
 
 

@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Global Tongue API Documentation",
-        "description": "Course -> Level -> Unit -> Lesson",
+        "description": "Heirarchy of API | Courses -> Levels -> Units -> Lessons -> Exercises",
         "contact": {
             "email": "gemeelijah@gmail.com"
         },
@@ -250,45 +250,13 @@
                 ]
             }
         },
-        "/v1/public/api/courses/view/all": {
-            "get": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "All Courses - Publicly Accessible",
-                "description": "All Courses - Publicly Accessible",
-                "operationId": "indexAll",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Courses - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
         "/v1/public/api/courses/view/search": {
             "get": {
                 "tags": [
                     "Courses"
                 ],
                 "summary": "All Courses - Publicly Accessible",
-                "description": "All Courses - Publicly Accessible",
+                "description": "Search All Courses - Publicly Accessible",
                 "operationId": "search",
                 "parameters": [
                     {
@@ -323,7 +291,7 @@
                 }
             }
         },
-        "/v1/public/api/courses/{course_id}": {
+        "/v1/public/api/courses/{id}": {
             "get": {
                 "tags": [
                     "Courses"
@@ -358,9 +326,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/courses/{id}": {
+            },
             "put": {
                 "tags": [
                     "Courses"
@@ -557,13 +523,13 @@
                 ]
             }
         },
-        "/v1/public/api/exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}": {
+        "/v1/public/api/exercises/by/{course_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
                     "Exercises"
                 ],
-                "summary": "Get Exercises by Lesson ID",
-                "description": "Get list of exercises associated with a specific lesson",
+                "summary": "Get Exercises by Parents",
+                "description": "Get list of exercises associated with a specific Parents",
                 "operationId": "getExercisesByLessonID",
                 "parameters": [
                     {
@@ -596,13 +562,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Exercises for the specified Lesson ID"
+                        "description": "Exercises for the specified Parents ID"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "No Exercises found for the specified Lesson ID"
+                        "description": "No Exercises found for the specified Parents ID"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -613,38 +579,6 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/exercises/view/all": {
-            "get": {
-                "tags": [
-                    "Exercises"
-                ],
-                "summary": "All Exercises - Publicly Accessible",
-                "description": "All Exercises - Publicly Accessible",
-                "operationId": "indexExerciseAll",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Exercises - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
             }
         },
         "/v1/public/api/exercises/create": {
@@ -796,19 +730,19 @@
                 ]
             }
         },
-        "/v1/public/api/lessons/by-course/{course_id}": {
+        "/v1/public/api/lessons/by/{unit_id}": {
             "get": {
                 "tags": [
                     "Lessons"
                 ],
-                "summary": "Get Lessons by Course ID",
-                "description": "Get list of lessons associated with a specific course",
-                "operationId": "getLessonsByCourseID",
+                "summary": "Get Lessons by Unit ID",
+                "description": "Get list of lessons associated with a specific unit",
+                "operationId": "getLessonsByUnitID",
                 "parameters": [
                     {
-                        "name": "course_id",
+                        "name": "unit_id",
                         "in": "path",
-                        "description": "ID of the course",
+                        "description": "ID of the unit",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -817,13 +751,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Lessons for the specified Course ID"
+                        "description": "Lessons for the specified Unit ID"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "No Lessons found for the specified Course ID"
+                        "description": "No Lessons found for the specified Unit ID"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -834,38 +768,6 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/lessons/view/all": {
-            "get": {
-                "tags": [
-                    "Lessons"
-                ],
-                "summary": "All Lessons - Publicly Accessible",
-                "description": "All Lessons - Publicly Accessible",
-                "operationId": "indexLessonAll",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Lessons - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
             }
         },
         "/v1/public/api/lessons/create": {
@@ -886,11 +788,11 @@
                                         "type": "integer",
                                         "example": 1
                                     },
-                                    "unit_id": {
+                                    "level_id": {
                                         "type": "integer",
                                         "example": 1
                                     },
-                                    "level_id": {
+                                    "unit_id": {
                                         "type": "integer",
                                         "example": 1
                                     },
@@ -967,6 +869,10 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
                                     "name": {
                                         "type": "string",
                                         "example": "Spanish Level 1"
@@ -1043,48 +949,47 @@
                 }
             }
         },
-        "/v1/public/api/levels/view/search": {
+        "/v1/public/api/levels/by/{course_id}": {
             "get": {
                 "tags": [
                     "Levels"
                 ],
-                "summary": "All Levels - Publicly Accessible",
-                "description": "All Levels - Publicly Accessible",
-                "operationId": "searchLevel",
+                "summary": "Get Levels by Course ID",
+                "description": "Get list of levels associated with a specific course",
+                "operationId": "getLevelsByCourseID",
                 "parameters": [
                     {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
                         "schema": {
                             "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "search, eg; Test",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Test"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "All Levels - Publicly Accessible"
+                        "description": "Levels for the specified Course ID"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "Resource Not Found"
+                        "description": "No Levels found for the specified Course ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
-        "/v1/public/api/levels/{level_id}": {
+        "/v1/public/api/levels/{id}": {
             "get": {
                 "tags": [
                     "Levels"
@@ -1119,9 +1024,7 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/levels/{id}": {
+            },
             "put": {
                 "tags": [
                     "Levels"
@@ -1287,12 +1190,12 @@
                 ]
             }
         },
-        "/v1/public/api/units/by-course/{course_id}": {
+        "/v1/public/api/units/by/{course_id}/{level_id}": {
             "get": {
                 "tags": [
                     "Units"
                 ],
-                "summary": "Get Units by Course ID",
+                "summary": "Get Units by Parents ID",
                 "description": "Get list of units associated with a specific course",
                 "operationId": "getUnitsByCourseID",
                 "parameters": [
@@ -1304,17 +1207,26 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Units for the specified Course ID"
+                        "description": "Units for the specified Parents ID"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "No units found for the specified Course ID"
+                        "description": "No units found for the specified Parents ID"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -1325,38 +1237,6 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/units/view/all": {
-            "get": {
-                "tags": [
-                    "Units"
-                ],
-                "summary": "All Units - Publicly Accessible",
-                "description": "All Units - Publicly Accessible",
-                "operationId": "indexUnitAll",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Units - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
             }
         }
     },

@@ -55,6 +55,73 @@ class LessonSeeder extends Seeder
                 'level_id'=> 1,
                 'unit_id' => 1,
                 'user_id' => 1,
+
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 1,
+                'level_id'=> 1,
+                'unit_id' => 2,
+                'user_id' => 1,
+                
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 1,
+                'level_id'=> 2,
+                'unit_id' => 1,
+                'user_id' => 1,
+                
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 1,
+                'level_id'=> 2,
+                'unit_id' => 2,
+                'user_id' => 1,
+                
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 2,
+                'level_id'=> 1,
+                'unit_id' => 1,
+                'user_id' => 1,
+                
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 2,
+                'level_id'=> 2,
+                'unit_id' => 1,
+                'user_id' => 1,
+                
+                'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
+                'lesson_type' => 'voice',
+                'lesson_cover' => null,
+            ],
+            [
+              
+                'course_id' => 2,
+                'level_id'=> 2,
+                'unit_id' => 2,
+                'user_id' => 1,
+                
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
                 'lesson_cover' => null,

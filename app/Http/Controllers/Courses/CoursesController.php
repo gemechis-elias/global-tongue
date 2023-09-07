@@ -52,35 +52,14 @@ class CoursesController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-     *     path="/v1/public/api/courses/view/all",
-     *     tags={"Courses"},
-     *     summary="All Courses - Publicly Accessible",
-     *     description="All Courses - Publicly Accessible",
-     *     operationId="indexAll",
-     *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="All Courses - Publicly Accessible" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function indexAll(Request $request): JsonResponse
-    {
-        try {
-            $data = $this->courseRepository->getPaginatedData($request->perPage);
-            return $this->responseSuccess($data, 'Course List Fetched Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
+
 
     /**
      * @OA\Get(
      *     path="/v1/public/api/courses/view/search",
      *     tags={"Courses"},
      *     summary="All Courses - Publicly Accessible",
-     *     description="All Courses - Publicly Accessible",
+     *     description="Search All Courses - Publicly Accessible",
      *     operationId="search",
      *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
      *     @OA\Parameter(name="search", description="search, eg; Test", example="Test", in="query", @OA\Schema(type="string")),
