@@ -61,7 +61,7 @@ Route::group([
      * Levels Module
      */
     Route::resource('levels',LevelsController::class);
-    Route::get('levels/by/{course_id}', [LevelsController::class,'getLevelByCourseID']);
+    Route::get('levels/by/{course_id}', [LevelsController::class,'getLevelsByCourseID']);
 
 
     /**

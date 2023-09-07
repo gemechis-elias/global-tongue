@@ -87,7 +87,7 @@ class LevelRepository implements CrudInterface
         return Level::create($data);
     }
 
-    public function getLevelByCourseID($course_id)
+    public function getLevelsByCourseID($course_id)
     {
         return Level::where('course_id', $course_id)->get();
     }
@@ -148,9 +148,5 @@ class LevelRepository implements CrudInterface
         return $this->getByID($level->id);
     }
 
-    public function getLevelsByCourseID($course_id)
-    {
-        return Level::where('course_id', $course_id)
-            ->get();
-    }
+  
 }

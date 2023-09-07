@@ -94,7 +94,7 @@ class LevelsController extends Controller
      public function getLevelsByCourseID($course_id): JsonResponse
      {
          try {
-             $levels = $this->levelRepository->getLevelByCourseID($course_id);
+             $levels = $this->levelRepository->getLevelsByCourseID($course_id);
              
              if ($levels->isEmpty()) {
                  return $this->responseError(null, 'No levels Found for the given Course ID', Response::HTTP_NOT_FOUND);
