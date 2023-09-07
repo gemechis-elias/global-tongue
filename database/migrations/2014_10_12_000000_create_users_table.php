@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table -> date('birthdate');
-            $table -> string('level');
-            $table -> string('subscription_type');
+            $table->date('birthdate');
+            $table->string('level');
+            $table->json('my_courses')->nullable();  
+            $table->string('subscription_type');
             $table->rememberToken();
             $table->timestamps();
         });

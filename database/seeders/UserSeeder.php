@@ -18,18 +18,18 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->delete();
         $data = [
-            'name' => 'Amanuel ',
+            'name' => 'Amanuel',
             'email' => 'aman@gmail.com',
             'password' => Hash::make('123456'),
             'birthdate' => '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'free',
-            
+            'my_courses' => json_encode([1, 2, 3]), // Sample course IDs as an array
         ];
-        
+
         User::create($data);
 
         // Testing Dummy User
-    //    User::factory(2)->create(); 
+        // User::factory(2)->create();
     }
 }

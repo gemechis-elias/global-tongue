@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'birthdate' =>  '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'free',
+            'my_courses' => json_encode([1, 2, 3]), // Sample course IDs as an array
             'remember_token' => Str::random(10),
         ];
     }
