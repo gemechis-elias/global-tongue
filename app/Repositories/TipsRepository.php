@@ -34,7 +34,7 @@ class TipsRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->exercises()
+        return $this->user->tips()
           ->orderBy('id', 'desc')
             ->with('user')
             ->paginate(10);
@@ -82,7 +82,7 @@ class TipsRepository implements CrudInterface
         $titleShort      = Str::slug(substr($data['question'], 0, 20));
 
         if (!empty($data['image'])) {
-            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/exercises');
+            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/tips');
         }
 
         $data['user_id'] = $this->user->id;
@@ -98,13 +98,13 @@ class TipsRepository implements CrudInterface
      */
     public function delete(int $id): bool
     {
-        $exercise = Tips::find($id);
-        if (empty($exercise)) {
+        $tip = Tips::find($id);
+        if (empty($tip)) {
             return false;
         }
 
-     // UploadHelper::deleteFile('images/exercise/' . $exercise->image);
-        $exercise->delete($exercise);
+     // UploadHelper::deleteFile('images/tip/' . $tip->image);
+        $tip->delete($tip);
         return true;
     }
 
@@ -128,39 +128,39 @@ class TipsRepository implements CrudInterface
      */
     public function getTipsByLessonID($course_id, $unit_id, $lesson_id)
     {
-        $exercises = Tips::where('lesson_id', $lesson_id)
+        $tips = Tips::where('lesson_id', $lesson_id)
             ->where('course_id', $course_id)
             ->where('unit_id', $unit_id)
             ->get();
     
-        if ($exercises->isEmpty()) {
-            // If no exercises are found, you can return an appropriate response
-            return response()->json(['message' => 'No exercises found for the specified parameters'], 404);
+        if ($tips->isEmpty()) {
+            // If no tips are found, you can return an appropriate response
+            return response()->json(['message' => 'No tips found for the specified parameters'], 404);
         }
     
-        return $exercises;
+        return $tips;
     }
     
 
 
     public function update(int $id, array $data): Tips|null
     {
-        $exercise = Tips::find($id);
+        $tip = Tips::find($id);
         if (!empty($data['image'])) {
             $titleShort = Str::slug(substr($data['title'], 0, 20));
-            $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/exercise', $exercise->image);
+            $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/tip', $tip->image);
         } else {
            
         }
 
-        if (is_null($exercise)) {
+        if (is_null($tip)) {
             return null;
         }
 
         // If everything is OK, then update.
-        $exercise->update($data);
+        $tip->update($data);
 
-        // Finally return the updated exercise.
-        return $this->getByID($exercise->id);
+        // Finally return the updated tip.
+        return $this->getByID($tip->id);
     }
 }
