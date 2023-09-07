@@ -1127,6 +1127,248 @@
                 ]
             }
         },
+        "/v1/public/api/tips": {
+            "get": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Get Tip List",
+                "description": "Get Tip List as Array",
+                "operationId": "TipIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Tip List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/tips/{id}": {
+            "get": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Show Tip Details",
+                "description": "Show Tip Details",
+                "operationId": "showTip",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Tip Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Delete Tips",
+                "description": "Delete Tips",
+                "operationId": "destroyTips",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Tips"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/tips/by/{course_id}/{unit_id}/{lesson_id}": {
+            "get": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Get Tips by Parents",
+                "description": "Get list of tips associated with a specific Parents",
+                "operationId": "getTipsByLessonID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "path",
+                        "description": "ID of the unit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "ID of the lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tips for the specified Parents ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Tips found for the specified Parents ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/tips/create": {
+            "post": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Create New Tip",
+                "description": "Create New Tip",
+                "operationId": "storeTip",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "tip_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "tip_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "tip_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Tip"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/v1/public/api/units": {
             "get": {
                 "tags": [

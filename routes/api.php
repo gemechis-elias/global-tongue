@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController; 
 use App\Http\Controllers\Lesson\LessonController;
 use App\Http\Controllers\Exercise\ExerciseController;
+use App\Http\Controllers\Tips\TipsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +93,16 @@ Route::group([
     Route::get('exercises/view/search', [ExerciseController::class, 'search']);
     Route::get('exercises/by-lesson/{course_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExercisesByLessonID']);
 
+        /**
+     * Tip Module
+     */ 
+    
+     Route::resource('tips', TipsController::class);
+     Route::get('tips/view/all', [TipsController::class, 'indexAll']);
+     Route::post('tips/create', [TipsController::class, 'store']) ;
+     Route::get('tips/view/search', [TipsController::class, 'search']);
+     Route::get('tips/by-lesson/{course_id}/{unit_id}/{lesson_id}', [TipsController::class,'getTipsByLessonID']);
+ 
 
 });
 
