@@ -34,7 +34,7 @@ class UnitRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->courses()
+        return $this->user->units()
            ->orderBy('id', 'desc')
             ->with('user')
             ->paginate(10);
@@ -95,13 +95,13 @@ class UnitRepository implements CrudInterface
      */
     public function delete(int $id): bool
     {
-        $course = Unit::find($id);
-        if (empty($course)) {
+        $unit = Unit::find($id);
+        if (empty($unit)) {
             return false;
         }
 
-      //  UploadHelper::deleteFile('images/course/' . $course->image);
-        $course->delete($course);
+      //  UploadHelper::deleteFile('images/unit/' . $unit->image);
+        $unit->delete($unit);
         return true;
     }
 
