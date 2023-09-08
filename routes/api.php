@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Lesson\LessonController;
 use App\Http\Controllers\Exercise\ExerciseController;
 use App\Http\Controllers\Tips\TipsController;
+use App\Http\Controllers\Conversation\ConversationController;
 
 
 /*
@@ -111,7 +112,7 @@ Route::group([
     Route::post('conversations/create', [ConversationController::class, 'store']) ;
     Route::get('conversations/view/search', [ConversationController::class, 'search']);
     Route::get('conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ConversationController::class,'getConversationsByLessonID']);
-    
+
 
 });
 
