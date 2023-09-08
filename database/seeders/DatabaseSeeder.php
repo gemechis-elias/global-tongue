@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LessonSeeder::class);
         $this->call(ExerciseSeeder::class);
         $this->call(TipsSeeder::class);
+        $this->call(ConversationSeeder::class);
 
 
 

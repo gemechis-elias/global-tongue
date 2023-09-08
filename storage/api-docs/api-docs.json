@@ -173,6 +173,237 @@
                 ]
             }
         },
+        "/v1/public/api/conversations": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Get Conversation List",
+                "description": "Get Conversation List as Array",
+                "operationId": "ConversationIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Conversation List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/conversations/{id}": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Show Conversation Details",
+                "description": "Show Conversation Details",
+                "operationId": "showConversation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Conversation Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Delete Conversations",
+                "description": "Delete Conversations",
+                "operationId": "destroyConversations",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Conversations"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/conversations/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Get Conversations by Parents",
+                "description": "Get list of conversations associated with a specific Parents",
+                "operationId": "getConversationsByLessonID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "path",
+                        "description": "ID of the unit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "ID of the lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Conversations for the specified Parents ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Conversations found for the specified Parents ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/conversations/create": {
+            "post": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Create New Conversation",
+                "description": "Create New Conversation",
+                "operationId": "storeConversation",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "conversation_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "conversation": {
+                                        "type": "string",
+                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Conversation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/v1/public/api/courses": {
             "get": {
                 "tags": [
@@ -542,6 +773,15 @@
                         }
                     },
                     {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
                         "name": "unit_id",
                         "in": "path",
                         "description": "ID of the unit",
@@ -730,7 +970,7 @@
                 ]
             }
         },
-        "/v1/public/api/lessons/by/{unit_id}": {
+        "/v1/public/api/lessons/by/{course_id}/{level_id}/{unit_id}": {
             "get": {
                 "tags": [
                     "Lessons"
@@ -739,6 +979,24 @@
                 "description": "Get list of lessons associated with a specific unit",
                 "operationId": "getLessonsByUnitID",
                 "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
                     {
                         "name": "unit_id",
                         "in": "path",
@@ -1225,7 +1483,7 @@
                 ]
             }
         },
-        "/v1/public/api/tips/by/{course_id}/{unit_id}/{lesson_id}": {
+        "/v1/public/api/tips/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
                     "Tips"
@@ -1238,6 +1496,15 @@
                         "name": "course_id",
                         "in": "path",
                         "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
                         "required": true,
                         "schema": {
                             "type": "integer"
