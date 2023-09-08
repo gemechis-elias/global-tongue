@@ -101,4 +101,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Tips::class)->orderBy('id', 'desc');
     }
+    public function conversation()
+    {
+        return $this->hasMany(Conversation::class)->orderBy('id', 'desc');
+    }
 }
