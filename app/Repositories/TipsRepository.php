@@ -34,8 +34,7 @@ class TipsRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->tips()
-          ->orderBy('id', 'desc')
+        return Tips::orderBy('id', 'desc')
             // ->with('user')
             ->paginate(10);
     }

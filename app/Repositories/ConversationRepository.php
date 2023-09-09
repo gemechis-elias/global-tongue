@@ -34,8 +34,7 @@ class ConversationRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->conversation()
-          ->orderBy('id', 'desc')
+        return Conversation::orderBy('id', 'desc')
          //   ->with('user')
             ->paginate(10);
     }

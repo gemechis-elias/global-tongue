@@ -34,8 +34,7 @@ class LessonRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->units()
-           ->orderBy('id', 'desc')
+        return Lesson::orderBy('id', 'desc')
             // ->with('user')
             ->paginate(10);
     }

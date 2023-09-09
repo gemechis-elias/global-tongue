@@ -34,8 +34,7 @@ class LevelRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->levels()
-            ->orderBy('id', 'desc')
+        return Level::orderBy('id', 'desc')
             // ->with('user')
             ->paginate(10);
     }

@@ -34,8 +34,7 @@ class UnitRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->units()
-           ->orderBy('id', 'desc')
+        return Unit::orderBy('id', 'desc')
             // ->with('user')
             ->paginate(10);
     }

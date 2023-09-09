@@ -34,8 +34,7 @@ class ExerciseRepository implements CrudInterface
      */
     public function getAll(): Paginator
     {
-        return $this->user->exercises()
-          ->orderBy('id', 'desc')
+        return Exercise::orderBy('id', 'desc')
             // ->with('user')
             ->paginate(10);
     }
