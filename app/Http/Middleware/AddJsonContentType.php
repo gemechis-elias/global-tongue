@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AddJsonContentType
+class AddJsonContentType 
 {
     public function handle($request, Closure $next)
     {

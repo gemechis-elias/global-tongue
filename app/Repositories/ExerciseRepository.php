@@ -36,7 +36,7 @@ class ExerciseRepository implements CrudInterface
     {
         return $this->user->exercises()
           ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate(10);
     }
 
@@ -50,7 +50,7 @@ class ExerciseRepository implements CrudInterface
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
         return Exercise::orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 
@@ -67,7 +67,7 @@ class ExerciseRepository implements CrudInterface
         return Exercise::where('question', 'like', '%' . $keyword . '%')
             ->orWhere('instruction', 'like', '%' . $keyword . '%') 
             ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 

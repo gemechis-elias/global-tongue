@@ -36,7 +36,7 @@ class TipsRepository implements CrudInterface
     {
         return $this->user->tips()
           ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate(10);
     }
 
@@ -50,7 +50,7 @@ class TipsRepository implements CrudInterface
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
         return Tips::orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 
@@ -67,7 +67,7 @@ class TipsRepository implements CrudInterface
         return Tips::where('question', 'like', '%' . $keyword . '%')
             ->orWhere('instruction', 'like', '%' . $keyword . '%') 
             ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 

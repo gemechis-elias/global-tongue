@@ -36,7 +36,7 @@ class ConversationRepository implements CrudInterface
     {
         return $this->user->conversation()
           ->orderBy('id', 'desc')
-            ->with('user')
+         //   ->with('user')
             ->paginate(10);
     }
 
@@ -50,7 +50,7 @@ class ConversationRepository implements CrudInterface
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
         return Conversation::orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 
@@ -67,7 +67,7 @@ class ConversationRepository implements CrudInterface
         return Conversation::where('question', 'like', '%' . $keyword . '%')
             ->orWhere('instruction', 'like', '%' . $keyword . '%') 
             ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 

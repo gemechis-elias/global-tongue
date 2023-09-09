@@ -36,7 +36,7 @@ class LevelRepository implements CrudInterface
     {
         return $this->user->levels()
             ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate(10);
     }
 
@@ -50,7 +50,7 @@ class LevelRepository implements CrudInterface
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
         return Level::orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 
@@ -67,7 +67,7 @@ class LevelRepository implements CrudInterface
         return Level::where('name', 'like', '%' . $keyword . '%')
             ->orWhere('description', 'like', '%' . $keyword . '%')
             ->orderBy('id', 'desc')
-            ->with('user')
+            // ->with('user')
             ->paginate($perPage);
     }
 
