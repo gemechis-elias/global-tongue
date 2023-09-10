@@ -78,7 +78,7 @@ class UnitRepository implements CrudInterface
      */
     public function create(array $data): Unit
     {
-        $titleShort      = Str::slug(substr($data['title'], 0, 20));
+       // $titleShort      = Str::slug(substr($data['title'], 0, 20));
         $data['user_id'] = $this->user->id;
 
     
