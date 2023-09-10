@@ -16,7 +16,7 @@ class CourseRequest extends FormRequest
             'description' => 'nullable|max:5000',
          
             'level'       => 'required|max:255',
-            'is_premium'=> 'required|max:255',
+            'type'=> 'required|max:255',
         ];
     }
 
