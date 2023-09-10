@@ -83,7 +83,7 @@ class LessonController extends Controller
      *     tags={"All Content of Lesson"},
      *     summary="Show Lesson Details",
      *     description="Show Lesson Details",
-     *     operationId="showLesson",
+     *     operationId="getContent",
      *     security={{"bearer":{}}},
      *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Show Lesson Details"),
