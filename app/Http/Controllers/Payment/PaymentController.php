@@ -158,7 +158,7 @@ class PaymentController extends Controller
      * 
      *          ),
      *      ),
-     *     operationId="update",
+     *     operationId="updatePayment",
      *     security={{"bearer":{}}},
      *     @OA\Response(response=200, description="Update Payment"),
      *     @OA\Response(response=400, description="Bad request"),
