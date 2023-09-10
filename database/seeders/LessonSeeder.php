@@ -35,7 +35,7 @@ class LessonSeeder extends Seeder
 
                 'lesson_title' => 'Let\'s Meet Carlos and Ana!',
                 'lesson_type' => 'dialogue',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
 
             ],
             [
@@ -47,7 +47,7 @@ class LessonSeeder extends Seeder
 
                 'lesson_title' => 'Basic greetings and introductions',
                 'lesson_type' => 'image',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
             ],
             [
               
@@ -58,7 +58,8 @@ class LessonSeeder extends Seeder
 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
+
             ],
             [
               
@@ -69,7 +70,8 @@ class LessonSeeder extends Seeder
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
+
             ],
             [
               
@@ -80,7 +82,7 @@ class LessonSeeder extends Seeder
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
             ],
             [
               
@@ -91,7 +93,8 @@ class LessonSeeder extends Seeder
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
+
             ],
             [
               
@@ -102,7 +105,7 @@ class LessonSeeder extends Seeder
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
             ],
             [
               
@@ -112,8 +115,8 @@ class LessonSeeder extends Seeder
                 'user_id' => 1,
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
-                'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'lesson_type' => 'dialog',
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
             ],
             [
               
@@ -124,7 +127,7 @@ class LessonSeeder extends Seeder
                 
                 'lesson_title' => 'Essential Pronunciation: -ch, -h, -ll, -ñ',
                 'lesson_type' => 'voice',
-                'lesson_cover' => null,
+                'image' => "https://api.globaltongueedu.com/v1/public/images/lessons/image_1.jpg",
             ]
             ];
             Lesson::insert($data);

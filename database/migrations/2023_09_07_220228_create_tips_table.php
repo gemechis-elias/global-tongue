@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->longText('description');
-            $table->string('cover_image')->nullable();
+            $table->string('image')->nullable();
             $table->string('language_1')->nullable();
             $table->string('language_2')->nullable();
             $table->string('sentence_1')->nullable();

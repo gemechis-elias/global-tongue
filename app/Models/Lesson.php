@@ -18,7 +18,7 @@ class Lesson extends Model
 
         'lesson_title',
         'lesson_type',
-        'lesson_cover',
+        'image',
     ];
 
     public function unit()

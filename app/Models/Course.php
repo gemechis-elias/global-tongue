@@ -14,7 +14,7 @@ class Course extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'level', 'type'];
+    protected $fillable = ['name', 'description', 'level', 'type', 'image'];
        /**
      * User
      *

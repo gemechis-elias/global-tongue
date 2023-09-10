@@ -170,7 +170,7 @@ class LessonController extends Controller
  *             @OA\Property(property="unit_id", type="integer", example=1),
  *             @OA\Property(property="lesson_title", type="string", example="Essential Pronunciation: -ch, -h, -ll, -ñ"),
  *             @OA\Property(property="lesson_type", type="string", example="voice"),
- *             @OA\Property(property="lesson_cover", type="string", example="lesson_image.jpg"),
+ *             @OA\Property(property="image", type="string", example="lesson_image.jpg"),
  *         ),
  *     ),
  *     security={{"bearer":{}}},

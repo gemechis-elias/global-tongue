@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('level')->nullable();
             $table->string('type')->nullable();
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
 
             $table->foreign('user_id')->references('id')->on('users'); 

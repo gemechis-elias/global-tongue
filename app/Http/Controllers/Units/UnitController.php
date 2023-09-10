@@ -89,7 +89,7 @@ class UnitController extends Controller
      *             @OA\Property(property="unit_name", type="string", example="Unit 5"),
      *             @OA\Property(property="unit_title", type="string", example="Let's Talk About You"),
      *             @OA\Property(property="unit_description", type="string", example="Explore subject pronouns, professions "),
-     *             @OA\Property(property="unit_image", type="string", example="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gsoschool.com%2Fen%2Fthe-importance-of-learning-english%2F&psig=AOvVaw2MD-qQVFugibI_Wd0Ggrxi&ust=1694452866329000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJDLy_zGoIEDFQAAAAAdAAAAABAE"),
+     *             @OA\Property(property="image", type="string", example=""),
      *             @OA\Property(property="no_of_lessons", type="string", example="5"),
      *          ),
      *      ),

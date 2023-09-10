@@ -25,6 +25,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
                 'level' => 'Beginner',
                 'type' => "free",
+                'image' => "https://api.globaltongueedu.com/v1/public/images/courses/image_1.jpg",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -34,6 +35,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
                 'level' => 'Intermediate',
                 'type' => "free",
+                'image' => "https://api.globaltongueedu.com/v1/public/images/courses/image_1.jpg",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -43,6 +45,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
                 'level' => 'Advanced',
                 'type' => "free",
+                'image' => "https://api.globaltongueedu.com/v1/public/images/courses/image_1.jpg",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

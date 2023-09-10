@@ -21,7 +21,7 @@ class Tips extends Model
 
         'title',
         'description',
-        'cover_image',
+        'image',
         'language_1',
         'language_2',
         'sentence_1',

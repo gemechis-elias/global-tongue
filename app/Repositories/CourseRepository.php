@@ -77,8 +77,13 @@ class CourseRepository implements CrudInterface
      */
     public function create(array $data): Course
     {
-       
+        
+        $titleShort      = Str::slug(substr($data['name'], 0, 20));
         $data['user_id'] = $this->user->id;
+
+        if (!empty($data['image'])) {
+            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/courses');
+        }
         return Course::create($data);
     }
 
@@ -142,8 +147,8 @@ class CourseRepository implements CrudInterface
     {
         $course = Course::find($id);
         if (!empty($data['image'])) {
-           // $titleShort = Str::slug(substr($data['title'], 0, 20));
-           //$data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/products', $product->image);
+           $titleShort = Str::slug(substr($data['name'], 0, 20));
+           $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/courses', $course->image);
         } else {
            
         }

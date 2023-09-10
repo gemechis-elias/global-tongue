@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('unit_name');
             $table->longText('unit_title');
             $table->longText('unit_description');
-            $table->string('unit_image')->nullable();
+            $table->string('image')->nullable();
             $table->integer('no_of_lessons');
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
  
