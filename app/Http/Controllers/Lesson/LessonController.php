@@ -94,7 +94,7 @@ class LessonController extends Controller
     public function getContent($id): JsonResponse
     {
         try {
-            $lesson = $this->lessonRepository->getAllContent($id);
+            $lesson = $this->lessonRepository->getAllContent(intval($id));
             
             if (is_null($lesson)) {
                 return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
