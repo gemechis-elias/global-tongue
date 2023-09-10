@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 
 
 
-class PaymentsController extends Controller
+class PaymentController extends Controller
 {
     use ResponseTrait;
        /**
@@ -35,7 +35,7 @@ class PaymentsController extends Controller
      *     tags={"Payments"},
      *     summary="Get Payment List",
      *     description="Get Payment List as Array",
-     *     operationId="index",
+     *     operationId="Paymentsindex",
      *     security={{"bearer":{}}},
      *     @OA\Response(response=200,description="Get Payment List as Array"),
      *     @OA\Response(response=400, description="Bad request"),
@@ -60,7 +60,7 @@ class PaymentsController extends Controller
      *     tags={"Payments"},
      *     summary="All Payments - Publicly Accessible",
      *     description="Search All Payments - Publicly Accessible",
-     *     operationId="search",
+     *     operationId="Paymentssearch",
      *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
      *     @OA\Parameter(name="search", description="search, eg; Test", example="Test", in="query", @OA\Schema(type="string")),
      *     @OA\Response(response=200, description="All Payments - Publicly Accessible" ),
@@ -84,7 +84,7 @@ class PaymentsController extends Controller
      *     tags={"Payments"},
      *     summary="Create New Payment",
      *     description="Create New Payment",
-     *     operationId="store",
+     *     operationId="Paymentsstore",
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
@@ -118,7 +118,7 @@ class PaymentsController extends Controller
      *     tags={"Payments"},
      *     summary="Show Payment Details",
      *     description="Show Payment Details",
-     *     operationId="show",
+     *     operationId="Paymentsshow",
      *     security={{"bearer":{}}},
      *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Show Payment Details"),
@@ -183,7 +183,7 @@ class PaymentsController extends Controller
      *     path="/v1/public/api/payments/{id}",
      *     tags={"Payments"},
      *     summary="Delete Payment",
-     *     description="Delete Payment",
+     *     description="DeletePayment",
      *     operationId="destroy",
      *     security={{"bearer":{}}},
      *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
