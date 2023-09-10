@@ -37,8 +37,8 @@ class CourseRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required'  => 'Please give course title',
-            'name.max'       => 'Please give course title maximum of 255 characters',
+            'name.required'  => 'Please give course name',
+            'name.max'       => 'Please give course name maximum of 255 characters',
             'description.max' => 'Please give course description maximum of 5000 characters',
             'level.required'  => 'Please give course level',
             'level.max'       => 'Please give course level maximum of 255 characters',
