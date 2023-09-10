@@ -96,7 +96,7 @@ class LessonController extends Controller
      * )
      */
 
-    public function getLessonByUnitID($course_id, $unit_id, $level_id): JsonResponse
+    public function getLessonsByUnitID($course_id, $unit_id, $level_id): JsonResponse
         {
             try {
                 $lessons = $this->lessonRepository->getLessonsByUnitID($course_id, $unit_id, $level_id);

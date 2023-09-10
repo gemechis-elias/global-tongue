@@ -82,7 +82,7 @@ class TipsController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/tips/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/tips/by/{course_id}/{level_id}/{unit_id}/{lesson_id}",
          *     tags={"Tips"},
          *     summary="Get Tips by Parents",
          *     description="Get list of tips associated with a specific Parents",
@@ -100,7 +100,7 @@ class TipsController extends Controller
          */
 
     
-        public function getTipsByLessonID($course_id,$level_id, $unit_id, $lesson_id): JsonResponse
+        public function getTipsByLessonID($course_id, $level_id, $unit_id, $lesson_id): JsonResponse
             {
                 try {
                     $tips = $this->tipRepository->getTipsByLessonID($course_id,$level_id, $unit_id, $lesson_id);

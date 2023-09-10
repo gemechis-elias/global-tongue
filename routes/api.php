@@ -102,7 +102,7 @@ Route::group([
      Route::get('tips/view/all', [TipsController::class, 'indexAll']);
      Route::post('tips/create', [TipsController::class, 'store']) ;
      Route::get('tips/view/search', [TipsController::class, 'search']);
-     Route::get('tips/by/{course_id}/{{level_id}/{unit_id}/{lesson_id}', [TipsController::class,'getTipsByLessonID']);
+     Route::get('tips/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [TipsController::class,'getTipsByLessonID']);
  
     /**
      * Conversation Module
