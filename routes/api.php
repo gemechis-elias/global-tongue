@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthController; 
 use App\Http\Controllers\Units\UnitController;
 use App\Http\Controllers\Courses\CoursesController;
-use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\Payment\PaymentsController;
 
 use App\Http\Controllers\Levels\LevelsController;
 use Illuminate\Http\Request;
@@ -64,10 +64,10 @@ Route::group([
   /**
      * Payment Module
      */
-    Route::resource('payments', PaymentController::class);
-    Route::get('payments/view/all', [PaymentController::class, 'indexAll']);
-    Route::get('payments/view/search', [PaymentController::class, 'search']);
-    Route::get('payments/{id}', [PaymentController::class,'show']);
+    Route::resource('payments', PaymentsController::class);
+    Route::get('payments/view/all', [PaymentsController::class, 'indexAll']);
+    Route::get('payments/view/search', [PaymentsController::class, 'search']);
+    Route::get('payments/{id}', [PaymentsController::class,'show']);
 
     /**
      * Levels Module
