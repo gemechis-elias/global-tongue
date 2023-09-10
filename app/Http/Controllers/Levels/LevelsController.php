@@ -52,29 +52,8 @@ class LevelsController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-     *     path="/v1/public/api/levels/view/all",
-     *     tags={"Levels"},
-     *     summary="All Levels - Publicly Accessible",
-     *     description="All Levels - Publicly Accessible",
-     *     operationId="indexAllLevel",
-     *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="All Levels - Publicly Accessible" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function indexAll(Request $request): JsonResponse
-    {
-        try {
-            $data = $this->levelRepository->getPaginatedData($request->perPage);
-            return $this->responseSuccess($data, 'Level List Fetched Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
 
+ 
     /**
      * @OA\Get(
      *     path="/v1/public/api/levels/by/{course_id}",

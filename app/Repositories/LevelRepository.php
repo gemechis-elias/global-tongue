@@ -78,13 +78,11 @@ class LevelRepository implements CrudInterface
      */
     public function create(array $data): Level
     {
-        $titleShort      = Str::slug(substr($data['title'], 0, 20));
+       // $titleShort      = Str::slug(substr($data['title'], 0, 20));
         $data['user_id'] = $this->user->id;
 
-    
-
         return Level::create($data);
-    }
+    } 
 
     public function getLevelsByCourseID($course_id)
     {
@@ -116,7 +114,7 @@ class LevelRepository implements CrudInterface
      */
     public function getByID(int $id): Level|null
     {
-        return Level::with('user')->find($id);
+        return Level::find($id);
     }
 
     /**
@@ -129,13 +127,6 @@ class LevelRepository implements CrudInterface
     public function update(int $id, array $data): Level|null
     {
         $level = Level::find($id);
-        if (!empty($data['image'])) {
-            $titleShort = Str::slug(substr($data['title'], 0, 20));
-           //$data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/products', $product->image);
-        } else {
-           
-        }
-
         if (is_null($level)) {
             return null;
         }
