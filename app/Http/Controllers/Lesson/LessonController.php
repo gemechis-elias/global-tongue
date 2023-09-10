@@ -85,16 +85,16 @@ class LessonController extends Controller
      *     description="Show Lesson Details",
      *     operationId="getContent",
      *     security={{"bearer":{}}},
-     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="lesson_id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Show Lesson Details"),
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function getContent($id): JsonResponse
+    public function getContent($lesson_id): JsonResponse
     {
         try {
-            $lesson = $this->lessonRepository->getAllContent(intval($id));
+            $lesson = $this->lessonRepository->getAllContent(intval($lesson_id));
             
             if (is_null($lesson)) {
                 return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
