@@ -78,39 +78,6 @@ class PaymentController extends Controller
         }
     }
 
-    /**
-     * @OA\Post(
-     *     path="/v1/public/api/payments",
-     *     tags={"Payments"},
-     *     summary="Create New Payment",
-     *     description="Create New Payment",
-     *     operationId="Paymentsstore",
-     *     @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              type="object",
-     *             @OA\Property(property="name", type="string", example="English for Beginner"),
-     *             @OA\Property(property="description", type="string", example="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."),
-     *             @OA\Property(property="level", type="string", example="Beginner"),
-     *             @OA\Property(property="type", type="string", example="free"),
-     *             @OA\Property(property="image", type="string", example=""),
-     * 
-     *          ),
-     *      ),
-     *      security={{"bearer":{}}},
-     *      @OA\Response(response=200, description="Create New Payment" ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function store(PaymentRequest $request): JsonResponse
-    {
-        try {
-            $product = $this->paymentRepository->create($request->all());
-            return $this->responseSuccess($product, 'New Payment Created Successfully !');
-        } catch (\Exception $exception) {
-            return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
 
     /**
      * @OA\Get(
@@ -140,74 +107,5 @@ class PaymentController extends Controller
         }
     }
 
-    /**
-     * @OA\Put(
-     *     path="/v1/public/api/payments/{id}",
-     *     tags={"Payments"},
-     *     summary="Update Payment",
-     *     description="Update Payment",
-     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
-     *     @OA\RequestBody(
-     *          @OA\JsonContent(
-     *              type="object",
-     *             @OA\Property(property="name", type="string", example="English for Beginner"),
-     *             @OA\Property(property="description", type="string", example="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."),
-     *             @OA\Property(property="level", type="string", example="Beginner"),
-     *             @OA\Property(property="type", type="string", example="free"),
-     *             @OA\Property(property="image", type="string", example=""),
-     * 
-     *          ),
-     *      ),
-     *     operationId="updatePayment",
-     *     security={{"bearer":{}}},
-     *     @OA\Response(response=200, description="Update Payment"),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function update(PaymentRequest $request, $id): JsonResponse
-    {
-        try {
-            $data = $this->paymentRepository->update($id, $request->all());
-            if (is_null($data))
-                return $this->responseError(null, 'Payment Not Found', Response::HTTP_NOT_FOUND);
 
-            return $this->responseSuccess($data, 'Payment Updated Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    /**
-     * @OA\Delete(
-     *     path="/v1/public/api/payments/{id}",
-     *     tags={"Payments"},
-     *     summary="Delete Payment",
-     *     description="DeletePayment",
-     *     operationId="destroy",
-     *     security={{"bearer":{}}},
-     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Delete Payment"),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function destroy($id): JsonResponse
-    {
-        try {
-            $product =  $this->paymentRepository->getByID($id);
-            if (empty($product)) {
-                return $this->responseError(null, 'Payment Not Found', Response::HTTP_NOT_FOUND);
-            }
-
-            $deleted = $this->paymentRepository->delete($id);
-            if (!$deleted) {
-                return $this->responseError(null, 'Failed to delete the product.', Response::HTTP_INTERNAL_SERVER_ERROR);
-            }
-
-            return $this->responseSuccess($product, 'Payment Deleted Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
 }
