@@ -57,6 +57,8 @@ Route::group([
     Route::resource('courses', CoursesController::class);
     Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
+    Route::get('courses/{id}', [CoursesController::class,'show']);
+
 
     /**
      * Levels Module

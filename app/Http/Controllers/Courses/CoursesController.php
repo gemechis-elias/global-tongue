@@ -91,7 +91,7 @@ class CoursesController extends Controller
      *             @OA\Property(property="name", type="string", example="English for Beginner"),
      *             @OA\Property(property="description", type="string", example="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."),
      *             @OA\Property(property="level", type="string", example="Beginner"),
-     *            @OA\Property(property="type", type="string", example="free"),
+     *             @OA\Property(property="type", type="string", example="free"),
      *          ),
      *      ),
      *      security={{"bearer":{}}},
