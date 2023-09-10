@@ -34,4 +34,19 @@ class Lesson extends Model
     {
         return $this->belongsTo(User::class)->select('id', 'name', 'email');
     }
+
+    public function exercises()
+    {
+        return $this->hasMany(Exercise::class)->orderBy('id', 'desc');
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class)->orderBy('id', 'desc');
+    }
+
+    public function tips()
+    {
+        return $this->hasMany(Tips::class)->orderBy('id', 'desc');
+    }
 }

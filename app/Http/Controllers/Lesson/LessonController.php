@@ -77,7 +77,48 @@ class LessonController extends Controller
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-
+        /**
+     * @OA\Get(
+     *     path="/v1/public/api/lessons/getContent/{lesson_id}",
+     *     tags={"All Content of Lesson"},
+     *     summary="Show Lesson Details",
+     *     description="Show Lesson Details",
+     *     operationId="showLesson",
+     *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Show Lesson Details"),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function getContent($id): JsonResponse
+    {
+        try {
+            $lesson = $this->lessonRepository->getAllContent($id);
+            
+            if (is_null($lesson)) {
+                return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
+            }
+    
+            // Access related exercises, conversations, and tips
+            $exercises = $lesson->exercises;
+            $conversations = $lesson->conversations;
+            $tips = $lesson->tips;
+    
+            // You can return these data as needed
+            $data = [
+                'lesson' => $lesson,
+                'exercises' => $exercises,
+                'conversations' => $conversations,
+                'tips' => $tips,
+            ];
+    
+            return $this->responseSuccess($data, 'Lesson Contents Fetch Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     /**
      * @OA\Get(
      *     path="/v1/public/api/lessons/by/{course_id}/{level_id}/{unit_id}",

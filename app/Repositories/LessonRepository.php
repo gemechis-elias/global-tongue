@@ -114,7 +114,11 @@ class LessonRepository implements CrudInterface
     {
         return Lesson::with('user')->find($id);
     }
-
+    public function getAllContent(int $id): ?Lesson
+    {
+        return Lesson::with('exercises', 'conversations', 'tips')->find($id);
+    }
+    
     /**
      * Update Lesson By ID.
      *
