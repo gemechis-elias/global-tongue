@@ -37,16 +37,16 @@ class Lesson extends Model
 
     public function exercises()
     {
-        return $this->hasMany(Exercise::class)->orderBy('id', 'desc');
+        return $this->hasMany(Exercise::class)->select('id', 'exercise_type', 'instruction', 'question', 'image', 'voice', 'choices', 'incorrect_hint', 'correct_answer', 'image_url');
     }
 
     public function conversations()
     {
-        return $this->hasMany(Conversation::class)->orderBy('id', 'desc');
+        return $this->hasMany(Conversation::class);
     }
 
     public function tips()
     {
-        return $this->hasMany(Tips::class)->orderBy('id', 'desc');
+        return $this->hasMany(Tips::class);
     }
 }
