@@ -11,14 +11,16 @@ class LevelRequest extends FormRequest
      */
     public function rules(): array
     {
+       
+
         return [
             'name'       => 'required|max:255',
             'description' => 'nullable|max:5000',
             'tag'       => 'nullable|max:5000',
             'level'       => 'required|max:255',
-            'is_premium'=> 'required|max:255',
+            'type'=> 'required|max:255',
         ];
-    }
+    } 
 
     /**
      * Determine if the user is authorized to make this request.
