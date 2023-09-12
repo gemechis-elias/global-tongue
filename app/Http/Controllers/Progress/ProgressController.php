@@ -69,7 +69,7 @@ class ProgressController extends Controller
      * )
      */
 
-     public function progressResponse($user_id): JsonResponse
+     public function show($user_id): JsonResponse
      {
          try {
                 $userProgress = $this->progressRepository->getByID(intval($user_id));
