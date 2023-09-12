@@ -41,6 +41,7 @@ class TipsSeeder extends Seeder
                 'updated_at' => Carbon::now()
                 
             ],
+            
         ];
         Tips::insert($data);
     }

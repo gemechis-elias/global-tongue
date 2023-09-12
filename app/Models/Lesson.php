@@ -15,7 +15,6 @@ class Lesson extends Model
         'course_id',
         'level_id',
         'unit_id',
-
         'lesson_title',
         'lesson_type',
         'image',

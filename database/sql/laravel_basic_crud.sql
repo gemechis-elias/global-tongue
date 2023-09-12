@@ -57,7 +57,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2023_08_30_214119_create_lessons_table', 1),
 (7, '2023_08_31_231946_create_exercises_table', 1),
 (8, '2023_09_06_215103_create_level_table', 1),
-(9, '2023_09_07_220228_create_tips_table', 1);
+(9, '2023_09_07_220228_create_tips_table', 1),
+(10, '2023_09_12_230403_create_progress_table', 1);
 
 -- --------------------------------------------------------
 

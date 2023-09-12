@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TipsSeeder::class);
         $this->call(ConversationSeeder::class);
         $this->call(PaymentSeeder::class);
+        $this->call(ProgressSeeder::class);
+
 
 
 

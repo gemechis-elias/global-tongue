@@ -456,6 +456,10 @@
                                     "type": {
                                         "type": "string",
                                         "example": "free"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -596,6 +600,10 @@
                                     "type": {
                                         "type": "string",
                                         "example": "free"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -970,6 +978,43 @@
                 ]
             }
         },
+        "/v1/public/api/lessons/getContent/{lesson_id}": {
+            "get": {
+                "tags": [
+                    "All Content of Lesson"
+                ],
+                "summary": "Show Lesson Details",
+                "description": "Show Lesson Details",
+                "operationId": "getContent",
+                "parameters": [
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Lesson Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/v1/public/api/lessons/by/{course_id}/{level_id}/{unit_id}": {
             "get": {
                 "tags": [
@@ -1062,7 +1107,7 @@
                                         "type": "string",
                                         "example": "voice"
                                     },
-                                    "lesson_cover": {
+                                    "image": {
                                         "type": "string",
                                         "example": "lesson_image.jpg"
                                     }
@@ -1173,38 +1218,6 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/levels/view/all": {
-            "get": {
-                "tags": [
-                    "Levels"
-                ],
-                "summary": "All Levels - Publicly Accessible",
-                "description": "All Levels - Publicly Accessible",
-                "operationId": "indexAllLevel",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Levels - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
             }
         },
         "/v1/public/api/levels/by/{course_id}": {
@@ -1385,6 +1398,147 @@
                 ]
             }
         },
+        "/v1/public/api/payments": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Get Payment List",
+                "description": "Get Payment List as Array",
+                "operationId": "Paymentsindex",
+                "responses": {
+                    "200": {
+                        "description": "Get Payment List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/payments/view/search": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "All Payments - Publicly Accessible",
+                "description": "Search All Payments - Publicly Accessible",
+                "operationId": "Paymentssearch",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "perPage, eg; 20",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "search, eg; Test",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Test"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Payments - Publicly Accessible"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/v1/public/api/payments/{id}": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Show Payment Details",
+                "description": "Show Payment Details",
+                "operationId": "Paymentsshow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Payment Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/progress/{user_id}": {
+            "get": {
+                "tags": [
+                    "Progress"
+                ],
+                "summary": "Show Progress Details",
+                "description": "Show Progress Details",
+                "operationId": "Progressshow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Progress Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/v1/public/api/tips": {
             "get": {
                 "tags": [
@@ -1483,7 +1637,7 @@
                 ]
             }
         },
-        "/v1/public/api/tips/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}": {
+        "/v1/public/api/tips/by/{course_id}/{level_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
                     "Tips"
@@ -1684,6 +1838,71 @@
                 "responses": {
                     "200": {
                         "description": "Show Unit Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/Units": {
+            "post": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Create New Unit",
+                "description": "Create New Unit",
+                "operationId": "storeUnit",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "unit_name": {
+                                        "type": "string",
+                                        "example": "Unit 5"
+                                    },
+                                    "unit_title": {
+                                        "type": "string",
+                                        "example": "Let's Talk About You"
+                                    },
+                                    "unit_description": {
+                                        "type": "string",
+                                        "example": "Explore subject pronouns, professions "
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "no_of_lessons": {
+                                        "type": "string",
+                                        "example": "5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Unit"
                     },
                     "400": {
                         "description": "Bad request"

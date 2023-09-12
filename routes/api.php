@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\AdminController; 
 use App\Http\Controllers\Lesson\LessonController;
+use App\Http\Controllers\Progress\ProgressController;
+
 use App\Http\Controllers\Exercise\ExerciseController;
 use App\Http\Controllers\Tips\TipsController;
 use App\Http\Controllers\Conversation\ConversationController;
@@ -74,8 +76,13 @@ Route::group([
      */
     Route::resource('levels',LevelsController::class);
     Route::get('levels/by/{course_id}', [LevelsController::class,'getLevelsByCourseID']);
+    /**
+     * Progress Module
+     */
+    Route::resource('progress',ProgressController::class);
+    Route::get('progress/{user_id}', [ProgressController::class,'getProgress']);
 
-
+    
     /**
      * Units Module
      */
