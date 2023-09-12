@@ -17,7 +17,7 @@ class PaymentController extends Controller
 {
     use ResponseTrait;
        /**
-     * Exercise Repository class.
+     * Payment Repository class.
      *
      * @var PaymentRepository
      */

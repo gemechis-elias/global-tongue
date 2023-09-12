@@ -18,6 +18,42 @@ class ProgressController extends Controller
 {
     use ResponseTrait;
    
+           /**
+     * Progress Repository class.
+     *
+     * @var ProgressRepository
+     */
+    public  $progressRepository;
+
+    public function __construct(ProgressRepository $progressRepository)
+    {
+        $this->middleware('auth:api', ['except' => ['indexAll']]);
+        $this->progressRepository = $progressRepository;
+    }
+     /**
+     * @OA\Get(
+     *     path="/v1/public/api/progress",
+     *     tags={"Progress"},
+     *     summary="Get Progress List",
+     *     description="Get Progress List as Array",
+     *     operationId="Progresssindex",
+     *     security={{"bearer":{}}},
+     *     @OA\Response(response=200,description="Get Progress List as Array"),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function index(): JsonResponse
+    {
+        try {
+            $data = $this->progressRepository->getAll();
+            return $this->responseSuccess($data, 'Progress List Fetch Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
         /**
      * @OA\Get(
      *     path="/v1/public/api/progress/{user_id}",
@@ -32,45 +68,21 @@ class ProgressController extends Controller
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function getProgress($userId): JsonResponse
-    {
-        try {
-        // Retrieve the user's progress from the database
-        $userProgress = Progress::where('user_id', $userId)->get();
 
-        // Retrieve the user's enrolled courses (parse JSON from my_courses)
-        $user = User::find($userId);
-        $enrolledCourses = json_decode($user->my_courses);
+     public function show($id): JsonResponse
+     {
+         try {
+             $data = $this->progressRepository->getByID($id);
+             if (is_null($data)) {
+                 return $this->responseError(null, 'Progress Not Found', Response::HTTP_NOT_FOUND);
+             }
+ 
+             return $this->responseSuccess($data, 'Progress Details Fetch Successfully !');
+         } catch (\Exception $e) {
+             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+         }
+     }
 
-        // Retrieve all lessons associated with enrolled courses
-        $allLessons = Lesson::whereIn('course_id', $enrolledCourses)->get();
-
-        // Filter completed lessons based on user's progress
-        $completedLessons = $userProgress->filter(function ($progress) {
-            return $progress->completed;
-        });
-
-        // Implement logic for pending payments
-
-        // Construct the response data
-        $progressData = [
-            'all_lessons' => $allLessons,
-            'completed_lessons' => $completedLessons,
-            'enrolled_courses' => $enrolledCourses,
-            'pending_payment' => ""
-        ];
-
-        
-        if (is_null(response()->json($progressData))) {
-            return $this->responseError(null, 'Progress Not Found', Response::HTTP_NOT_FOUND);
-        }
-
-        return $this->responseSuccess(response()->json($progressData), 'Progress Details Fetch Successfully !');
-    }
-    catch (\Exception $e) {
-        return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-    }
-}
 
 }
 
