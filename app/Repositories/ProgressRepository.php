@@ -115,35 +115,9 @@ class ProgressRepository implements CrudInterface
     public function getByID(int $userId): Progress|null
     {
         // Retrieve the user's progress from the database
-        $userProgress = Progress::where('user_id', $userId)->get();
+        return Progress::where('user_id', $userId)->get();
 
-        // Retrieve the user's enrolled courses (parse JSON from my_courses)
-        $user = User::find($userId);
-        $enrolledCourses = json_decode($user->my_courses);
-
-        // Retrieve all lessons associated with enrolled courses
-        $allLessons = Lesson::whereIn('course_id', $enrolledCourses)->get();
-
-        // Filter completed lessons based on user's progress
-        $completedLessons = $userProgress->filter(function ($progress) {
-            return $progress->completed;
-        });
-
-        // Implement logic for pending payments
-
-        // Construct the response data
-        $progressData = [
-            'all_lessons' => $allLessons,
-            'completed_lessons' => $completedLessons,
-            'enrolled_courses' => $enrolledCourses,
-            'pending_payment' => "",
-        ];
-
-        if(response()->json($progressData) != null){
-           return response()->json($progressData);
-        }
-
-        return null;
+        
     }
     
 

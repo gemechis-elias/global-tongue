@@ -69,14 +69,35 @@ class ProgressController extends Controller
      * )
      */
 
-     public function show($user_id): JsonResponse
+     public function progressResponse($user_id): JsonResponse
      {
          try {
-             $data = $this->progressRepository->getByID(intval($user_id));
-             if (is_null($data)) {
-                 return $this->responseError(null, 'Progress Not Found', Response::HTTP_NOT_FOUND);
-             }
- 
+                $userProgress = $this->progressRepository->getByID(intval($user_id));
+                if (is_null($userProgress)) {
+                    return $this->responseError(null, 'Progress Not Found', Response::HTTP_NOT_FOUND);
+                }
+                // Retrieve the user's enrolled courses (parse JSON from my_courses)
+                $user = User::find($user_id);
+                $enrolledCourses = json_decode($user->my_courses);
+
+                // Retrieve all lessons associated with enrolled courses
+                $allLessons = Lesson::whereIn('course_id', $enrolledCourses)->get();
+
+                // Filter completed lessons based on user's progress
+                $completedLessons = $userProgress->filter(function ($progress) {
+                    return $progress->completed;
+                });
+
+                // Implement logic for pending payments
+
+                // Construct the response data
+                $data = [
+                    'all_lessons' => $allLessons,
+                    'completed_lessons' => $completedLessons,
+                    'enrolled_courses' => $enrolledCourses,
+                    //'pending_payment' => "",
+                ]; 
+
              return $this->responseSuccess($data, 'Progress Details Fetch Successfully !');
          } catch (\Exception $e) {
              return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);

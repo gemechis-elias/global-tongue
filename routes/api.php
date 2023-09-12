@@ -80,7 +80,7 @@ Route::group([
      * Progress Module
      */
     Route::resource('progress',ProgressController::class);
-    Route::get('progress/{user_id}', [ProgressController::class,'show']);
+    Route::get('progress/{user_id}', [ProgressController::class,'progressResponse']);
 
     
     /**
