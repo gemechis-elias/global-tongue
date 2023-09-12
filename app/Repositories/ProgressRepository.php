@@ -96,13 +96,13 @@ class ProgressRepository implements CrudInterface
      */
     public function delete(int $id): bool
     {
-        $course = Progress::find($id);
-        if (empty($course)) {
+        $progress = Progress::find($id);
+        if (empty($progress)) {
             return false;
         }
 
-      //  UploadHelper::deleteFile('images/course/' . $course->image);
-        $course->delete($course);
+      //  UploadHelper::deleteFile('images/progress/' . $progress->image);
+        $progress->delete($progress);
         return true;
     }
 

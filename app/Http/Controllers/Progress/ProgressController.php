@@ -58,21 +58,21 @@ class ProgressController extends Controller
      * @OA\Get(
      *     path="/v1/public/api/progress/{user_id}",
      *     tags={"Progress"},
-     *     summary="Show Progress Details",
+     *     summary="Show Progress Details of User",
      *     description="Show Progress Details",
      *     operationId="Progressshow",
      *     security={{"bearer":{}}},
-     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="user_id", description="user_id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Show Progress Details"),
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
 
-     public function show($id): JsonResponse
+     public function show($user_id): JsonResponse
      {
          try {
-             $data = $this->progressRepository->getByID($id);
+             $data = $this->progressRepository->getByID(intval($user_id));
              if (is_null($data)) {
                  return $this->responseError(null, 'Progress Not Found', Response::HTTP_NOT_FOUND);
              }
