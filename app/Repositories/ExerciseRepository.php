@@ -115,11 +115,11 @@ class ExerciseRepository implements CrudInterface
      */
     public function getByID(int $id): Exercise|null
     {
-        $exercises = Exercise::with('user')->find($id);
+        $exercises = Exercise::find($id);
 
         
         if ($exercises) {
-            $user = $exercises->user;
+            $user = $exercises->user_id;
     
             // Check if $user exists and has 'completed_exercises' property
             if ($user && isset($user->completed_exercises)) {
