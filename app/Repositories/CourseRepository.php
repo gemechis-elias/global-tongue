@@ -113,6 +113,7 @@ class CourseRepository implements CrudInterface
      */
     public function getByID(int $id): Course|null
     {
+        print("Fetching Courses");
         $course = Course::find($id);
     
         if ($course) {
@@ -120,6 +121,8 @@ class CourseRepository implements CrudInterface
     
             // Check if $user exists and has 'my_courses' property
             if ($user && isset($user->my_courses)) {
+                print("adding to user $id");
+
                 // Update the user's my_courses attribute by adding the current course ID
                 $myCourses = json_decode($user->my_courses, true) ?? [];
                 if (!in_array($id, $myCourses)) {
@@ -127,6 +130,7 @@ class CourseRepository implements CrudInterface
                     $user->my_courses = json_encode($myCourses);
                     $user->save();
                 }
+                
             }
     
             return $course;
