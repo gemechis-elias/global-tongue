@@ -23,7 +23,9 @@ return new class extends Migration
             $table->string('level');
             $table->json('my_courses')->nullable(); 
             $table->string('subscription_type');
-
+           
+            $table->json('completed_levels')->nullable();
+            $table->json('completed_units')->nullable();
             $table->json('completed_lessons')->nullable();
             $table->json('completed_exercises')->nullable();
             $table->json('completed_tips')->nullable(); 

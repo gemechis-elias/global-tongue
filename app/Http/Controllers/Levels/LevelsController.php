@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Levels;
 
 use App\Http\Controllers\Controller;
+use App\Models\Conversation;
+use App\Models\Exercise;
+use App\Models\Lesson;
+use App\Models\Tips;
+use App\Models\Unit;
+use App\Models\User;
 use App\Repositories\LevelRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\LevelRequest;
@@ -10,6 +16,7 @@ use OpenApi\Annotations as OA;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -22,11 +29,23 @@ class LevelsController extends Controller
      * @var LevelRepository
      */
     public  $levelRepository;
+    /**
+     * Authenticated User Instance.
+     *
+     * @var User
+     */
+    public User | null $user;
 
+    /**
+     * Constructor.
+     */
+ 
     public function __construct(LevelRepository $levelRepository)
     {
         $this->middleware('auth:api', ['except' => ['indexAll']]);
         $this->levelRepository = $levelRepository;
+        $this->user = Auth::guard()->user();
+
     }
 
     /**
@@ -136,16 +155,51 @@ class LevelsController extends Controller
     public function show($id): JsonResponse
     {
         try {
-            $data = $this->levelRepository->getByID($id);
-            if (is_null($data)) {
+            // Retrieve the current level
+            $level = $this->levelRepository->getByID($id);
+            if (is_null($level)) {
                 return $this->responseError(null, 'Level Not Found', Response::HTTP_NOT_FOUND);
             }
+    
+            // Retrieve the user's completed items
+            $user = $this->user;
+          //  $completedLevels = $user->completed_levels ?? [];
+            $completedUnits = $user->completed_units ?? [];
+            $completedLessons = $user->completed_lessons ?? [];
+            $completedExercises = $user->completed_exercises ?? [];
+            $completedTips = $user->completed_tips ?? [];
+            $completedConversations = $user->completed_conversation ?? [];
+    
+            // Count the total number of units, lessons, exercises, tips, and conversations
+            $totalUnits = Unit::where('level_id', $level->id)->count();
+            $totalLessons = Lesson::where('level_id', $level->id)->count();
+            $totalExercises = Exercise::where('level_id', $level->id)->count();
+            $totalTips = Tips::where('level_id', $level->id)->count();
+            $totalConversations = Conversation::where('level_id', $level->id)->count();
+    
+            // Calculate total coverage for each item type
+          // Calculate total coverage as a single percentage
+            $totalCoveragePercentage = (
+                (count($completedUnits) / $totalUnits) +
+                (count($completedLessons) / $totalLessons) +
+                (count($completedExercises) / $totalExercises) +
+                (count($completedTips) / $totalTips) +
+                (count($completedConversations) / $totalConversations)
+            ) / 5 * 100; // Divide by the number of item types and multiply by 100 to get the percentage
 
+    
+            // Construct the response data
+            $data = [
+                'level' => $level,
+                'total_coverage' => $totalCoveragePercentage,
+            ];
+    
             return $this->responseSuccess($data, 'Level Details Fetch Successfully !');
         } catch (\Exception $e) {
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+    
 
     /**
      * @OA\Put(
