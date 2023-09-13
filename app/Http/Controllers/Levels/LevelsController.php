@@ -189,11 +189,11 @@ class LevelsController extends Controller
     // Calculate total coverage for each item type as percentages
 $totalCoverage = [
     // 'completed_levels' => count($completedLevels) / $totalLevels * 100,
-    'completed_units' => count($completedUnits) / $totalUnits * 100,
-    'completed_lessons' => count($completedLessons) / $totalLessons * 100,
-    'completed_exercises' => count($completedExercises) / $totalExercises * 100,
-    'completed_tips' => count($completedTips) / $totalTips * 100,
-    'completed_conversation' => count($completedConversations) / $totalConversations * 100,
+    'completed_units' => count($completedUnits) +"/"+ $totalUnits,
+    'completed_lessons' => count($completedLessons)  +"/"+ $totalLessons ,
+    'completed_exercises' => count($completedExercises)  +"/"+ $totalExercises,
+    'completed_tips' => count($completedTips)  +"/"+ $totalTips,
+    'completed_conversation' => count($completedConversations)  +"/"+ $totalConversations,
 ];
 
             // Construct the response data
