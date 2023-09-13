@@ -24,7 +24,12 @@ class UserSeeder extends Seeder
             'birthdate' => '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'free',
-            'my_courses' => json_encode([]), // Sample course IDs as an array
+            'my_courses' => json_encode([]), 
+            'completed_lessons'=> json_encode([]),
+            'completed_exercises'=> json_encode([]),
+            'completed_tips'=> json_encode([]),
+            'completed_conversation'=> json_encode([]),
+
         ];
 
         User::create($data);

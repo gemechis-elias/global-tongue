@@ -115,7 +115,28 @@ class ExerciseRepository implements CrudInterface
      */
     public function getByID(int $id): Exercise|null
     {
-        return Exercise::with('user')->find($id);
+        $exercises = Exercise::with('user')->find($id);
+
+        
+        if ($exercises) {
+            $user = $exercises->user;
+    
+            // Check if $user exists and has 'completed_exercises' property
+            if ($user && isset($user->completed_exercises)) {
+                
+
+                // Update the user's completed_exercises attribute by adding the current course ID
+                $completedExercises = json_decode($user->completed_exercises, true) ?? [];
+                if (!in_array($id, $completedExercises)) {
+                    $completedExercises[] = $id;
+                    $user->completed_exercises = json_encode($completedExercises);
+                    $user->save();
+                }
+                
+            }
+            return $exercises;
+        }
+            return null;
     }
 
     /**

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->longText('unit_title');
             $table->longText('unit_description');
             $table->string('image')->nullable();
-            $table->integer('no_of_lessons');
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
  
             $table->foreign('user_id')->references('id')->on('users'); 

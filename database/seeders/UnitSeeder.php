@@ -27,7 +27,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Meetings and Greetings',
                 'unit_description' => 'Learn the basic greetings you\'ll need to introduce yourself and have your first conversation, plus essential pronunciation of -ch, -h, -ll, and -ñ.',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                 
 
             ],
@@ -40,7 +40,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 8,
+                'total_coverage' => 8,
                 
 
             ],
@@ -52,7 +52,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],
@@ -64,7 +64,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],
@@ -76,7 +76,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],
@@ -88,7 +88,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],
@@ -100,7 +100,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
             ],
             [
                 'course_id'=> 2,
@@ -110,7 +110,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],
@@ -122,7 +122,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                'no_of_lessons' => 5,
+                
                  
 
             ],

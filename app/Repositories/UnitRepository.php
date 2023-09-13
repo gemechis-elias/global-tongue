@@ -112,7 +112,7 @@ class UnitRepository implements CrudInterface
      */
     public function getByID(int $id): Unit|null
     {
-        return Unit::with('user')->find($id);
+        return Unit::find($id);
     }
 
     /**

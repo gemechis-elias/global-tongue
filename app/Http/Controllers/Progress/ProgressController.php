@@ -88,15 +88,16 @@ class ProgressController extends Controller
                 $completedLessons = $allLessons->whereIn('id', $completedLessonIds);
 
 
-                // Implement logic for pending payments
-
-                // Construct the response data
                 $data = [
+                    'all_lessons' => $allLessons->pluck('id')->toArray(),
+                    'completed_lessons' => $completedLessons->pluck('id')->toArray(),
+                    'enrolled_courses' => $enrolledCourses,
+                    
                     'all_lessons_count' => $allLessons->count(),
                     'completed_lessons_count' => $completedLessons->count(),
                     'enrolled_courses_count' => count($enrolledCourses),
-                     
                 ];
+                
                 
 
              return $this->responseSuccess($data, 'Progress Details Fetch Successfully !');
