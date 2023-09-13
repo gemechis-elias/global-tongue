@@ -92,11 +92,12 @@ class ProgressController extends Controller
 
                 // Construct the response data
                 $data = [
-                    'all_lessons' => $allLessons,
-                    'completed_lessons' => $completedLessons,
-                    'enrolled_courses' => $enrolledCourses,
-                    'test' => $userProgress,
-                ]; 
+                    'all_lessons_count' => $allLessons->count(),
+                    'completed_lessons_count' => $completedLessons->count(),
+                    'enrolled_courses_count' => count($enrolledCourses),
+                     
+                ];
+                
 
              return $this->responseSuccess($data, 'Progress Details Fetch Successfully !');
          } catch (\Exception $e) {
