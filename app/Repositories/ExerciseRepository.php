@@ -119,7 +119,7 @@ class ExerciseRepository implements CrudInterface
 
         
         if ($exercises) {
-            $user = $exercises->user_id;
+            $user = $this->user;
     
             // Check if $user exists and has 'completed_exercises' property
             if ($user && isset($user->completed_exercises)) {
