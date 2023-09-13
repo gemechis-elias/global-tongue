@@ -84,7 +84,7 @@ class ProgressController extends Controller
                 $allLessons = Lesson::whereIn('course_id', $enrolledCourses)->get();
 
                 // Filter completed lessons based on user's progress
-                $completedLessonIds = $userProgress->where('completed', "1")->pluck('lesson_id')->toArray();
+                $completedLessonIds = $userProgress->where('completed', 1)->pluck('lesson_id')->toArray();
                 $completedLessons = $allLessons->whereIn('id', $completedLessonIds);
 
 
