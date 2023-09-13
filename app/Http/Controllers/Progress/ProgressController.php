@@ -95,7 +95,7 @@ class ProgressController extends Controller
                     'all_lessons' => $allLessons,
                     'completed_lessons' => $completedLessons,
                     'enrolled_courses' => $enrolledCourses,
-                     
+                    'test' => $userProgress,
                 ]; 
 
              return $this->responseSuccess($data, 'Progress Details Fetch Successfully !');
