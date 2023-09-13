@@ -84,9 +84,9 @@ class ProgressController extends Controller
                 $allLessons = Lesson::whereIn('course_id', $enrolledCourses)->get();
 
                 // Filter completed lessons based on user's progress
-                $completedLessons = $userProgress->filter(function ($progress) {
-                    return $progress->completed;
-                });
+        $completedLessonIds = $userProgress->where('completed', true)->pluck('lesson_id')->toArray();
+        $completedLessons = $allLessons->whereIn('id', $completedLessonIds);
+
 
                 // Implement logic for pending payments
 
