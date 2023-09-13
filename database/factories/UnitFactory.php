@@ -22,7 +22,7 @@ class UnitFactory extends Factory
             'unit_title' => $this->faker->sentence,
             'unit_description' => $this->faker->paragraph,
             'unit_image' => null,
-            'no_of_lessons' => $this->faker->numberBetween(1, 10),
+             
         ];
     }
 }

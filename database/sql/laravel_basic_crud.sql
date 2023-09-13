@@ -145,7 +145,7 @@ CREATE TABLE  IF NOT EXISTS `units` (
   `unit_title` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_of_lessons` int(11) NOT NULL,
+  
   `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'Created By Admin',
 
   `created_at` timestamp NULL DEFAULT NULL,
@@ -153,8 +153,8 @@ CREATE TABLE  IF NOT EXISTS `units` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
  
 
-INSERT INTO `units` (`id`, `course_id`, `level_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`, `no_of_lessons`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 1,1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
+INSERT INTO `units` (`id`, `course_id`, `level_id`, `unit_name`, `unit_title`, `unit_description`, `unit_image`,  `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Unit 1', 'Unit 1 Title', 'Unit 1 Description', NULL, 1, '2020-12-15 11:29:03', '2020-12-15 11:29:03'),
 
 -- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercises`(
