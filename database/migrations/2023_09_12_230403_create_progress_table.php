@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('course_id');
             $table->string('lesson_id');
-            $table->bool('completed');
+            $table->boolean('completed');
             $table->string('date_completed');
 
             $table->unsignedBigInteger('user_id')->nullable()->comment('User ID');
