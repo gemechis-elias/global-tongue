@@ -24,8 +24,7 @@ class ProgressSeeder extends Seeder
                 'course_id' => "1",
                 'lesson_id' => "1",
                 "date_completed" => "Sep 12, 2023",
-                "payments" => "0",
-                "completed" => "0"
+                "completed" => true
             ]
         ];
         Progress::insert($data);

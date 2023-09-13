@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('course_id');
             $table->string('lesson_id');
-            $table->string('completed');
+            $table->bool('completed');
             $table->string('date_completed');
-            $table->string('payments');
 
             $table->unsignedBigInteger('user_id')->nullable()->comment('User ID');
             $table->foreign('user_id')->references('id')->on('users');
