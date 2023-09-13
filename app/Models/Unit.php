@@ -21,7 +21,7 @@ class Unit extends Model
         'unit_name', 
         'unit_title', 
         'unit_description', 
-        'image', ];
+        'image'];
 
         /**
      * Unit

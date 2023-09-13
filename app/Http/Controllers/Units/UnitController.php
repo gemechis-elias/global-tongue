@@ -90,7 +90,6 @@ class UnitController extends Controller
      *             @OA\Property(property="unit_title", type="string", example="Let's Talk About You"),
      *             @OA\Property(property="unit_description", type="string", example="Explore subject pronouns, professions "),
      *             @OA\Property(property="image", type="string", example=""),
-     *             @OA\Property(property="no_of_lessons", type="string", example="5"),
      *          ),
      *      ),
      *      security={{"bearer":{}}},

@@ -110,9 +110,7 @@ class UnitSeeder extends Seeder
                 'unit_title' => 'Let\'s Talk About You',
                 'unit_description' => 'Explore subject pronouns, professions, and using "ser" for descriptions and origins. Learn pronunciation of vowels and when to use "tú" versus "usted."',
                 'image' => "https://api.globaltongueedu.com/v1/public/images/units/image_1.jpg",
-                
-                 
-
+        
             ],
             [
                 'course_id'=> 3,
