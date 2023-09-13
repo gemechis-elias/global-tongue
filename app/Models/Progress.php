@@ -16,7 +16,7 @@ class Progress extends Model
      */
     
 
-    protected $fillable = ['user_id', 'course_id', 'lesson_id','completed_lessons','date_completed', 'payment_progress'];
+    protected $fillable = ['course_id', 'lesson_id','completed_lessons','date_completed', 'payment_progress'];
 
             /**
      * User

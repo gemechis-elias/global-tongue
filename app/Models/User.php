@@ -109,5 +109,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Payment::class)->orderBy('id', 'desc');
     }
+    public function progress()
+    {
+        return $this->hasMany(Progress::class)->orderBy('id', 'desc');
+    }
     
 }

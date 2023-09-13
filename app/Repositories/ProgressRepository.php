@@ -106,19 +106,18 @@ class ProgressRepository implements CrudInterface
         return true;
     }
 
-    /**
-     * Get Progress Detail By ID.
-     *
-     * @param int $id
-     * @return void
-     */
-    public function getByID(int $userId): Progress|null
-    {
-        // Retrieve the user's progress from the database
-        return Progress::where('user_id', $userId)->get();
+/**
+ * Get Progress Detail By user ID.
+ *
+ * @param int $userId
+ * @return Progress|null
+ */
+public function getByID(int $userId): Progress|null
+{
+    // Retrieve the user's progress from the database by user ID
+    return Progress::where('user_id', $userId)->first();
+}
 
-        
-    }
     
 
     /**
