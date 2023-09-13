@@ -117,7 +117,7 @@ class CourseRepository implements CrudInterface
         $course = Course::find($id);
     
         if ($course) {
-            $user = $course->user;
+            $user = $this->user;
     
             // Check if $user exists and has 'my_courses' property
             if ($user && isset($user->my_courses)) {
