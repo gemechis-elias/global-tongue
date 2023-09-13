@@ -163,12 +163,12 @@ class LevelsController extends Controller
     
             // Retrieve the user's completed items
             $user = $this->user;
-          //  $completedLevels = $user->completed_levels ?? [];
-            $completedUnits = $user->completed_units ?? [];
-            $completedLessons = $user->completed_lessons ?? [];
-            $completedExercises = $user->completed_exercises ?? [];
-            $completedTips = $user->completed_tips ?? [];
-            $completedConversations = $user->completed_conversation ?? [];
+            $completedUnits = json_decode($user->completed_units) ?? [];
+            $completedLessons = json_decode($user->completed_lessons) ?? [];
+            $completedExercises = json_decode($user->completed_exercises) ?? [];
+            $completedTips = json_decode($user->completed_tips) ?? [];
+            $completedConversations = json_decode($user->completed_conversation) ?? [];
+            
     
             // Count the total number of units, lessons, exercises, tips, and conversations
             $totalUnits = Unit::where('level_id', $level->id)->count();
@@ -177,8 +177,7 @@ class LevelsController extends Controller
             $totalTips = Tips::where('level_id', $level->id)->count();
             $totalConversations = Conversation::where('level_id', $level->id)->count();
     
-            // Calculate total coverage for each item type
-          // Calculate total coverage as a single percentage
+ 
             $totalCoveragePercentage = (
                 (count($completedUnits) / $totalUnits) +
                 (count($completedLessons) / $totalLessons) +
