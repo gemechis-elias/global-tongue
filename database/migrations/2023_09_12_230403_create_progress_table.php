@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('progress', function (Blueprint $table) {
             $table->id();
-            $table->string('course_id');
+            $table->string('course_id'); 
             $table->string('lesson_id');
             $table->boolean('completed');
             $table->string('date_completed');
