@@ -123,10 +123,10 @@ class LessonRepository implements CrudInterface
                 
 
                 // Update the user's my_lessons attribute by adding the current lesson ID
-                $myLesson = json_decode($user->completed_lessons, true) ?? [];
-                if (!in_array($id, $myLesson)) {
-                    $myLesson[] = $id;
-                    $user->my_lessons = json_encode($myLesson);
+                $CompletedLesson = json_decode($user->completed_lessons, true) ?? [];
+                if (!in_array($id, $CompletedLesson)) {
+                    $CompletedLesson[] = $id;
+                    $user->completed_lessons = json_encode($CompletedLesson);
                     $user->save();
                 }
                 
