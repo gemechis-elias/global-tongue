@@ -40,8 +40,9 @@ class UserSeeder extends Seeder
             'birthdate' => '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'premium',
-            'my_courses' => json_encode([3]),
-            'paid_courses' => json_encode([3]),
+
+            'my_courses' => json_encode([]),
+            'paid_courses' => json_encode([]),
             'completed_levels'=> json_encode([]),
             'completed_units'=> json_encode([]), 
             'completed_lessons'=> json_encode([]),

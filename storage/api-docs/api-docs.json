@@ -178,7 +178,7 @@
                 "tags": [
                     "Conversations"
                 ],
-                "summary": "Get Conversation List",
+                "summary": "Get All Conversation List",
                 "description": "Get Conversation List as Array",
                 "operationId": "ConversationIndex",
                 "responses": {
@@ -221,6 +221,70 @@
                 "responses": {
                     "200": {
                         "description": "Show Conversation Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Update Conversation",
+                "description": "Update New Conversation",
+                "operationId": "updateConversation",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "conversation_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "conversation": {
+                                        "type": "string",
+                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated Conversation"
                     },
                     "400": {
                         "description": "Bad request"
@@ -409,7 +473,7 @@
                 "tags": [
                     "Courses"
                 ],
-                "summary": "Get Course List",
+                "summary": "Get All Course List",
                 "description": "Get Course List as Array",
                 "operationId": "index",
                 "responses": {
@@ -490,7 +554,7 @@
                 "tags": [
                     "Courses"
                 ],
-                "summary": "All Courses - Publicly Accessible",
+                "summary": "Search Courses By Keyword",
                 "description": "Search All Courses - Publicly Accessible",
                 "operationId": "search",
                 "parameters": [
@@ -669,7 +733,7 @@
                 "tags": [
                     "Exercises"
                 ],
-                "summary": "Get Exercise List",
+                "summary": "Get All Exercise List",
                 "description": "Get Exercise List as Array",
                 "operationId": "ExerciseIndex",
                 "responses": {
@@ -712,6 +776,90 @@
                 "responses": {
                     "200": {
                         "description": "Show Exercise Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Update Exercise",
+                "description": "Update Exercise",
+                "operationId": "updateExercise",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "exercise_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "exercise_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "exercise_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update Exercise"
                     },
                     "400": {
                         "description": "Bad request"
@@ -920,7 +1068,7 @@
                 "tags": [
                     "Lessons"
                 ],
-                "summary": "Get Lesson List",
+                "summary": "Get All Lesson List",
                 "description": "Get Lesson List as Array",
                 "operationId": "LessonIndex",
                 "responses": {
@@ -963,6 +1111,101 @@
                 "responses": {
                     "200": {
                         "description": "Show Lesson Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Update Lesson",
+                "description": "Update Lesson",
+                "operationId": "updateLesson",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_title": {
+                                        "type": "string",
+                                        "example": "Essential Pronunciation: -ch, -h, -ll, -ñ"
+                                    },
+                                    "lesson_type": {
+                                        "type": "string",
+                                        "example": "voice"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "lesson_image.jpg"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update Lesson"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Lessons"
+                ],
+                "summary": "Delete Lessons",
+                "description": "Delete Lessons",
+                "operationId": "destroyLessons",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Lessons"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1502,19 +1745,45 @@
                 ]
             }
         },
+        "/v1/public/api/progress": {
+            "get": {
+                "tags": [
+                    "Progress"
+                ],
+                "summary": "Get Progress List",
+                "description": "Get Progress List as Array",
+                "operationId": "Progresssindex",
+                "responses": {
+                    "200": {
+                        "description": "Get Progress List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/v1/public/api/progress/{user_id}": {
             "get": {
                 "tags": [
                     "Progress"
                 ],
-                "summary": "Show Progress Details",
+                "summary": "Show Progress Details of User",
                 "description": "Show Progress Details",
                 "operationId": "Progressshow",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user_id",
                         "in": "path",
-                        "description": "id, eg; 1",
+                        "description": "user_id, eg; 1",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -1889,10 +2158,6 @@
                                     "image": {
                                         "type": "string",
                                         "example": ""
-                                    },
-                                    "no_of_lessons": {
-                                        "type": "string",
-                                        "example": "5"
                                     }
                                 },
                                 "type": "object"
