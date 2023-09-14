@@ -133,9 +133,9 @@ Route::group([
      * Conversation Module
      */ 
     Route::resource('conversations', ConversationController::class);
-    Route::get('conversations/view/all', [ConversationController::class, 'indexAll']);
+    Route::get('conversations/{id}', [ConversationController::class, 'show']);
     Route::post('conversations/create', [ConversationController::class, 'store']) ;
-    Route::get('conversations/{id}', [ConversationController::class,'update']);
+    Route::put('conversations/{id}', [ConversationController::class,'update']);
     Route::get('conversations/view/search', [ConversationController::class, 'search']);
     Route::get('conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ConversationController::class,'getConversationsByLessonID']);
 

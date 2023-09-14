@@ -154,7 +154,7 @@ public function store(ConversationRequest $request): JsonResponse
     }
 }
 /**
- * @OA\Post(
+ * @OA\Put(
  *     path="/v1/public/api/conversations/{id}",
  *     tags={"Conversations"},
  *     summary="Update Conversation",
