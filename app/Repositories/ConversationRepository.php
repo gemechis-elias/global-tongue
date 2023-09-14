@@ -35,11 +35,20 @@ class ConversationRepository implements CrudInterface
 
 
 
-    public function getAll(): Paginator
-    {
-        return Conversation::orderBy('id', 'desc')
-            ->paginate(10);
-    }
+     public function getAll(): Paginator
+     {
+         $conversations = Conversation::orderBy('id', 'desc')
+             ->paginate(100);
+     
+         // Iterate through the retrieved conversations and decode the "conversations" field
+         $conversations->getCollection()->transform(function ($conversation) {
+             $conversation->conversations = $this->decodeConversation($conversation->conversations);
+             return $conversation;
+         });
+     
+         return $conversations;
+     }
+     
 
     /**
      * Get Paginated Conversation Data.
