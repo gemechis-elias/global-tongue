@@ -134,7 +134,7 @@ class ConversationController extends Controller
  *             @OA\Property(property="lesson_id", type="integer", example=1),
  *             @OA\Property(property="conversation_type", type="string", example="Type A"),
  *             @OA\Property(property="instruction", type="string", example="Instructions here"),
- *            @OA\Property(property="conversations", type="string", example="[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"),
+ *            @OA\Property(property="conversations", type="string", example="[{'sentence_1':'Hola','voice_1':'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3'}], [{'sentence_1':'Bien, gracias.','voice_1':'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3'}]"),
  * 
  *         ),
  *     ),
