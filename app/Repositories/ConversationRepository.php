@@ -102,7 +102,7 @@ class ConversationRepository implements CrudInterface
     public function create(array $data): Conversation
     {
         // Encode the "conversations" field
-        $data['conversations'] = $this->encodeConversation($data['conversations']);
+       // $data['conversations'] = $this->encodeConversation($data['conversations']);
     
         // Set the user_id to the current user's ID
         $data['user_id'] = $this->user->id;
