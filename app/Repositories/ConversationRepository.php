@@ -157,9 +157,26 @@ class ConversationRepository implements CrudInterface
         if (!is_null($conversation)) {
             // Decode the "conversations" field
             $conversation->conversations = $this->decodeConversation($conversation->conversations);
+       
+            $user = $this->user;
+    
+            // Check if $user exists and has 'completed_conversations' property
+            if ($user && isset($user->completed_conversation)) {
+                
+
+                // Update the user's my_conversations attribute by adding the current conversation ID
+                $CompletedConversation = json_decode($user->completed_conversation, true) ?? [];
+                if (!in_array($id, $CompletedConversation)) {
+                    $CompletedConversation[] = $id;
+                    $user->completed_conversation = json_encode($CompletedConversation);
+                    $user->save();
+                }
+                
+            } 
+            return $conversation;
         }
     
-        return $conversation;
+        return null;
     }
     
 

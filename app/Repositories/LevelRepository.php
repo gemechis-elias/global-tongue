@@ -114,7 +114,27 @@ class LevelRepository implements CrudInterface
      */
     public function getByID(int $id): Level|null
     {
-        return Level::find($id);
+        $level= Level::find($id);
+        if ($level) {
+            $user = $this->user;
+    
+            // Check if $user exists and has 'completed_levels' property
+            if ($user && isset($user->completed_levels)) {
+                
+
+                // Update the user's my_levels attribute by adding the current level ID
+                $CompletedLevel = json_decode($user->completed_levels, true) ?? [];
+                if (!in_array($id, $CompletedLevel)) {
+                    $CompletedLevel[] = $id;
+                    $user->completed_levels = json_encode($CompletedLevel);
+                    $user->save();
+                }
+                
+            } 
+            return $level;
+        }
+    
+        return null;
     }
 
     /**

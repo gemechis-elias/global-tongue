@@ -115,6 +115,9 @@ class CourseRepository implements CrudInterface
     {
         
         $course = Course::find($id);
+        if($course->type == 'premium' && $this->user->subscription_type != 'premium'){
+            return null;
+        }
     
         if ($course) {
             $user = $this->user;
@@ -122,7 +125,6 @@ class CourseRepository implements CrudInterface
             // Check if $user exists and has 'my_courses' property
             if ($user && isset($user->my_courses)) {
                 
-
                 // Update the user's my_courses attribute by adding the current course ID
                 $myCourses = json_decode($user->my_courses, true) ?? [];
                 if (!in_array($id, $myCourses)) {

@@ -115,7 +115,27 @@ class TipsRepository implements CrudInterface
      */
     public function getByID(int $id): Tips|null
     {
-        return Tips::with('user')->find($id);
+        $tip =Tips::with('user')->find($id);
+        if ($tip) {
+            $user = $this->user;
+    
+            // Check if $user exists and has 'completed_tips' property
+            if ($user && isset($user->completed_tips)) {
+                
+
+                // Update the user's my_tips attribute by adding the current tip ID
+                $CompletedTip = json_decode($user->completed_tips, true) ?? [];
+                if (!in_array($id, $CompletedTip)) {
+                    $CompletedTip[] = $id;
+                    $user->completed_tips = json_encode($CompletedTip);
+                    $user->save();
+                }
+                
+            } 
+            return $tip;
+        }
+    
+        return null;
     }
 
     /**

@@ -112,7 +112,28 @@ class UnitRepository implements CrudInterface
      */
     public function getByID(int $id): Unit|null
     {
-        return Unit::find($id);
+      
+        $unit= Unit::find($id);
+        if ($unit) {
+            $user = $this->user;
+    
+            // Check if $user exists and has 'completed_units' property
+            if ($user && isset($user->completed_units)) {
+                
+
+                // Update the user's my_units attribute by adding the current unit ID
+                $CompletedUnit = json_decode($user->completed_units, true) ?? [];
+                if (!in_array($id, $CompletedUnit)) {
+                    $CompletedUnit[] = $id;
+                    $user->completed_units = json_encode($CompletedUnit);
+                    $user->save();
+                }
+                
+            } 
+            return $unit;
+        }
+    
+        return null;
     }
 
     /**

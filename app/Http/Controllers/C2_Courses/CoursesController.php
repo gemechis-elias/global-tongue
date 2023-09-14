@@ -131,7 +131,7 @@ class CoursesController extends Controller
         try {
             $data = $this->courseRepository->getByID($id);
             if (is_null($data)) {
-                return $this->responseError(null, 'Course Not Found', Response::HTTP_NOT_FOUND);
+                return $this->responseError(null, 'Course Not Found or Premium Content', Response::HTTP_NOT_FOUND);
             }
 
             return $this->responseSuccess($data, 'Course Details Fetch Successfully !');
