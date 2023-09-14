@@ -59,20 +59,16 @@ Route::group([
      * Courses Module
      */
     Route::resource('courses', CoursesController::class);
-    Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
     Route::get('courses/{id}', [CoursesController::class,'show']);
     Route::put('courses/{id}', [CoursesController::class,'update']);
     Route::delete('courses/{id}', [CoursesController::class,'destroy']);
+    Route::post('courses/create', [CoursesController::class, 'store']) ;
 
-    
-
-  /**
-     * Payment Module
-     */
+    // Payment Module
+ 
     Route::resource('payments', PaymentController::class);
     Route::get('payments/view/all', [PaymentController::class, 'indexAll']);
-    Route::get('payments/view/search', [PaymentController::class, 'search']);
     Route::get('payments/{id}', [PaymentController::class,'show']);
 
     /**
@@ -80,6 +76,11 @@ Route::group([
      */
     Route::resource('levels',LevelsController::class);
     Route::get('levels/by/{course_id}', [LevelsController::class,'getLevelsByCourseID']);
+    Route::get('levels/view/search', [LevelsController::class, 'search']);
+    Route::get('levels/{id}', [LevelsController::class,'show']);
+    Route::put('levels/{id}', [LevelsController::class,'update']);
+    Route::delete('levels/{id}', [LevelsController::class,'destroy']);
+    Route::post('levels/create', [LevelsController::class, 'store']) ;
     /**
      * Progress Module
      */
@@ -93,19 +94,24 @@ Route::group([
 
     Route::resource('units', UnitController::class);
     Route::get('units/view/all', [UnitController::class, 'indexAll']);
-    Route::get('units/view/search', [UnitController::class, 'search']);
     Route::get('units/by/{course_id}/{level_id}', [UnitController::class,'getUnitsByCourseID']);
+    Route::get('units/{id}', [UnitController::class,'show']);
+    Route::put('units/{id}', [UnitController::class,'update']);
+    Route::delete('units/{id}', [UnitController::class,'destroy']);
+    Route::post('units/create', [UnitController::class, 'store']) ;
 
 
      /**
      * Lesson Module
      */ 
-    Route::resource('lessons', LessonController::class);
-    Route::get('lessons/view/all', [LessonController::class, 'indexAll']); 
-    Route::get('lessons/view/search', [LessonController::class, 'search']);
-    Route::put('lessons/{id}', [LessonController::class,'update']);
+    Route::resource('lessons', LessonController::class); 
     Route::get('lessons/by/{course_id}/{level_id}/{unit_id}', [LessonController::class,'getLessonsByUnitID']);
     Route::get('lessons/getContent/{lesson_id}', [LessonController::class,'getContent']);
+    Route::get('lessons/{id}', [LessonController::class,'show']);
+    Route::put('lessons/{id}', [LessonController::class,'update']);
+    Route::delete('lessons/{id}', [LessonController::class,'destroy']);
+    Route::post('lessons/create', [LessonController::class, 'store']) ;
+
 
 
     /**
@@ -113,21 +119,23 @@ Route::group([
      */ 
     
     Route::resource('exercises', ExerciseController::class);
+    Route::get('exercises/{id}', [ExerciseController::class,'show']);
     Route::post('exercises/create', [ExerciseController::class, 'store']) ;
     Route::put('exercises/{id}', [ExerciseController::class,'update']);
     Route::delete('exercises/{id}', [ExerciseController::class,'destroy']);
-    Route::get('exercises/view/search', [ExerciseController::class, 'search']);
     Route::get('exercises/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExercisesByLessonID']);
 
         /**
      * Tip Module
      */ 
     
-     Route::resource('tips', TipsController::class);
-     Route::get('tips/view/all', [TipsController::class, 'indexAll']);
-     Route::post('tips/create', [TipsController::class, 'store']) ;
-     Route::get('tips/view/search', [TipsController::class, 'search']);
-     Route::get('tips/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [TipsController::class,'getTipsByLessonID']);
+    Route::resource('tips', TipsController::class);
+    Route::get('tips/view/all', [TipsController::class, 'indexAll']);
+    Route::post('tips/create', [TipsController::class, 'store']) ;
+    Route::get('tips/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [TipsController::class,'getTipsByLessonID']);
+    Route::get('tips/{id}', [TipsController::class,'show']);
+    Route::put('tips/{id}', [TipsController::class,'update']);
+    Route::delete('tips/{id}', [TipsController::class,'destroy']);
  
     /**
      * Conversation Module

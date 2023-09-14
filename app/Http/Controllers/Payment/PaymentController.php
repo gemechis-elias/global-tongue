@@ -56,31 +56,6 @@ class PaymentController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/v1/public/api/payments/view/search",
-     *     tags={"Payments"},
-     *     summary="All Payments - Publicly Accessible",
-     *     description="Search All Payments - Publicly Accessible",
-     *     operationId="Paymentssearch",
-     *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),
-     *     @OA\Parameter(name="search", description="search, eg; Test", example="Test", in="query", @OA\Schema(type="string")),
-     *     @OA\Response(response=200, description="All Payments - Publicly Accessible" ),
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function search(Request $request): JsonResponse
-    {
-        try {
-            $data = $this->paymentRepository->searchPayment($request->search, $request->perPage);
-            return $this->responseSuccess($data, 'Payment List Fetched Successfully !');
-        } catch (\Exception $e) {
-            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
-    /**
-     * @OA\Get(
      *     path="/v1/public/api/payments/{id}",
      *     tags={"Payments"},
      *     summary="Show Payment Details",

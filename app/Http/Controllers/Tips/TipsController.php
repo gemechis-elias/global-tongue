@@ -33,7 +33,7 @@ class TipsController extends Controller
          * @OA\Get(
          *     path="/v1/public/api/tips",
          *     tags={"Tips"},
-         *     summary="Get Tip List",
+         *     summary="Get All Tip List",
          *     description="Get Tip List as Array",
          *     operationId="TipIndex",
          *     security={{"bearer":{}}},
@@ -116,7 +116,50 @@ class TipsController extends Controller
             }
     
  
+       /**
+ * @OA\Put(
+ *     path="/v1/public/api/tips/{id}",
+ *     tags={"Tips"},
+ *     summary="Update Tip",
+ *     description="Update Tip",
+ *     operationId="updateTip",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="level_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_id", type="integer", example=1),
+ *             @OA\Property(property="tip_type", type="string", example="Type A"),
+ *             @OA\Property(property="instruction", type="string", example="Instructions here"),
+ *             @OA\Property(property="question", type="string", example="Question here"),
+ *             @OA\Property(property="image", type="string", example="tip_image.jpg"),
+ *             @OA\Property(property="voice", type="string", example="tip_voice.mp3"),
+ *             @OA\Property(property="choices", type="string", example="Choice 1, Choice 2"),
+ *             @OA\Property(property="incorrect_hint", type="string", example="Incorrect hint here"),
+ *             @OA\Property(property="correct_answer", type="integer", example=1),
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Update Tip"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+public function update(TipsRequest $request, $id): JsonResponse
+{
+    try {
+        $data = $this->tipRepository->update($id, $request->all());
+        if (is_null($data))
+            return $this->responseError(null, 'Tip Not Found', Response::HTTP_NOT_FOUND);
 
+        return $this->responseSuccess($data, 'Tip Updated Successfully !');
+    } catch (\Exception $e) {
+        return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+ 
        /**
  * @OA\Post(
  *     path="/v1/public/api/tips/create",
@@ -148,7 +191,7 @@ class TipsController extends Controller
  *     @OA\Response(response=404, description="Resource Not Found"),
  * )
  */
-public function store(TipRequest $request): JsonResponse
+public function store(TipsRequest $request): JsonResponse
 {
     try {
         $tip = $this->tipRepository->create($request->all());

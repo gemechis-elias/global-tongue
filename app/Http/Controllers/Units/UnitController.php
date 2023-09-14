@@ -130,7 +130,7 @@ class UnitController extends Controller
 
         /**
      * @OA\Post(
-     *     path="/v1/public/api/Units",
+     *     path="/v1/public/api/units/create",
      *     tags={"Units"},
      *     summary="Create New Unit",
      *     description="Create New Unit",
@@ -162,7 +162,43 @@ class UnitController extends Controller
         }
     }
 
+        /**
+     * @OA\Put(
+     *     path="/v1/public/api/Units/{id}",
+     *     tags={"Units"},
+     *     summary="Update Unit",
+     *     description="Update Unit",
+     *     operationId="storeUnit",
+     *     @OA\RequestBody(
+     *          @OA\JsonContent(
+     *              type="object",
+     *             @OA\Property(property="course_id", type="integer", example="1"),
+     *             @OA\Property(property="level_id", type="integer", example="1"),
+     *             @OA\Property(property="unit_name", type="string", example="Unit 5"),
+     *             @OA\Property(property="unit_title", type="string", example="Let's Talk About You"),
+     *             @OA\Property(property="unit_description", type="string", example="Explore subject pronouns, professions "),
+     *             @OA\Property(property="image", type="string", example=""),
+     *          ),
+     *      ),
+     *      security={{"bearer":{}}},
+     *      @OA\Response(response=200, description="Update Unit" ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function update(UnitRequest $request, $id): JsonResponse
+{
+    try {
+        $data = $this->unitRepository->update($id, $request->all());
+        if (is_null($data))
+            return $this->responseError(null, 'Unit Not Found', Response::HTTP_NOT_FOUND);
 
+        return $this->responseSuccess($data, 'Unit Updated Successfully !');
+    } catch (\Exception $e) {
+        return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+ 
 
     /**
      * @OA\Get(
@@ -196,7 +232,38 @@ class UnitController extends Controller
             }
         }
 
- 
+  /**
+     * @OA\Delete(
+     *     path="/v1/public/api/units/{id}",
+     *     tags={"Units"},
+     *     summary="Delete Units",
+     *     description="Delete Units",
+     *     operationId="destroyUnits",
+     *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Delete Units"),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function destroy($id): JsonResponse
+    {
+        try {
+            $unit =  $this->unitRepository->getByID($id);
+            if (empty($unit)) {
+                return $this->responseError(null, 'Unit Not Found', Response::HTTP_NOT_FOUND);
+            }
+
+            $deleted = $this->unitRepository->delete($id);
+            if (!$deleted) {
+                return $this->responseError(null, 'Failed to delete the Unit.', Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return $this->responseSuccess($unit, 'Unit Deleted Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
  
     
 }
