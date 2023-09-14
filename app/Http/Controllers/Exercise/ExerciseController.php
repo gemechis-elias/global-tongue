@@ -166,6 +166,8 @@ public function store(ExerciseRequest $request): JsonResponse
  *     summary="Update Exercise",
  *     description="Update Exercise",
  *     operationId="updateExercise",
+ *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+ * 
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\JsonContent(
