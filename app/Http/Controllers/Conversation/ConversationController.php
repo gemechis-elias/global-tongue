@@ -24,12 +24,12 @@ class ConversationController extends Controller
         public function __construct(ConversationRepository $conversationRepository)
         {
             
-            $this->middleware('auth:api', ['except' => ['indexAll']]);
+            $this->middleware('auth:api', ['except' => ['index']]);
             $this->conversationRepository = $conversationRepository;
         }
     
     
-            /**
+    /**
          * @OA\Get(
          *     path="/v1/public/api/conversations",
          *     tags={"Conversations"},
@@ -52,7 +52,7 @@ class ConversationController extends Controller
             }
         }
     
-            /**
+     /**
          * @OA\Get(
          *     path="/v1/public/api/conversations/{id}",
          *     tags={"Conversations"},
@@ -82,7 +82,7 @@ class ConversationController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/conversations/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/conversations/by/{course_id}/{Wlevel_id}/{unit_id}/{lesson_id}",
          *     tags={"Conversations"},
          *     summary="Get Conversations by Parents",
          *     description="Get list of conversations associated with a specific Parents",
