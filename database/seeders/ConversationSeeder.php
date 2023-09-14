@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Conversation; 
@@ -14,7 +13,6 @@ class ConversationSeeder extends Seeder
      *
      * @return void
      */
-
     public function run()
     {
         DB::table('conversations')->delete();
@@ -27,7 +25,7 @@ class ConversationSeeder extends Seeder
                 'user_id' => 1,
 
                 'instruction' => 'Listen and click to see the translations.',
-                'conversations' => json_encode([
+                'conversations' => [
                     [
                         'sentence_1' => 'Hola, ¿cómo estás?',
                         'sentence_2' => 'Hello, how are you?',
@@ -52,9 +50,7 @@ class ConversationSeeder extends Seeder
                         'voice_1' => 'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3',
                         'voice_2' => 'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3',
                     ],
-                ]),
-
-
+                ],
             ],
             [
                 'course_id'=> 1,
@@ -64,7 +60,7 @@ class ConversationSeeder extends Seeder
                 'user_id' => 1,
 
                 'instruction' => 'Listen and click to see the translations.',
-                'conversations' => json_encode([
+                'conversations' => [
                     [
                         'sentence_1' => 'Hola, ¿cómo estás?',
                         'sentence_2' => 'Hello, how are you?',
@@ -89,13 +85,14 @@ class ConversationSeeder extends Seeder
                         'voice_1' => 'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3',
                         'voice_2' => 'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3',
                     ],
-                ]),
-
-
+                ],
             ],
-            
         ];
 
-        Conversation::insert($data);
+        foreach ($data as $conversationData) {
+            $conversation = new Conversation;
+            $conversation->fill($conversationData);
+            $conversation->save();
+        }
     }
 }
