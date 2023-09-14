@@ -196,9 +196,9 @@ class ConversationRepository implements CrudInterface
         }
     
         // Encode the "conversations" data before updating
-        if (isset($data['conversations'])) {
-            $data['conversations'] = $this->encodeConversation($data['conversations']);
-        }
+        // if (isset($data['conversations'])) {
+        //     $data['conversations'] = $this->encodeConversation($data['conversations']);
+        // }
     
         // If everything is OK, then update.
         $conversation->update($data);
