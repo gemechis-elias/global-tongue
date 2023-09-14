@@ -197,6 +197,70 @@
                         "bearer": []
                     }
                 ]
+            },
+            "post": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Create New Conversation",
+                "description": "Create New Conversation",
+                "operationId": "storeConversation",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "conversation_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "conversations": {
+                                        "type": "string",
+                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Conversation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/v1/public/api/conversations/{id}": {
@@ -235,13 +299,24 @@
                     }
                 ]
             },
-            "post": {
+            "put": {
                 "tags": [
                     "Conversations"
                 ],
                 "summary": "Update Conversation",
                 "description": "Update New Conversation",
                 "operationId": "updateConversation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -272,9 +347,9 @@
                                         "type": "string",
                                         "example": "Instructions here"
                                     },
-                                    "conversation": {
+                                    "conversations": {
                                         "type": "string",
-                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
+                                        "example": "remove qoute [{'name': 'John', 'text': 'Hello'},{'name': 'John', 'text': 'Hello'}]"
                                     }
                                 },
                                 "type": "object"
@@ -335,7 +410,7 @@
                 ]
             }
         },
-        "/v1/public/api/conversations/by/{course_id}/{$level_id}/{unit_id}/{lesson_id}": {
+        "/v1/public/api/conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
                     "Conversations"
@@ -393,72 +468,6 @@
                     },
                     "500": {
                         "description": "Internal Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/conversations/create": {
-            "post": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Create New Conversation",
-                "description": "Create New Conversation",
-                "operationId": "storeConversation",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "conversation_type": {
-                                        "type": "string",
-                                        "example": "Type A"
-                                    },
-                                    "instruction": {
-                                        "type": "string",
-                                        "example": "Instructions here"
-                                    },
-                                    "conversation": {
-                                        "type": "string",
-                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Create New Conversation"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
                     }
                 },
                 "security": [
@@ -752,6 +761,90 @@
                         "bearer": []
                     }
                 ]
+            },
+            "post": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Create New Exercise",
+                "description": "Create New Exercise",
+                "operationId": "storeExercise",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "exercise_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "exercise_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "exercise_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Exercise"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
         },
         "/v1/public/api/exercises/{id}": {
@@ -977,77 +1070,17 @@
                 ]
             }
         },
-        "/v1/public/api/exercises/create": {
-            "post": {
+        "/v1/public/api/lessons": {
+            "get": {
                 "tags": [
-                    "Exercises"
+                    "Lessons"
                 ],
-                "summary": "Create New Exercise",
-                "description": "Create New Exercise",
-                "operationId": "storeExercise",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "exercise_type": {
-                                        "type": "string",
-                                        "example": "Type A"
-                                    },
-                                    "instruction": {
-                                        "type": "string",
-                                        "example": "Instructions here"
-                                    },
-                                    "question": {
-                                        "type": "string",
-                                        "example": "Question here"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "example": "exercise_image.jpg"
-                                    },
-                                    "voice": {
-                                        "type": "string",
-                                        "example": "exercise_voice.mp3"
-                                    },
-                                    "choices": {
-                                        "type": "string",
-                                        "example": "Choice 1, Choice 2"
-                                    },
-                                    "incorrect_hint": {
-                                        "type": "string",
-                                        "example": "Incorrect hint here"
-                                    },
-                                    "correct_answer": {
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
+                "summary": "Get All Lesson List",
+                "description": "Get Lesson List as Array",
+                "operationId": "LessonIndex",
                 "responses": {
                     "200": {
-                        "description": "Create New Exercise"
+                        "description": "Get Lesson List as Array"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1061,19 +1094,53 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/lessons": {
-            "get": {
+            },
+            "post": {
                 "tags": [
                     "Lessons"
                 ],
-                "summary": "Get All Lesson List",
-                "description": "Get Lesson List as Array",
-                "operationId": "LessonIndex",
+                "summary": "Create New Lesson",
+                "description": "Create New Lesson",
+                "operationId": "storeLesson",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_title": {
+                                        "type": "string",
+                                        "example": "Essential Pronunciation: -ch, -h, -ll, -ñ"
+                                    },
+                                    "lesson_type": {
+                                        "type": "string",
+                                        "example": "voice"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "lesson_image.jpg"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Get Lesson List as Array"
+                        "description": "Create New Lesson"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1307,68 +1374,6 @@
                     },
                     "500": {
                         "description": "Internal Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/lessons/create": {
-            "post": {
-                "tags": [
-                    "Lessons"
-                ],
-                "summary": "Create New Lesson",
-                "description": "Create New Lesson",
-                "operationId": "storeLesson",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_title": {
-                                        "type": "string",
-                                        "example": "Essential Pronunciation: -ch, -h, -ll, -ñ"
-                                    },
-                                    "lesson_type": {
-                                        "type": "string",
-                                        "example": "voice"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "example": "lesson_image.jpg"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Create New Lesson"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
                     }
                 },
                 "security": [
@@ -1667,47 +1672,6 @@
                 ]
             }
         },
-        "/v1/public/api/payments/view/search": {
-            "get": {
-                "tags": [
-                    "Payments"
-                ],
-                "summary": "All Payments - Publicly Accessible",
-                "description": "Search All Payments - Publicly Accessible",
-                "operationId": "Paymentssearch",
-                "parameters": [
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "perPage, eg; 20",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "search, eg; Test",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Test"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Payments - Publicly Accessible"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
         "/v1/public/api/payments/{id}": {
             "get": {
                 "tags": [
@@ -1813,12 +1777,96 @@
                 "tags": [
                     "Tips"
                 ],
-                "summary": "Get Tip List",
+                "summary": "Get All Tip List",
                 "description": "Get Tip List as Array",
                 "operationId": "TipIndex",
                 "responses": {
                     "200": {
                         "description": "Get Tip List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Create New Tip",
+                "description": "Create New Tip",
+                "operationId": "storeTip",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "tip_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "tip_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "tip_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Tip"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1856,6 +1904,90 @@
                 "responses": {
                     "200": {
                         "description": "Show Tip Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Tips"
+                ],
+                "summary": "Update Tip",
+                "description": "Update Tip",
+                "operationId": "updateTip",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "tip_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "tip_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "tip_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update Tip"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1973,77 +2105,17 @@
                 ]
             }
         },
-        "/v1/public/api/tips/create": {
-            "post": {
+        "/v1/public/api/units": {
+            "get": {
                 "tags": [
-                    "Tips"
+                    "Units"
                 ],
-                "summary": "Create New Tip",
-                "description": "Create New Tip",
-                "operationId": "storeTip",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "tip_type": {
-                                        "type": "string",
-                                        "example": "Type A"
-                                    },
-                                    "instruction": {
-                                        "type": "string",
-                                        "example": "Instructions here"
-                                    },
-                                    "question": {
-                                        "type": "string",
-                                        "example": "Question here"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "example": "tip_image.jpg"
-                                    },
-                                    "voice": {
-                                        "type": "string",
-                                        "example": "tip_voice.mp3"
-                                    },
-                                    "choices": {
-                                        "type": "string",
-                                        "example": "Choice 1, Choice 2"
-                                    },
-                                    "incorrect_hint": {
-                                        "type": "string",
-                                        "example": "Incorrect hint here"
-                                    },
-                                    "correct_answer": {
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
+                "summary": "Get Unit List",
+                "description": "Get Unit List as Array",
+                "operationId": "UnitIndex",
                 "responses": {
                     "200": {
-                        "description": "Create New Tip"
+                        "description": "Get Unit List as Array"
                     },
                     "400": {
                         "description": "Bad request"
@@ -2057,19 +2129,52 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/units": {
-            "get": {
+            },
+            "post": {
                 "tags": [
                     "Units"
                 ],
-                "summary": "Get Unit List",
-                "description": "Get Unit List as Array",
-                "operationId": "UnitIndex",
+                "summary": "Create New Unit",
+                "description": "Create New Unit",
+                "operationId": "storeUnit",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "unit_name": {
+                                        "type": "string",
+                                        "example": "Unit 5"
+                                    },
+                                    "unit_title": {
+                                        "type": "string",
+                                        "example": "Let's Talk About You"
+                                    },
+                                    "unit_description": {
+                                        "type": "string",
+                                        "example": "Explore subject pronouns, professions "
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Get Unit List as Array"
+                        "description": "Create New Unit"
                     },
                     "400": {
                         "description": "Bad request"
@@ -2120,16 +2225,51 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/Units": {
-            "post": {
+            },
+            "delete": {
                 "tags": [
                     "Units"
                 ],
-                "summary": "Create New Unit",
-                "description": "Create New Unit",
-                "operationId": "storeUnit",
+                "summary": "Delete Units",
+                "description": "Delete Units",
+                "operationId": "destroyUnits",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Units"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/Units/{id}": {
+            "put": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Update Unit",
+                "description": "Update Unit",
+                "operationId": "updateUnit",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2167,7 +2307,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Create New Unit"
+                        "description": "Update Unit"
                     },
                     "400": {
                         "description": "Bad request"

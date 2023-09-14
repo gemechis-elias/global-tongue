@@ -172,7 +172,7 @@ public function store(ConversationRequest $request): JsonResponse
  *             @OA\Property(property="lesson_id", type="integer", example=1),
  *             @OA\Property(property="conversation_type", type="string", example="Type A"),
  *             @OA\Property(property="instruction", type="string", example="Instructions here"),
- *            @OA\Property(property="conversations", type="string", example="[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"),
+ *            @OA\Property(property="conversations", type="string", example="remove qoute [{'name': 'John', 'text': 'Hello'},{'name': 'John', 'text': 'Hello'}]"),
  * 
  *         ),
  *     ),
