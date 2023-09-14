@@ -150,12 +150,6 @@ class CourseRepository implements CrudInterface
     public function update(int $id, array $data): Course|null
     {
         $course = Course::find($id);
-        if (!empty($data['image'])) {
-           $titleShort = Str::slug(substr($data['name'], 0, 20));
-           $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/courses', $course->image);
-        } else {
-           
-        }
 
         if (is_null($course)) {
             return null;
