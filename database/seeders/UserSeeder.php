@@ -28,14 +28,14 @@ class UserSeeder extends Seeder
             'level' => 'beginner',
             'subscription_type' => 'free',
 
-            'my_courses' => json_encode([]),
-            'paid_courses' => json_encode([]),
-            'completed_levels'=> json_encode([]),
-            'completed_units'=> json_encode([]), 
-            'completed_lessons'=> json_encode([]),
-            'completed_exercises'=> json_encode([]),
-            'completed_tips'=> json_encode([]),
-            'completed_conversation'=> json_encode([])
+            'my_courses' => [],
+            'paid_courses' => [],
+            'completed_levels'=> [],
+            'completed_units'=> [], 
+            'completed_lessons'=> [],
+            'completed_exercises'=> [],
+            'completed_tips'=> [],
+            'completed_conversation'=> []
             ],
 
             [
@@ -47,14 +47,14 @@ class UserSeeder extends Seeder
                'level' => 'beginner',
                'subscription_type' => 'premium',
    
-               'my_courses' => json_encode([]),
-               'paid_courses' => json_encode([]),
-               'completed_levels'=> json_encode([]),
-               'completed_units'=> json_encode([]), 
-               'completed_lessons'=> json_encode([]),
-               'completed_exercises'=> json_encode([]),
-               'completed_tips'=> json_encode([]),
-               'completed_conversation'=> json_encode([])
+               'my_courses' => [],
+               'paid_courses' => [],
+               'completed_levels'=> [],
+               'completed_units'=> [], 
+               'completed_lessons'=> [],
+               'completed_exercises'=> [],
+               'completed_tips'=> [],
+               'completed_conversation'=> []
             ],
 
             [
@@ -66,19 +66,31 @@ class UserSeeder extends Seeder
                'level' => 'beginner',
                'subscription_type' => 'premium',
    
-               'my_courses' => json_encode([]),
-               'paid_courses' => json_encode([]),
-               'completed_levels'=> json_encode([]),
-               'completed_units'=> json_encode([]), 
-               'completed_lessons'=> json_encode([]),
-               'completed_exercises'=> json_encode([]),
-               'completed_tips'=> json_encode([]),
-               'completed_conversation'=> json_encode([])
+               'my_courses' => [],
+               'paid_courses' => [],
+               'completed_levels'=> [],
+               'completed_units'=> [], 
+               'completed_lessons'=> [],
+               'completed_exercises'=> [],
+               'completed_tips'=> [],
+               'completed_conversation'=> []
                ]
           
         ];
 
-        User::create($data);
+        foreach ($data as &$user) {
+            // Decode JSON-encoded fields
+            $user['my_courses'] = json_encode($user['my_courses']);
+            $user['paid_courses'] = json_encode($user['paid_courses']);
+            $user['completed_levels'] = json_encode($user['completed_levels']);
+            $user['completed_units'] = json_encode($user['completed_units']);
+            $user['completed_lessons'] = json_encode($user['completed_lessons']);
+            $user['completed_exercises'] = json_encode($user['completed_exercises']);
+            $user['completed_tips'] = json_encode($user['completed_tips']);
+            $user['completed_conversation'] = json_encode($user['completed_conversation']);
+        }
+
+        User::insert($data);
 
         // Testing Dummy User
         // User::factory(2)->create();
