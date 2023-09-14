@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\C1_Auth;
+use App\Models\User;
 use OpenApi\Annotations as OA;
 
 use Illuminate\Support\Facades\Auth;
@@ -128,6 +129,34 @@ class AuthController extends Controller
         try {
             $data = $this->guard()->user();
             return $this->responseSuccess($data, 'Profile Fetched Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+     /**
+     * @OA\Get(
+     *     path="/v1/public/api/auth/all",
+     *     tags={"User Authentication"},
+     *     summary="All Users Profile",
+     *     description="All Users Profile",
+     *     security={{"bearer":{}}},
+     *     @OA\Response(response=200, description="All Users Profile" ),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function all(): JsonResponse
+    {
+        try {
+            $user = $this->guard()->user();
+            // check if user role is admin
+            if($user->role != "admin"){
+                return $this->responseError(null, 'You are not authorized to access this resource !', Response::HTTP_UNAUTHORIZED);
+            }
+            $data =User::orderBy('id', 'desc')
+            ->paginate(100);
+            return $this->responseSuccess($data, 'Profiles Fetched Successfully !');
         } catch (\Exception $e) {
             return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }

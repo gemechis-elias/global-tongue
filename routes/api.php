@@ -38,20 +38,10 @@ Route::group([
         Route::post('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
         Route::get('me', [AuthController::class, 'me']);
+        Route::get('all', [AuthController::class,'all']);
     });
     
-      /**
-     * Admin Module
-     */
-    Route::group(['prefix' => 'admin'], function() {
-        Route::post('register', [AdminController::class, 'register']);
-        Route::post('login', [AdminController::class, 'login']);
-        Route::post('logout', [AdminController::class, 'logout']);
-        Route::post('refresh', [AdminController::class, 'refresh']);
-        Route::get('me', [AdminController::class, 'me']);
-        
-        });
- 
+    
 
     /**
      * Courses Module
