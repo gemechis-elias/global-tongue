@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController; 
 use App\Http\Controllers\Units\UnitController;
-use App\Http\Controllers\Courses\CoursesController;
+use App\Http\Controllers\A1Courses\CoursesController;
 use App\Http\Controllers\Payment\PaymentController;
 
 use App\Http\Controllers\Levels\LevelsController;
