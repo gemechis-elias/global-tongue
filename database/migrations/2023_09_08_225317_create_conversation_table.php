@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+
         });
     }
 

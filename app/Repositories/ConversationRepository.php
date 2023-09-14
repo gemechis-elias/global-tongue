@@ -32,10 +32,12 @@ class ConversationRepository implements CrudInterface
      *
      * @return collections Array of Conversation Collection
      */
+
+
+
     public function getAll(): Paginator
     {
         return Conversation::orderBy('id', 'desc')
-         //   ->with('user')
             ->paginate(10);
     }
 
@@ -106,10 +108,33 @@ class ConversationRepository implements CrudInterface
      * @param int $id
      * @return void
      */
+    function decodeConversation($conversation) {
+        // Remove the escaping slashes from the JSON string
+        $conversation = stripslashes($conversation);
+    
+        // Decode the JSON string into an associative array
+        $decodedData = json_decode($conversation, true);
+    
+        if ($decodedData === null && json_last_error() !== JSON_ERROR_NONE) {
+            // JSON decoding error occurred
+            return ["error" => json_last_error_msg()];
+        } else {
+            // Return the decoded data as an associative array
+            return $decodedData;
+        }
+    }
     public function getByID(int $id): Conversation|null
     {
-        return Conversation::with('user')->find($id);
+        $conversation = Conversation::find($id);
+    
+        if (!is_null($conversation)) {
+            // Decode the "conversations" field
+            $conversation->conversations = $this->decodeConversation($conversation->conversations);
+        }
+    
+        return $conversation;
     }
+    
 
     /**
      * Update Conversation By ID.
