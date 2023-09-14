@@ -130,7 +130,7 @@ class UnitController extends Controller
 
         /**
      * @OA\Post(
-     *     path="/v1/public/api/units/create",
+     *     path="/v1/public/api/units",
      *     tags={"Units"},
      *     summary="Create New Unit",
      *     description="Create New Unit",

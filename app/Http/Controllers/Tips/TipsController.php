@@ -162,7 +162,7 @@ public function update(TipsRequest $request, $id): JsonResponse
  
        /**
  * @OA\Post(
- *     path="/v1/public/api/tips/create",
+ *     path="/v1/public/api/tips",
  *     tags={"Tips"},
  *     summary="Create New Tip",
  *     description="Create New Tip",

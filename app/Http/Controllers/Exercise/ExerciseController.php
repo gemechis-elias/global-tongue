@@ -120,7 +120,7 @@ class ExerciseController extends Controller
 
        /**
  * @OA\Post(
- *     path="/v1/public/api/exercises/create",
+ *     path="/v1/public/api/exercises",
  *     tags={"Exercises"},
  *     summary="Create New Exercise",
  *     description="Create New Exercise",

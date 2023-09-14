@@ -156,7 +156,7 @@ class LessonController extends Controller
 
 /**
  * @OA\Post(
- *     path="/v1/public/api/lessons/create",
+ *     path="/v1/public/api/lessons",
  *     tags={"Lessons"},
  *     summary="Create New Lesson",
  *     description="Create New Lesson",

@@ -119,7 +119,7 @@ class ConversationController extends Controller
 
        /**
  * @OA\Post(
- *     path="/v1/public/api/conversations/create",
+ *     path="/v1/public/api/conversations",
  *     tags={"Conversations"},
  *     summary="Create New Conversation",
  *     description="Create New Conversation",
