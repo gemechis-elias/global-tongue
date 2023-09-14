@@ -28,9 +28,9 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Get All Tip.
+     * Get All Conversation.
      *
-     * @return collections Array of Tip Collection
+     * @return collections Array of Conversation Collection
      */
     public function getAll(): Paginator
     {
@@ -40,10 +40,10 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Get Paginated Tip Data.
+     * Get Paginated Conversation Data.
      *
      * @param int $pageNo
-     * @return collections Array of Tip Collection
+     * @return collections Array of Conversation Collection
      */
     public function getPaginatedData($perPage): Paginator
     {
@@ -54,12 +54,12 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Get Searchable Tip Data with Pagination.
+     * Get Searchable Conversation Data with Pagination.
      *
      * @param int $pageNo
-     * @return collections Array of Tip Collection
+     * @return collections Array of Conversation Collection
      */
-    public function searchTip($keyword, $perPage): Paginator
+    public function searchConversation($keyword, $perPage): Paginator
     {
         $perPage = isset($perPage) ? intval($perPage) : 10;
 
@@ -71,17 +71,17 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Create New Tip.
+     * Create New Conversation.
      *
      * @param array $data
-     * @return object Tip Object
+     * @return object Conversation Object
      */
     public function create(array $data): Conversation
     {
         $titleShort      = Str::slug(substr($data['question'], 0, 20));
 
         if (!empty($data['image'])) {
-            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/tips');
+            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/conversation');
         }
 
         $data['user_id'] = $this->user->id;
@@ -90,25 +90,25 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Delete Tip.
+     * Delete Conversation.
      *
      * @param int $id
      * @return boolean true if deleted otherwise false
      */
     public function delete(int $id): bool
     {
-        $tip = Conversation::find($id);
-        if (empty($tip)) {
+        $conversation = Conversation::find($id);
+        if (empty($conversation)) {
             return false;
         }
 
-     // UploadHelper::deleteFile('images/tip/' . $tip->image);
-        $tip->delete($tip);
+     // UploadHelper::deleteFile('images/tip/' . $conversation->image);
+        $conversation->delete($conversation);
         return true;
     }
 
     /**
-     * Get Tip Detail By ID.
+     * Get Conversation Detail By ID.
      *
      * @param int $id
      * @return void
@@ -119,48 +119,47 @@ class ConversationRepository implements CrudInterface
     }
 
     /**
-     * Update Tip By ID.
+     * Update Conversation By ID.
      *
      * @param int $id
      * @param array $data
-     * @return object Updated Tip Object
+     * @return object Updated Conversation Object
      */
     public function getConversationsByLessonID($course_id,$level_id, $unit_id, $lesson_id)
     {
-        $tips = Conversation::where('lesson_id', $lesson_id)
+        $conversation = Conversation::where('lesson_id', $lesson_id)
             ->where('course_id', $course_id)
             ->where('level_id', $level_id)
             ->where('unit_id', $unit_id)
             ->get();
     
-        if ($tips->isEmpty()) {
-            // If no tips are found, you can return an appropriate response
-            return response()->json(['message' => 'No tips found for the specified parameters'], 404);
+        if ($conversation->isEmpty()) {
+            return null;
         }
     
-        return $tips;
+        return $conversation;
     }
     
 
 
     public function update(int $id, array $data): Conversation|null
     {
-        $tip = Conversation::find($id);
+        $conversation = Conversation::find($id);
         if (!empty($data['image'])) {
             $titleShort = Str::slug(substr($data['title'], 0, 20));
-            $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/tip', $tip->image);
+            $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/tip', $conversation->image);
         } else {
            
         }
 
-        if (is_null($tip)) {
+        if (is_null($conversation)) {
             return null;
         }
 
         // If everything is OK, then update.
-        $tip->update($data);
+        $conversation->update($data);
 
         // Finally return the updated tip.
-        return $this->getByID($tip->id);
+        return $this->getByID($conversation->id);
     }
 }

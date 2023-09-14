@@ -160,6 +160,8 @@ public function store(ConversationRequest $request): JsonResponse
  *     summary="Update Conversation",
  *     description="Update New Conversation",
  *     operationId="updateConversation",
+ *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+ * 
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\JsonContent(
