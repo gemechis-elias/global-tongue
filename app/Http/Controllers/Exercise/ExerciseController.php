@@ -83,7 +83,7 @@ class ExerciseController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/exercises/by/{course_id}/level_id/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/exercises/by/{course_id}/{level_id}/{unit_id}/{lesson_id}",
          *     tags={"Exercises"},
          *     summary="Get Exercises by Parents",
          *     description="Get list of exercises associated with a specific Parents",
