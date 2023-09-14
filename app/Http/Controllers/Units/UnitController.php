@@ -168,7 +168,7 @@ class UnitController extends Controller
      *     tags={"Units"},
      *     summary="Update Unit",
      *     description="Update Unit",
-     *     operationId="storeUnit",
+     *     operationId="updateUnit",
      *     @OA\RequestBody(
      *          @OA\JsonContent(
      *              type="object",
