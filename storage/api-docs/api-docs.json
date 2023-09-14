@@ -59,7 +59,7 @@
                 ],
                 "summary": "Register User",
                 "description": "Register New User",
-                "operationId": "78162d7a336f7b61f039db6bda188c54",
+                "operationId": "e5cad557c5bc4e487bfe1c6922b63452",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -107,7 +107,7 @@
                 ],
                 "summary": "Authenticated User Profile",
                 "description": "Authenticated User Profile",
-                "operationId": "3a9ca842ced028df85824b08ecd93be0",
+                "operationId": "a394c19bea3c58ab7a16145d5e1e4518",
                 "responses": {
                     "200": {
                         "description": "Authenticated User Profile"
@@ -133,7 +133,7 @@
                 ],
                 "summary": "Logout",
                 "description": "Logout",
-                "operationId": "81799374f6edbc7597415f7b4a3f56ed",
+                "operationId": "3c3e9aced875db976c4efea3ce208742",
                 "responses": {
                     "200": {
                         "description": "Logout"
@@ -154,7 +154,7 @@
                 ],
                 "summary": "Refresh",
                 "description": "Refresh",
-                "operationId": "8f582da4a27a9d66f4493650662f5608",
+                "operationId": "db7e9f45f3aaf43d782c7236aca8fcd4",
                 "responses": {
                     "200": {
                         "description": "Refresh"
@@ -164,310 +164,6 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/conversations": {
-            "get": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Get All Conversation List",
-                "description": "Get Conversation List as Array",
-                "operationId": "ConversationIndex",
-                "responses": {
-                    "200": {
-                        "description": "Get Conversation List as Array"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Create New Conversation",
-                "description": "Create New Conversation",
-                "operationId": "storeConversation",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "conversation_type": {
-                                        "type": "string",
-                                        "example": "Type A"
-                                    },
-                                    "instruction": {
-                                        "type": "string",
-                                        "example": "Instructions here"
-                                    },
-                                    "conversations": {
-                                        "type": "string",
-                                        "example": "[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Create New Conversation"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/conversations/{id}": {
-            "get": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Show Conversation Details",
-                "description": "Show Conversation Details",
-                "operationId": "showConversation",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id, eg; 1",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Show Conversation Details"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
-            "put": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Update Conversation",
-                "description": "Update New Conversation",
-                "operationId": "updateConversation",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id, eg; 1",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "conversation_type": {
-                                        "type": "string",
-                                        "example": "Type A"
-                                    },
-                                    "instruction": {
-                                        "type": "string",
-                                        "example": "Instructions here"
-                                    },
-                                    "conversations": {
-                                        "type": "string",
-                                        "example": "remove qoute [{'name': 'John', 'text': 'Hello'},{'name': 'John', 'text': 'Hello'}]"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Updated Conversation"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Delete Conversations",
-                "description": "Delete Conversations",
-                "operationId": "destroyConversations",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id, eg; 1",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Delete Conversations"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}": {
-            "get": {
-                "tags": [
-                    "Conversations"
-                ],
-                "summary": "Get Conversations by Parents",
-                "description": "Get list of conversations associated with a specific Parents",
-                "operationId": "getConversationsByLessonID",
-                "parameters": [
-                    {
-                        "name": "course_id",
-                        "in": "path",
-                        "description": "ID of the course",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "level_id",
-                        "in": "path",
-                        "description": "ID of the level",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "unit_id",
-                        "in": "path",
-                        "description": "ID of the unit",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "lesson_id",
-                        "in": "path",
-                        "description": "ID of the lesson",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Conversations for the specified Parents ID"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "No Conversations found for the specified Parents ID"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
                     }
                 },
                 "security": [
@@ -737,17 +433,17 @@
                 ]
             }
         },
-        "/v1/public/api/exercises": {
+        "/v1/public/api/levels": {
             "get": {
                 "tags": [
-                    "Exercises"
+                    "Levels"
                 ],
-                "summary": "Get All Exercise List",
-                "description": "Get Exercise List as Array",
-                "operationId": "ExerciseIndex",
+                "summary": "Get Level List",
+                "description": "Get Level List as Array",
+                "operationId": "indexLevel",
                 "responses": {
                     "200": {
-                        "description": "Get Exercise List as Array"
+                        "description": "Get Level List as Array"
                     },
                     "400": {
                         "description": "Bad request"
@@ -764,64 +460,39 @@
             },
             "post": {
                 "tags": [
-                    "Exercises"
+                    "Levels"
                 ],
-                "summary": "Create New Exercise",
-                "description": "Create New Exercise",
-                "operationId": "storeExercise",
+                "summary": "Create New Level",
+                "description": "Create New Level",
+                "operationId": "storeLevel",
                 "requestBody": {
-                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
                                     "course_id": {
                                         "type": "integer",
-                                        "example": 1
+                                        "example": "1"
                                     },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "exercise_type": {
+                                    "name": {
                                         "type": "string",
-                                        "example": "Type A"
+                                        "example": "Spanish Level 1"
                                     },
-                                    "instruction": {
+                                    "description": {
                                         "type": "string",
-                                        "example": "Instructions here"
+                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
                                     },
-                                    "question": {
+                                    "tag": {
                                         "type": "string",
-                                        "example": "Question here"
+                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
                                     },
-                                    "image": {
+                                    "level": {
                                         "type": "string",
-                                        "example": "exercise_image.jpg"
+                                        "example": "Level 1"
                                     },
-                                    "voice": {
+                                    "type": {
                                         "type": "string",
-                                        "example": "exercise_voice.mp3"
-                                    },
-                                    "choices": {
-                                        "type": "string",
-                                        "example": "Choice 1, Choice 2"
-                                    },
-                                    "incorrect_hint": {
-                                        "type": "string",
-                                        "example": "Incorrect hint here"
-                                    },
-                                    "correct_answer": {
-                                        "type": "integer",
-                                        "example": 1
+                                        "example": "free"
                                     }
                                 },
                                 "type": "object"
@@ -831,7 +502,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Create New Exercise"
+                        "description": "Create New Level"
                     },
                     "400": {
                         "description": "Bad request"
@@ -847,14 +518,54 @@
                 ]
             }
         },
-        "/v1/public/api/exercises/{id}": {
+        "/v1/public/api/levels/by/{course_id}": {
             "get": {
                 "tags": [
-                    "Exercises"
+                    "Levels"
                 ],
-                "summary": "Show Exercise Details",
-                "description": "Show Exercise Details",
-                "operationId": "showExercise",
+                "summary": "Get Levels by Course ID",
+                "description": "Get list of levels associated with a specific course",
+                "operationId": "getLevelsByCourseID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Levels for the specified Course ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Levels found for the specified Course ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/levels/{id}": {
+            "get": {
+                "tags": [
+                    "Levels"
+                ],
+                "summary": "Show Level Details",
+                "description": "Show Level Details",
+                "operationId": "showLevel",
                 "parameters": [
                     {
                         "name": "id",
@@ -868,7 +579,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Exercise Details"
+                        "description": "Show Level Details"
                     },
                     "400": {
                         "description": "Bad request"
@@ -885,64 +596,46 @@
             },
             "put": {
                 "tags": [
-                    "Exercises"
+                    "Levels"
                 ],
-                "summary": "Update Exercise",
-                "description": "Update Exercise",
-                "operationId": "updateExercise",
+                "summary": "Update Level",
+                "description": "Update Level",
+                "operationId": "updateLevel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "requestBody": {
-                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "unit_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "lesson_id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "exercise_type": {
+                                    "name": {
                                         "type": "string",
-                                        "example": "Type A"
+                                        "example": "Spanish Level 1"
                                     },
-                                    "instruction": {
+                                    "description": {
                                         "type": "string",
-                                        "example": "Instructions here"
+                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
                                     },
-                                    "question": {
+                                    "tag": {
                                         "type": "string",
-                                        "example": "Question here"
+                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
                                     },
-                                    "image": {
+                                    "level": {
                                         "type": "string",
-                                        "example": "exercise_image.jpg"
+                                        "example": "Level 1"
                                     },
-                                    "voice": {
+                                    "type": {
                                         "type": "string",
-                                        "example": "exercise_voice.mp3"
-                                    },
-                                    "choices": {
-                                        "type": "string",
-                                        "example": "Choice 1, Choice 2"
-                                    },
-                                    "incorrect_hint": {
-                                        "type": "string",
-                                        "example": "Incorrect hint here"
-                                    },
-                                    "correct_answer": {
-                                        "type": "integer",
-                                        "example": 1
+                                        "example": "free"
                                     }
                                 },
                                 "type": "object"
@@ -952,7 +645,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Update Exercise"
+                        "description": "Update Level"
                     },
                     "400": {
                         "description": "Bad request"
@@ -969,11 +662,11 @@
             },
             "delete": {
                 "tags": [
-                    "Exercises"
+                    "Levels"
                 ],
-                "summary": "Delete Exercises",
-                "description": "Delete Exercises",
-                "operationId": "destroyExercises",
+                "summary": "Delete Level",
+                "description": "Delete Level",
+                "operationId": "destroyLevel",
                 "parameters": [
                     {
                         "name": "id",
@@ -987,7 +680,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Delete Exercises"
+                        "description": "Delete Level"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1003,14 +696,232 @@
                 ]
             }
         },
-        "/v1/public/api/exercises/by/{course_id}/{unit_id}/{lesson_id}": {
+        "/v1/public/api/units": {
             "get": {
                 "tags": [
-                    "Exercises"
+                    "Units"
                 ],
-                "summary": "Get Exercises by Parents",
-                "description": "Get list of exercises associated with a specific Parents",
-                "operationId": "getExercisesByLessonID",
+                "summary": "Get Unit List",
+                "description": "Get Unit List as Array",
+                "operationId": "UnitIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Unit List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Create New Unit",
+                "description": "Create New Unit",
+                "operationId": "storeUnit",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "unit_name": {
+                                        "type": "string",
+                                        "example": "Unit 5"
+                                    },
+                                    "unit_title": {
+                                        "type": "string",
+                                        "example": "Let's Talk About You"
+                                    },
+                                    "unit_description": {
+                                        "type": "string",
+                                        "example": "Explore subject pronouns, professions "
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Unit"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/units/{id}": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Show Unit Details",
+                "description": "Show Unit Details",
+                "operationId": "showUnit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Unit Details"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Delete Units",
+                "description": "Delete Units",
+                "operationId": "destroyUnits",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete Units"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/Units/{id}": {
+            "put": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Update Unit",
+                "description": "Update Unit",
+                "operationId": "updateUnit",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "unit_name": {
+                                        "type": "string",
+                                        "example": "Unit 5"
+                                    },
+                                    "unit_title": {
+                                        "type": "string",
+                                        "example": "Let's Talk About You"
+                                    },
+                                    "unit_description": {
+                                        "type": "string",
+                                        "example": "Explore subject pronouns, professions "
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update Unit"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/units/by/{course_id}/{level_id}": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Get Units by Parents ID",
+                "description": "Get list of units associated with a specific course",
+                "operationId": "getUnitsByCourseID",
                 "parameters": [
                     {
                         "name": "course_id",
@@ -1029,35 +940,17 @@
                         "schema": {
                             "type": "integer"
                         }
-                    },
-                    {
-                        "name": "unit_id",
-                        "in": "path",
-                        "description": "ID of the unit",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "lesson_id",
-                        "in": "path",
-                        "description": "ID of the lesson",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Exercises for the specified Parents ID"
+                        "description": "Units for the specified Parents ID"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "No Exercises found for the specified Parents ID"
+                        "description": "No units found for the specified Parents ID"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -1383,17 +1276,17 @@
                 ]
             }
         },
-        "/v1/public/api/levels": {
+        "/v1/public/api/exercises": {
             "get": {
                 "tags": [
-                    "Levels"
+                    "Exercises"
                 ],
-                "summary": "Get Level List",
-                "description": "Get Level List as Array",
-                "operationId": "indexLevel",
+                "summary": "Get All Exercise List",
+                "description": "Get Exercise List as Array",
+                "operationId": "ExerciseIndex",
                 "responses": {
                     "200": {
-                        "description": "Get Level List as Array"
+                        "description": "Get Exercise List as Array"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1410,39 +1303,64 @@
             },
             "post": {
                 "tags": [
-                    "Levels"
+                    "Exercises"
                 ],
-                "summary": "Create New Level",
-                "description": "Create New Level",
-                "operationId": "storeLevel",
+                "summary": "Create New Exercise",
+                "description": "Create New Exercise",
+                "operationId": "storeExercise",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
                                     "course_id": {
                                         "type": "integer",
-                                        "example": "1"
+                                        "example": 1
                                     },
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Spanish Level 1"
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "description": {
-                                        "type": "string",
-                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "tag": {
-                                        "type": "string",
-                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "level": {
+                                    "exercise_type": {
                                         "type": "string",
-                                        "example": "Level 1"
+                                        "example": "Type A"
                                     },
-                                    "type": {
+                                    "instruction": {
                                         "type": "string",
-                                        "example": "free"
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "exercise_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "exercise_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
                                     }
                                 },
                                 "type": "object"
@@ -1452,7 +1370,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Create New Level"
+                        "description": "Create New Exercise"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1468,54 +1386,14 @@
                 ]
             }
         },
-        "/v1/public/api/levels/by/{course_id}": {
+        "/v1/public/api/exercises/{id}": {
             "get": {
                 "tags": [
-                    "Levels"
+                    "Exercises"
                 ],
-                "summary": "Get Levels by Course ID",
-                "description": "Get list of levels associated with a specific course",
-                "operationId": "getLevelsByCourseID",
-                "parameters": [
-                    {
-                        "name": "course_id",
-                        "in": "path",
-                        "description": "ID of the course",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Levels for the specified Course ID"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "No Levels found for the specified Course ID"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/levels/{id}": {
-            "get": {
-                "tags": [
-                    "Levels"
-                ],
-                "summary": "Show Level Details",
-                "description": "Show Level Details",
-                "operationId": "showLevel",
+                "summary": "Show Exercise Details",
+                "description": "Show Exercise Details",
+                "operationId": "showExercise",
                 "parameters": [
                     {
                         "name": "id",
@@ -1529,7 +1407,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Level Details"
+                        "description": "Show Exercise Details"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1546,11 +1424,11 @@
             },
             "put": {
                 "tags": [
-                    "Levels"
+                    "Exercises"
                 ],
-                "summary": "Update Level",
-                "description": "Update Level",
-                "operationId": "updateLevel",
+                "summary": "Update Exercise",
+                "description": "Update Exercise",
+                "operationId": "updateExercise",
                 "parameters": [
                     {
                         "name": "id",
@@ -1563,29 +1441,58 @@
                     }
                 ],
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Spanish Level 1"
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "description": {
-                                        "type": "string",
-                                        "example": "Learn words and phrases for greetings and introductions, eating at a restaurant, shopping, family, and travel. Study professions, hobbies, pronunciation of -r versus -rr, and subject pronouns and learn when to use tú versus usted."
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "tag": {
-                                        "type": "string",
-                                        "example": "Ser, Gender, Gustar, Estar, Plurals,"
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "level": {
-                                        "type": "string",
-                                        "example": "Level 1"
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
                                     },
-                                    "type": {
+                                    "exercise_type": {
                                         "type": "string",
-                                        "example": "free"
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "example": "Question here"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "exercise_image.jpg"
+                                    },
+                                    "voice": {
+                                        "type": "string",
+                                        "example": "exercise_voice.mp3"
+                                    },
+                                    "choices": {
+                                        "type": "string",
+                                        "example": "Choice 1, Choice 2"
+                                    },
+                                    "incorrect_hint": {
+                                        "type": "string",
+                                        "example": "Incorrect hint here"
+                                    },
+                                    "correct_answer": {
+                                        "type": "integer",
+                                        "example": 1
                                     }
                                 },
                                 "type": "object"
@@ -1595,7 +1502,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Update Level"
+                        "description": "Update Exercise"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1612,11 +1519,11 @@
             },
             "delete": {
                 "tags": [
-                    "Levels"
+                    "Exercises"
                 ],
-                "summary": "Delete Level",
-                "description": "Delete Level",
-                "operationId": "destroyLevel",
+                "summary": "Delete Exercises",
+                "description": "Delete Exercises",
+                "operationId": "destroyExercises",
                 "parameters": [
                     {
                         "name": "id",
@@ -1630,7 +1537,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Delete Level"
+                        "description": "Delete Exercises"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1646,17 +1553,148 @@
                 ]
             }
         },
-        "/v1/public/api/payments": {
+        "/v1/public/api/exercises/by/{course_id}/{level_id}/{unit_id}/{lesson_id}": {
             "get": {
                 "tags": [
-                    "Payments"
+                    "Exercises"
                 ],
-                "summary": "Get Payment List",
-                "description": "Get Payment List as Array",
-                "operationId": "Paymentsindex",
+                "summary": "Get Exercises by Parents",
+                "description": "Get list of exercises associated with a specific Parents",
+                "operationId": "getExercisesByLessonID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "path",
+                        "description": "ID of the unit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "ID of the lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Get Payment List as Array"
+                        "description": "Exercises for the specified Parents ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Exercises found for the specified Parents ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/conversations": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Get All Conversation List",
+                "description": "Get Conversation List as Array",
+                "operationId": "ConversationIndex",
+                "responses": {
+                    "200": {
+                        "description": "Get Conversation List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Create New Conversation",
+                "description": "Create New Conversation",
+                "operationId": "storeConversation",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "conversation_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "conversations": {
+                                        "type": "string",
+                                        "example": "[{'sentence_1':'Hola','voice_1':'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3'}], [{'sentence_1':'Bien, gracias.','voice_1':'https://api.globaltongueedu.com/v1/public/voices/voice1.mp3'}]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create New Conversation"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1672,14 +1710,14 @@
                 ]
             }
         },
-        "/v1/public/api/payments/{id}": {
+        "/v1/public/api/conversations/{id}": {
             "get": {
                 "tags": [
-                    "Payments"
+                    "Conversations"
                 ],
-                "summary": "Show Payment Details",
-                "description": "Show Payment Details",
-                "operationId": "Paymentsshow",
+                "summary": "Show Conversation Details",
+                "description": "Show Conversation Details",
+                "operationId": "showConversation",
                 "parameters": [
                     {
                         "name": "id",
@@ -1693,7 +1731,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Payment Details"
+                        "description": "Show Conversation Details"
                     },
                     "400": {
                         "description": "Bad request"
@@ -1707,47 +1745,94 @@
                         "bearer": []
                     }
                 ]
-            }
-        },
-        "/v1/public/api/progress": {
-            "get": {
+            },
+            "put": {
                 "tags": [
-                    "Progress"
+                    "Conversations"
                 ],
-                "summary": "Get Progress List",
-                "description": "Get Progress List as Array",
-                "operationId": "Progresssindex",
-                "responses": {
-                    "200": {
-                        "description": "Get Progress List as Array"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/progress/{user_id}": {
-            "get": {
-                "tags": [
-                    "Progress"
-                ],
-                "summary": "Show Progress Details of User",
-                "description": "Show Progress Details",
-                "operationId": "Progressshow",
+                "summary": "Update Conversation",
+                "description": "Update New Conversation",
+                "operationId": "updateConversation",
                 "parameters": [
                     {
-                        "name": "user_id",
+                        "name": "id",
                         "in": "path",
-                        "description": "user_id, eg; 1",
+                        "description": "id, eg; 1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "level_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "lesson_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "conversation_type": {
+                                        "type": "string",
+                                        "example": "Type A"
+                                    },
+                                    "instruction": {
+                                        "type": "string",
+                                        "example": "Instructions here"
+                                    },
+                                    "conversations": {
+                                        "type": "string",
+                                        "example": "[{'name': 'John', 'text': 'Hello'},{'name': 'John', 'text': 'Hello'}]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated Conversation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Delete Conversations",
+                "description": "Delete Conversations",
+                "operationId": "destroyConversations",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id, eg; 1",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -1756,13 +1841,80 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Progress Details"
+                        "description": "Delete Conversations"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
                         "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Get Conversations by Parents",
+                "description": "Get list of conversations associated with a specific Parents",
+                "operationId": "getConversationsByLessonID",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "path",
+                        "description": "ID of the course",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "level_id",
+                        "in": "path",
+                        "description": "ID of the level",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "path",
+                        "description": "ID of the unit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "lesson_id",
+                        "in": "path",
+                        "description": "ID of the lesson",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Conversations for the specified Parents ID"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "No Conversations found for the specified Parents ID"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
                     }
                 },
                 "security": [
@@ -2105,76 +2257,17 @@
                 ]
             }
         },
-        "/v1/public/api/units": {
+        "/v1/public/api/payments": {
             "get": {
                 "tags": [
-                    "Units"
+                    "Payments"
                 ],
-                "summary": "Get Unit List",
-                "description": "Get Unit List as Array",
-                "operationId": "UnitIndex",
+                "summary": "Get Payment List",
+                "description": "Get Payment List as Array",
+                "operationId": "Paymentsindex",
                 "responses": {
                     "200": {
-                        "description": "Get Unit List as Array"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Units"
-                ],
-                "summary": "Create New Unit",
-                "description": "Create New Unit",
-                "operationId": "storeUnit",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": "1"
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": "1"
-                                    },
-                                    "unit_name": {
-                                        "type": "string",
-                                        "example": "Unit 5"
-                                    },
-                                    "unit_title": {
-                                        "type": "string",
-                                        "example": "Let's Talk About You"
-                                    },
-                                    "unit_description": {
-                                        "type": "string",
-                                        "example": "Explore subject pronouns, professions "
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "example": ""
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Create New Unit"
+                        "description": "Get Payment List as Array"
                     },
                     "400": {
                         "description": "Bad request"
@@ -2190,14 +2283,14 @@
                 ]
             }
         },
-        "/v1/public/api/units/{id}": {
+        "/v1/public/api/payments/{id}": {
             "get": {
                 "tags": [
-                    "Units"
+                    "Payments"
                 ],
-                "summary": "Show Unit Details",
-                "description": "Show Unit Details",
-                "operationId": "showUnit",
+                "summary": "Show Payment Details",
+                "description": "Show Payment Details",
+                "operationId": "Paymentsshow",
                 "parameters": [
                     {
                         "name": "id",
@@ -2211,42 +2304,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Unit Details"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Units"
-                ],
-                "summary": "Delete Units",
-                "description": "Delete Units",
-                "operationId": "destroyUnits",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id, eg; 1",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Delete Units"
+                        "description": "Show Payment Details"
                     },
                     "400": {
                         "description": "Bad request"
@@ -2262,89 +2320,45 @@
                 ]
             }
         },
-        "/v1/public/api/Units/{id}": {
-            "put": {
-                "tags": [
-                    "Units"
-                ],
-                "summary": "Update Unit",
-                "description": "Update Unit",
-                "operationId": "updateUnit",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "course_id": {
-                                        "type": "integer",
-                                        "example": "1"
-                                    },
-                                    "level_id": {
-                                        "type": "integer",
-                                        "example": "1"
-                                    },
-                                    "unit_name": {
-                                        "type": "string",
-                                        "example": "Unit 5"
-                                    },
-                                    "unit_title": {
-                                        "type": "string",
-                                        "example": "Let's Talk About You"
-                                    },
-                                    "unit_description": {
-                                        "type": "string",
-                                        "example": "Explore subject pronouns, professions "
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "example": ""
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Update Unit"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
-            }
-        },
-        "/v1/public/api/units/by/{course_id}/{level_id}": {
+        "/v1/public/api/progress": {
             "get": {
                 "tags": [
-                    "Units"
+                    "Progress"
                 ],
-                "summary": "Get Units by Parents ID",
-                "description": "Get list of units associated with a specific course",
-                "operationId": "getUnitsByCourseID",
+                "summary": "Get Progress List",
+                "description": "Get Progress List as Array",
+                "operationId": "Progresssindex",
+                "responses": {
+                    "200": {
+                        "description": "Get Progress List as Array"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/public/api/progress/{user_id}": {
+            "get": {
+                "tags": [
+                    "Progress"
+                ],
+                "summary": "Show Progress Details of User",
+                "description": "Show Progress Details",
+                "operationId": "Progressshow",
                 "parameters": [
                     {
-                        "name": "course_id",
+                        "name": "user_id",
                         "in": "path",
-                        "description": "ID of the course",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "level_id",
-                        "in": "path",
-                        "description": "ID of the level",
+                        "description": "user_id, eg; 1",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -2353,16 +2367,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Units for the specified Parents ID"
+                        "description": "Show Progress Details"
                     },
                     "400": {
                         "description": "Bad request"
                     },
                     "404": {
-                        "description": "No units found for the specified Parents ID"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
+                        "description": "Resource Not Found"
                     }
                 },
                 "security": [

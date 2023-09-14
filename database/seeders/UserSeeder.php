@@ -18,7 +18,9 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->delete();
         $data = 
-           [ 'name' => 'Amanuel',
+          [
+            [
+             'name' => 'Amanuel',
             'email' => 'aman@gmail.com',
             'password' => Hash::make('123456'),
             'birthdate' => '1990-01-01',
@@ -33,7 +35,46 @@ class UserSeeder extends Seeder
             'completed_lessons'=> json_encode([]),
             'completed_exercises'=> json_encode([]),
             'completed_tips'=> json_encode([]),
-            'completed_conversation'=> json_encode([]),
+            'completed_conversation'=> json_encode([])
+            ],
+
+            [
+                'name' => 'Gemechis',
+               'email' => 'gemechis@gmail.com',
+               'password' => Hash::make('123456'),
+               'birthdate' => '1990-01-01',
+               'role' => 'user',
+               'level' => 'beginner',
+               'subscription_type' => 'premium',
+   
+               'my_courses' => json_encode([]),
+               'paid_courses' => json_encode([]),
+               'completed_levels'=> json_encode([]),
+               'completed_units'=> json_encode([]), 
+               'completed_lessons'=> json_encode([]),
+               'completed_exercises'=> json_encode([]),
+               'completed_tips'=> json_encode([]),
+               'completed_conversation'=> json_encode([])
+            ],
+
+            [
+               'name' => 'Admin',
+               'email' => 'admin@gmail.com',
+               'password' => Hash::make('123456'),
+               'birthdate' => '1990-01-01',
+               'role' => 'admin',
+               'level' => 'beginner',
+               'subscription_type' => 'premium',
+   
+               'my_courses' => json_encode([]),
+               'paid_courses' => json_encode([]),
+               'completed_levels'=> json_encode([]),
+               'completed_units'=> json_encode([]), 
+               'completed_lessons'=> json_encode([]),
+               'completed_exercises'=> json_encode([]),
+               'completed_tips'=> json_encode([]),
+               'completed_conversation'=> json_encode([])
+               ]
           
         ];
 
