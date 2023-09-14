@@ -33,7 +33,18 @@ class ConversationRepository implements CrudInterface
      * @return collections Array of Conversation Collection
      */
 
-
+     function encodeConversation(array $conversationData): string
+     {
+         // Encode the conversation data as a JSON string
+         $encodedConversation = json_encode($conversationData);
+     
+         if ($encodedConversation === false) {
+             // Handle JSON encoding error here, if needed
+             throw new \RuntimeException('Failed to encode conversation data as JSON.');
+         }
+     
+         return $encodedConversation;
+     }
 
      public function getAll(): Paginator
      {
@@ -60,7 +71,7 @@ class ConversationRepository implements CrudInterface
     {
         $perPage = isset($perPage) ? intval($perPage) : 12;
         return Conversation::orderBy('id', 'desc')
-            // ->with('user')
+            
             ->paginate($perPage);
     }
 
@@ -77,7 +88,6 @@ class ConversationRepository implements CrudInterface
         return Conversation::where('question', 'like', '%' . $keyword . '%')
             ->orWhere('instruction', 'like', '%' . $keyword . '%') 
             ->orderBy('id', 'desc')
-            // ->with('user')
             ->paginate($perPage);
     }
 
@@ -87,11 +97,19 @@ class ConversationRepository implements CrudInterface
      * @param array $data
      * @return object Conversation Object
      */
+
+
     public function create(array $data): Conversation
     {
+        // Encode the "conversations" field
+        $data['conversations'] = $this->encodeConversation($data['conversations']);
+    
+        // Set the user_id to the current user's ID
         $data['user_id'] = $this->user->id;
+    
         return Conversation::create($data);
     }
+    
 
     /**
      * Delete Conversation.
@@ -172,21 +190,21 @@ class ConversationRepository implements CrudInterface
     public function update(int $id, array $data): Conversation|null
     {
         $conversation = Conversation::find($id);
-        if (!empty($data['image'])) {
-            $titleShort = Str::slug(substr($data['title'], 0, 20));
-            $data['image'] = UploadHelper::update('image', $data['image'], $titleShort . '-' . time(), 'images/tip', $conversation->image);
-        } else {
-           
-        }
-
+    
         if (is_null($conversation)) {
             return null;
         }
-
+    
+        // Encode the "conversations" data before updating
+        if (isset($data['conversations'])) {
+            $data['conversations'] = $this->encodeConversation($data['conversations']);
+        }
+    
         // If everything is OK, then update.
         $conversation->update($data);
-
-        // Finally return the updated tip.
+    
+        // Finally return the updated conversation.
         return $this->getByID($conversation->id);
     }
+    
 }
