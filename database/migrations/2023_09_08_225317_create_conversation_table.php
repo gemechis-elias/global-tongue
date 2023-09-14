@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateConversationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable()->comment('Created By Admin');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
         });
     }
 
@@ -40,4 +39,4 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('conversations');
     }
-};
+}
