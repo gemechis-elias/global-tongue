@@ -144,7 +144,7 @@ class ConversationController extends Controller
  *     @OA\Response(response=404, description="Resource Not Found"),
  * )
  */
-public function store(ConversationRequest $request): JsonResponse
+public function store($request): JsonResponse
 {
     try {
         $conversation = $this->conversationRepository->create($request->all());

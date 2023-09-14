@@ -78,14 +78,7 @@ class ConversationRepository implements CrudInterface
      */
     public function create(array $data): Conversation
     {
-        $titleShort      = Str::slug(substr($data['question'], 0, 20));
-
-        if (!empty($data['image'])) {
-            $data['image'] = UploadHelper::upload('image', $data['image'], $titleShort . '-' . time(), 'images/conversation');
-        }
-
         $data['user_id'] = $this->user->id;
-
         return Conversation::create($data);
     }
 
