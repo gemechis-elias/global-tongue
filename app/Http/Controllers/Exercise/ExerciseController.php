@@ -34,7 +34,7 @@ class ExerciseController extends Controller
          * @OA\Get(
          *     path="/v1/public/api/exercises",
          *     tags={"Exercises"},
-         *     summary="Get Exercise List",
+         *     summary="Get All Exercise List",
          *     description="Get Exercise List as Array",
          *     operationId="ExerciseIndex",
          *     security={{"bearer":{}}},
@@ -156,6 +156,50 @@ public function store(ExerciseRequest $request): JsonResponse
         return $this->responseSuccess($exercise, 'New Exercise Created Successfully !');
     } catch (\Exception $exception) {
         return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
+/**
+ * @OA\Put(
+ *     path="/v1/public/api/exercises/{id}",
+ *     tags={"Exercises"},
+ *     summary="Update Exercise",
+ *     description="Update Exercise",
+ *     operationId="updateExercise",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="level_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_id", type="integer", example=1),
+ *             @OA\Property(property="exercise_type", type="string", example="Type A"),
+ *             @OA\Property(property="instruction", type="string", example="Instructions here"),
+ *             @OA\Property(property="question", type="string", example="Question here"),
+ *             @OA\Property(property="image", type="string", example="exercise_image.jpg"),
+ *             @OA\Property(property="voice", type="string", example="exercise_voice.mp3"),
+ *             @OA\Property(property="choices", type="string", example="Choice 1, Choice 2"),
+ *             @OA\Property(property="incorrect_hint", type="string", example="Incorrect hint here"),
+ *             @OA\Property(property="correct_answer", type="integer", example=1),
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Update Exercise"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+public function update(ExerciseRequest $request, $id): JsonResponse
+{
+    try {
+        $data = $this->exerciseRepository->update($id, $request->all());
+        if (is_null($data))
+            return $this->responseError(null, 'Exercise Not Found', Response::HTTP_NOT_FOUND);
+
+        return $this->responseSuccess($data, 'Exercise Updated Successfully !');
+    } catch (\Exception $e) {
+        return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
 

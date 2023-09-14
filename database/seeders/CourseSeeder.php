@@ -44,7 +44,7 @@ class CourseSeeder extends Seeder
                 'name' => 'English For Advanced',
                 'description' => 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
                 'level' => 'Advanced',
-                'type' => "free",
+                'type' => "premium",
                 'image' => "https://api.globaltongueedu.com/v1/public/images/courses/image_1.jpg",
                 'user_id' => 1,
                 'created_at' => Carbon::now(),

@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('is_confirmed');
+            $table->string('course_id');
+            $table->boolean('is_confirmed');
             $table->string('amount');
             $table->string('transaction_no');
-
-
 
             $table->unsignedBigInteger('user_id')->nullable()->comment('Paid By');
             $table->foreign('user_id')->references('id')->on('users');

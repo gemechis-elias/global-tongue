@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('password');
             $table->date('birthdate');
             $table->string('level');
-            $table->json('my_courses')->nullable(); 
             $table->string('subscription_type');
-           
+
+            $table->json('my_courses')->nullable(); 
+            $table->json('paid_courses')->nullable(); 
             $table->json('completed_levels')->nullable();
             $table->json('completed_units')->nullable();
             $table->json('completed_lessons')->nullable();

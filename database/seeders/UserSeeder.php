@@ -18,13 +18,30 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->delete();
         $data = [
-            'name' => 'Amanuel',
+           [ 'name' => 'Amanuel',
             'email' => 'aman@gmail.com',
             'password' => Hash::make('123456'),
             'birthdate' => '1990-01-01',
             'level' => 'beginner',
             'subscription_type' => 'free',
             'my_courses' => json_encode([]),
+            'paid_courses' => json_encode([]),
+            'completed_levels'=> json_encode([]),
+            'completed_units'=> json_encode([]), 
+            'completed_lessons'=> json_encode([]),
+            'completed_exercises'=> json_encode([]),
+            'completed_tips'=> json_encode([]),
+            'completed_conversation'=> json_encode([]),
+        ],
+            [
+            'name' => 'Gemechis',
+            'email' => 'gemechis@gmail.com',
+            'password' => Hash::make('123456'),
+            'birthdate' => '1990-01-01',
+            'level' => 'beginner',
+            'subscription_type' => 'premium',
+            'my_courses' => json_encode([3]),
+            'paid_courses' => json_encode([3]),
             'completed_levels'=> json_encode([]),
             'completed_units'=> json_encode([]), 
             'completed_lessons'=> json_encode([]),
@@ -32,6 +49,7 @@ class UserSeeder extends Seeder
             'completed_tips'=> json_encode([]),
             'completed_conversation'=> json_encode([]),
 
+            ]
         ];
 
         User::create($data);

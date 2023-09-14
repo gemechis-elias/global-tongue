@@ -26,6 +26,7 @@ class User extends Authenticatable implements JWTSubject
         'level',
         'subscription_type',
         'my_courses',
+        'paid_courses',
         'completed_levels',
         'completed_units',
         'completed_lessons',

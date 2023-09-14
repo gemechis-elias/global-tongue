@@ -33,7 +33,7 @@ class CoursesController extends Controller
      * @OA\Get(
      *     path="/v1/public/api/courses",
      *     tags={"Courses"},
-     *     summary="Get Course List",
+     *     summary="Get All Course List",
      *     description="Get Course List as Array",
      *     operationId="index",
      *     security={{"bearer":{}}},
@@ -58,7 +58,7 @@ class CoursesController extends Controller
      * @OA\Get(
      *     path="/v1/public/api/courses/view/search",
      *     tags={"Courses"},
-     *     summary="All Courses - Publicly Accessible",
+     *     summary="Search Courses By Keyword",
      *     description="Search All Courses - Publicly Accessible",
      *     operationId="search",
      *     @OA\Parameter(name="perPage", description="perPage, eg; 20", example=20, in="query", @OA\Schema(type="integer")),

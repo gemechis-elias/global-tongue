@@ -62,6 +62,10 @@ Route::group([
     Route::get('courses/view/all', [CoursesController::class, 'indexAll']);
     Route::get('courses/view/search', [CoursesController::class, 'search']);
     Route::get('courses/{id}', [CoursesController::class,'show']);
+    Route::put('courses/{id}', [CoursesController::class,'update']);
+    Route::delete('courses/{id}', [CoursesController::class,'destroy']);
+
+    
 
   /**
      * Payment Module
@@ -99,6 +103,7 @@ Route::group([
     Route::resource('lessons', LessonController::class);
     Route::get('lessons/view/all', [LessonController::class, 'indexAll']); 
     Route::get('lessons/view/search', [LessonController::class, 'search']);
+    Route::put('lessons/{id}', [LessonController::class,'update']);
     Route::get('lessons/by/{course_id}/{level_id}/{unit_id}', [LessonController::class,'getLessonsByUnitID']);
     Route::get('lessons/getContent/{lesson_id}', [LessonController::class,'getContent']);
 
@@ -108,8 +113,9 @@ Route::group([
      */ 
     
     Route::resource('exercises', ExerciseController::class);
-    Route::get('exercises/view/all', [ExerciseController::class, 'indexAll']);
     Route::post('exercises/create', [ExerciseController::class, 'store']) ;
+    Route::put('exercises/{id}', [ExerciseController::class,'update']);
+    Route::delete('exercises/{id}', [ExerciseController::class,'destroy']);
     Route::get('exercises/view/search', [ExerciseController::class, 'search']);
     Route::get('exercises/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ExerciseController::class,'getExercisesByLessonID']);
 
@@ -129,6 +135,7 @@ Route::group([
     Route::resource('conversations', ConversationController::class);
     Route::get('conversations/view/all', [ConversationController::class, 'indexAll']);
     Route::post('conversations/create', [ConversationController::class, 'store']) ;
+    Route::get('conversations/{id}', [ConversationController::class,'update']);
     Route::get('conversations/view/search', [ConversationController::class, 'search']);
     Route::get('conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ConversationController::class,'getConversationsByLessonID']);
 

@@ -22,7 +22,8 @@ class PaymentSeeder extends Seeder
         DB::table('payments')->delete();
         $data = [
             [
-                'is_confirmed' => "yes",
+                'course_id' => "1",
+                'is_confirmed' => false,
                 'amount' => "1500",
                 'transaction_no' => "TOASD028H12lAHBSX"
             ]

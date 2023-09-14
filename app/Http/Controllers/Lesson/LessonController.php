@@ -31,7 +31,7 @@ class LessonController extends Controller
      * @OA\Get(
      *     path="/v1/public/api/lessons",
      *     tags={"Lessons"},
-     *     summary="Get Lesson List",
+     *     summary="Get All Lesson List",
      *     description="Get Lesson List as Array",
      *     operationId="LessonIndex",
      *     security={{"bearer":{}}},
@@ -189,5 +189,75 @@ public function store(LessonRequest $request): JsonResponse
     }
 }
 
+/**
+ * @OA\Put(
+ *     path="/v1/public/api/lessons/{id}",
+ *     tags={"Lessons"},
+ *     summary="Update Lesson",
+ *     description="Update Lesson",
+ *     operationId="updateLesson",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="level_id", type="integer", example=1),
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_title", type="string", example="Essential Pronunciation: -ch, -h, -ll, -ñ"),
+ *             @OA\Property(property="lesson_type", type="string", example="voice"),
+ *             @OA\Property(property="image", type="string", example="lesson_image.jpg"),
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Update Lesson"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+public function update(LessonRequest $request, $id): JsonResponse
+{
+    try {
+        $data = $this->lessonRepository->update($id, $request->all());
+        if (is_null($data))
+            return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
+
+        return $this->responseSuccess($data, 'Lesson Updated Successfully !');
+    } catch (\Exception $e) {
+        return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
+    /**
+     * @OA\Delete(
+     *     path="/v1/public/api/lessons/{id}",
+     *     tags={"Lessons"},
+     *     summary="Delete Lessons",
+     *     description="Delete Lessons",
+     *     operationId="destroyLessons",
+     *     security={{"bearer":{}}},
+     *     @OA\Parameter(name="id", description="id, eg; 1", required=true, in="path", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Delete Lessons"),
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function destroy($id): JsonResponse
+    {
+        try {
+            $lesson =  $this->lessonRepository->getByID($id);
+            if (empty($lesson)) {
+                return $this->responseError(null, 'Lesson Not Found', Response::HTTP_NOT_FOUND);
+            }
+
+            $deleted = $this->lessonRepository->delete($id);
+            if (!$deleted) {
+                return $this->responseError(null, 'Failed to delete the Lesson.', Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+
+            return $this->responseSuccess($lesson, 'Lesson Deleted Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

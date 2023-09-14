@@ -33,7 +33,7 @@ class ConversationController extends Controller
          * @OA\Get(
          *     path="/v1/public/api/conversations",
          *     tags={"Conversations"},
-         *     summary="Get Conversation List",
+         *     summary="Get All Conversation List",
          *     description="Get Conversation List as Array",
          *     operationId="ConversationIndex",
          *     security={{"bearer":{}}},
@@ -153,6 +153,45 @@ public function store(ConversationRequest $request): JsonResponse
         return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
+/**
+ * @OA\Post(
+ *     path="/v1/public/api/conversations/{id}",
+ *     tags={"Conversations"},
+ *     summary="Update Conversation",
+ *     description="Update New Conversation",
+ *     operationId="updateConversation",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="course_id", type="integer", example=1),
+ *             @OA\Property(property="unit_id", type="integer", example=1),
+ *             @OA\Property(property="level_id", type="integer", example=1),
+ *             @OA\Property(property="lesson_id", type="integer", example=1),
+ *             @OA\Property(property="conversation_type", type="string", example="Type A"),
+ *             @OA\Property(property="instruction", type="string", example="Instructions here"),
+ *            @OA\Property(property="conversation", type="string", example="[{'name':'John','text':'Hello'}], [{'name':'John','text':'Hello'}]"),
+ * 
+ *         ),
+ *     ),
+ *     security={{"bearer":{}}},
+ *     @OA\Response(response=200, description="Updated Conversation"),
+ *     @OA\Response(response=400, description="Bad request"),
+ *     @OA\Response(response=404, description="Resource Not Found"),
+ * )
+ */
+    public function update(ConversationRequest $request, $id): JsonResponse
+    {
+        try {
+            $data = $this->conversationRepository->update($id, $request->all());
+            if (is_null($data))
+                return $this->responseError(null, 'Conversation Not Found', Response::HTTP_NOT_FOUND);
+
+            return $this->responseSuccess($data, 'Conversation Updated Successfully !');
+        } catch (\Exception $e) {
+            return $this->responseError(null, $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
     /**
      * @OA\Delete(
