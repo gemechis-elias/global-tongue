@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Payment;
+namespace App\Http\Controllers\C99_Payment;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PaymentRepository;

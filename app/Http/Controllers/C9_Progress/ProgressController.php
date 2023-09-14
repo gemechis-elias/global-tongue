@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Progress;
+namespace App\Http\Controllers\C9_Progress;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;

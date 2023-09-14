@@ -1,20 +1,18 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController; 
-use App\Http\Controllers\Units\UnitController;
-use App\Http\Controllers\A1Courses\CoursesController;
-use App\Http\Controllers\Payment\PaymentController;
-
-use App\Http\Controllers\Levels\LevelsController;
+use App\Http\Controllers\C1_Auth\AuthController; 
+use App\Http\Controllers\C2_Courses\CoursesController;
+use App\Http\Controllers\C3_Levels\LevelsController;
+use App\Http\Controllers\C4_Units\UnitController;
+use App\Http\Controllers\C5_Lesson\LessonController;
+use App\Http\Controllers\C6_Exercise\ExerciseController;
+use App\Http\Controllers\C7_Conversation\ConversationController;
+use App\Http\Controllers\C8_Tips\TipsController;
+use App\Http\Controllers\C9_Progress\ProgressController;
+use App\Http\Controllers\C99_Payment\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
-use App\Http\Controllers\Admin\AdminController; 
-use App\Http\Controllers\Lesson\LessonController;
-use App\Http\Controllers\Progress\ProgressController;
 
-use App\Http\Controllers\Exercise\ExerciseController;
-use App\Http\Controllers\Tips\TipsController;
-use App\Http\Controllers\Conversation\ConversationController;
 
 
 /*

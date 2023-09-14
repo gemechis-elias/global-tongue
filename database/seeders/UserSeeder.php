@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'email' => 'aman@gmail.com',
             'password' => Hash::make('123456'),
             'birthdate' => '1990-01-01',
+            'role' => 'user',
             'level' => 'beginner',
             'subscription_type' => 'free',
 

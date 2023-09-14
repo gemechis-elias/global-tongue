@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tips;
+namespace App\Http\Controllers\C8_Tips;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

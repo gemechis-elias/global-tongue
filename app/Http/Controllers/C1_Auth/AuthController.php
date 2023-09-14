@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\C1_Auth;
 use OpenApi\Annotations as OA;
 
 use Illuminate\Support\Facades\Auth;
@@ -110,6 +110,7 @@ class AuthController extends Controller
         }
     }
 
+    
     /**
      * @OA\Get(
      *     path="/v1/public/api/auth/me",

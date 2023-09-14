@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Conversation;
+namespace App\Http\Controllers\C7_Conversation;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

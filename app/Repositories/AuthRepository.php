@@ -14,6 +14,7 @@ class AuthRepository
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'birthdate' => "2020-12-15",
+            'role' => "user",
             'level' => "beginner",
             'subscription_type' => "free",
 
