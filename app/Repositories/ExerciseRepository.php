@@ -152,7 +152,6 @@ class ExerciseRepository implements CrudInterface
             ->where('course_id', $course_id)
             ->where('level_id', $level_id)
             ->where('unit_id', $unit_id)
-            ->where('lesson_id', $lesson_id)
             ->orderBy('id', 'desc')
             ->get();
     
