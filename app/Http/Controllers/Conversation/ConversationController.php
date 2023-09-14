@@ -82,7 +82,7 @@ class ConversationController extends Controller
     
        /**
          * @OA\Get(
-         *     path="/v1/public/api/conversations/by/{course_id}/{Wlevel_id}/{unit_id}/{lesson_id}",
+         *     path="/v1/public/api/conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}",
          *     tags={"Conversations"},
          *     summary="Get Conversations by Parents",
          *     description="Get list of conversations associated with a specific Parents",
@@ -144,7 +144,7 @@ class ConversationController extends Controller
  *     @OA\Response(response=404, description="Resource Not Found"),
  * )
  */
-public function store(ConversationRequest $request): JsonResponse
+public function storeConversation(ConversationRequest $request): JsonResponse
 {
     try {
         $conversation = $this->conversationRepository->create($request->all());

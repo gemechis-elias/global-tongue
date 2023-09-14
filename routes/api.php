@@ -121,7 +121,6 @@ Route::group([
      * Conversation Module
      */ 
     Route::resource('conversations', ConversationController::class);
-    Route::post('conversations', [ConversationController::class, 'store']);
     Route::get('conversations/view/search', [ConversationController::class, 'search']);
     Route::get('conversations/by/{course_id}/{level_id}/{unit_id}/{lesson_id}', [ConversationController::class,'getConversationsByLessonID']);
 
