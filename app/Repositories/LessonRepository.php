@@ -112,11 +112,38 @@ class LessonRepository implements CrudInterface
      */
     public function getByID(int $id): Lesson|null
     {
-        return Lesson::with('user')->find($id);
+        $lesson =  Lesson::find($id);
+
+                 
+        if ($lesson) {
+            $user = $this->user;
+    
+            // Check if $user exists and has 'completed_lessons' property
+            if ($user && isset($user->completed_lessons)) {
+                
+
+                // Update the user's my_lessons attribute by adding the current lesson ID
+                $myLesson = json_decode($user->completed_lessons, true) ?? [];
+                if (!in_array($id, $myLesson)) {
+                    $myLesson[] = $id;
+                    $user->my_lessons = json_encode($myLesson);
+                    $user->save();
+                }
+                
+            } 
+            return $lesson;
+        }
+    
+        return null;
     }
+    
+
     public function getAllContent(int $id): ?Lesson
     {
         return Lesson::with('exercises', 'conversations', 'tips')->find($id);
+
+   
+
     }
     
     /**

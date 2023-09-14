@@ -131,7 +131,7 @@ class CourseRepository implements CrudInterface
                     $user->save();
                 }
                 
-            }
+            } 
     
             return $course;
         }
